@@ -165,9 +165,7 @@ Public Class Modren_UI
                     End
                 ElseIf mainOption.CloseMiniOpen.Value = True Then
                     Btn_PlayPause.BackgroundImage = My.Resources.Play
-                    Me.Hide()
-                    Settings.Hide()
-                    Zimu.Hide()
+                    HideForm()
                     Zimu.Timer1.Enabled = False
                 End If
                 '结束后播放操作
@@ -187,6 +185,12 @@ Public Class Modren_UI
 
             End Try
         End If
+    End Sub
+
+    Private Sub HideForm()
+        Me.Hide()
+        Settings.Hide()
+        Zimu.Hide()
     End Sub
 
     Private Sub AddMusic(sender As Object, e As EventArgs) Handles Lbl_MusicName.DoubleClick, Btn_Add.Click
@@ -232,7 +236,7 @@ Public Class Modren_UI
         If MusicList.Count = 0 Then Exit Sub
         If e.NowPlayIndex > -1 Then
             '指定播放序列，跳转至指定的歌曲
-            nowPlay = e.nowPlayIndex
+            nowPlay = e.NowPlayIndex
         ElseIf nowPlay < MusicList.Count - 1 Then '省略NowPlayIndex时，默认切换至下一首
             '若当前播放歌曲不是下一首，切换至下一首
             nowPlay += 1
@@ -450,6 +454,8 @@ Public Class Modren_UI
         chooseItem += 1
     End Sub
 
+
+
     Private Sub Btn_Remove_Click(sender As Object, e As EventArgs) Handles Btn_Remove.Click
         Try
             Call Engine.Stop()
@@ -475,6 +481,10 @@ Public Class Modren_UI
             Btn_Remove.Paint
         Dim ctl As Button = sender
         ctl.FlatAppearance.BorderColor = ctl.Parent.BackColor
+    End Sub
+
+    Private Sub Lbl_title_DoubleClick(sender As Object, e As EventArgs) Handles Lbl_title.DoubleClick
+        HideForm()
     End Sub
 End Class
 
