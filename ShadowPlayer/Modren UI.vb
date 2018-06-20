@@ -278,7 +278,7 @@ Public Class Modren_UI
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     Private Sub Engine_played(sender As Object, e As EventArgs) Handles Engine.Played
-        If PlayEngine.IsFileVideo(MusicList(nowPlay).tag) And Modren_UI.mainOption.Video_AutoFullScreen Then
+        If PlayEngine.IsFileVideo(MusicList(nowPlay).tag) And mainOption.Video_AutoFullScreen Then
             Player.fullScreen = True
         End If
     End Sub
