@@ -1,7 +1,7 @@
 ﻿Imports AxWMPLib
 Imports WMPLib
 Public Class Modren_UI
-    Const SPECIALVISION As String = " Alpha"
+    Const SPECIALVISION As String = " Beta"
 
     Const FILTERS = "音频文件|*.wma;*.wax;*.cda;*.mp3;*.m3u;*.wav;*.mid:*.midi;*.rmi;*.aif;*.aifc;*aiff;*.au;*,snd|
 视频文件|*.mp4;*.wmv;*.wvx;*.asf;*.asx;*.wpl;*.wm;*.wmx;*.wmd;*.wmz;*.vob;*.dvr;*.avi;*.mpeg:*.mpg;*.mlv;*.mpv2;*.mpa;*.mp2|
@@ -38,6 +38,9 @@ Public Class Modren_UI
 
         Lbl_Vision.Text = "Version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString + SPECIALVISION
 
+        If mainOption.LoudOpen.Value Then
+            ToolTip1.SetToolTip(Btn_Alarm, "闹钟已开启" + vbCrLf + "开启时间： " + mainOption.LoudTime + vbCrLf + "关闭时间： " + mainOption.EndTime)
+        End If
 
         '调用载入后PlayProgress绘制
         Dim FormLoaded As New Timer
@@ -208,8 +211,37 @@ Public Class Modren_UI
         End If
     End Sub
 
-    Private Sub Btn_List_MouseEnter(sender As Object, e As EventArgs) Handles Btn_List.MouseEnter
+    Private Sub 退出ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 退出ToolStripMenuItem.Click
+        btn_Mainexit_Click(Me, Nothing)
+    End Sub
 
+    Private Sub 停止ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 停止ToolStripMenuItem.Click
+        Try
+            Engine.Stop()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+        NotifyIcon1_MouseDoubleClick(Me, Nothing)
+    End Sub
+
+    Private Sub 播放ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles 播放ToolStripMenuItem1.Click
+        Try
+            Engine.Play()
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
+    Private Sub 暂停ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 暂停ToolStripMenuItem.Click
+        Try
+            Engine.Pause()
+        Catch ex As Exception
+
+        End Try
     End Sub
 
 #Region "窗体拖动移动"
