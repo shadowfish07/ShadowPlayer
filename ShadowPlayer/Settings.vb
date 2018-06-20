@@ -31,8 +31,7 @@ Public Class Settings
             Case sender Is ChkSetTimeEnabled
                 PnlOpen.Enabled = ChkSetTimeEnabled.Checked
         End Select
-        Dim showf As New GradualShow(SetChangedInform, 0.75)
-        showf.Show()
+        SetChangedInform.Show()
     End Sub
 
     Private Sub Settings_Load(sender As Object, e As EventArgs) Handles Me.Load
