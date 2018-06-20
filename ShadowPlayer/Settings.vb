@@ -50,6 +50,7 @@ Public Class Settings
         txtEndTime.Text = Modren_UI.mainOption.EndTime
         txtLoudTime.Text = Modren_UI.mainOption.LoudTime
         RdoSetEndEnabled.Checked = Modren_UI.mainOption.CloseEndOpen.Value
+        RdoSetCloseNothing.Checked = Modren_UI.mainOption.CloseNothingOpen.Value
         RdoSetMiniEnabled.Checked = Modren_UI.mainOption.CloseMiniOpen.Value
         RdoStop.Checked = Modren_UI.mainOption.AfterClose_stop.Value
         RdoNext.Checked = Modren_UI.mainOption.AfterClose_next.Value

@@ -75,8 +75,8 @@ Partial Class Modren_UI
         Me.btn_Mainmin.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_Mainmin.BackColor = System.Drawing.Color.Transparent
         Me.btn_Mainmin.FlatAppearance.BorderSize = 0
-        Me.btn_Mainmin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
-        Me.btn_Mainmin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.btn_Mainmin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(103, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(196, Byte), Integer))
+        Me.btn_Mainmin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(194, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.btn_Mainmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_Mainmin.Font = New System.Drawing.Font("Segoe UI Symbol", 11.25!)
         Me.btn_Mainmin.ForeColor = System.Drawing.Color.White
@@ -94,8 +94,8 @@ Partial Class Modren_UI
         Me.btn_Mainmax.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_Mainmax.BackColor = System.Drawing.Color.Transparent
         Me.btn_Mainmax.FlatAppearance.BorderSize = 0
-        Me.btn_Mainmax.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
-        Me.btn_Mainmax.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.btn_Mainmax.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(103, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(196, Byte), Integer))
+        Me.btn_Mainmax.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(194, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.btn_Mainmax.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_Mainmax.Font = New System.Drawing.Font("Segoe UI Symbol", 11.25!)
         Me.btn_Mainmax.ForeColor = System.Drawing.Color.White

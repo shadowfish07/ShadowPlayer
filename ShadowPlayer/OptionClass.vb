@@ -1,8 +1,11 @@
-﻿Public Class OptionClass
+﻿Imports ShadowPlayer
+
+Public Class OptionClass
     Private _LoudOpen As New Myboolean(True)
     Private _CloseOpen As New Myboolean(True,,, {_CloseEndOpen, _CloseMiniOpen})
-    Private _CloseEndOpen As New Myboolean(False, {_CloseEndOpen, _CloseMiniOpen})
-    Private _CloseMiniOpen As New Myboolean(True, {_CloseEndOpen, _CloseMiniOpen})
+    Private _CloseEndOpen As New Myboolean(False, {_CloseEndOpen, _CloseMiniOpen, _CloseNothingOpen})
+    Private _CloseMiniOpen As New Myboolean(True, {_CloseEndOpen, _CloseMiniOpen, _CloseNothingOpen})
+    Private _CloseNothingOpen As New Myboolean(False, {_CloseEndOpen, _CloseMiniOpen, _CloseNothingOpen})
     Private _AfterClose_puase As New Myboolean(False, {_AfterClose_next, _AfterClose_puase, _AfterClose_stop})
     Private _AfterClose_stop As New Myboolean(False, {_AfterClose_next, _AfterClose_puase, _AfterClose_stop})
     Private _AfterClose_next As New Myboolean(True, {_AfterClose_next, _AfterClose_puase, _AfterClose_stop})
@@ -112,6 +115,16 @@
             _LoudTime = value
         End Set
     End Property
+
+    Public Property CloseNothingOpen As Myboolean
+        Get
+            Return _CloseNothingOpen
+        End Get
+        Set(value As Myboolean)
+            _CloseNothingOpen = value
+        End Set
+    End Property
+
     Public Class Myboolean
         Private _Value As Boolean
         Private _OnlyOneTrue() As Myboolean
