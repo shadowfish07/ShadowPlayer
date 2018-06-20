@@ -188,10 +188,6 @@ Public Class Modren_UI
 
     End Sub
 
-    Private Sub Player_DoubleClickEvent(sender As Object, e As _WMPOCXEvents_DoubleClickEvent) Handles Player.DoubleClickEvent
-        Stop
-    End Sub
-
     Private Sub ImageChangeToReplay() Handles Engine.PlayEnd
         Btn_PlayPause.BackgroundImage = My.Resources.刷新
         Lbl_NowTime.Text = Lbl_TotalTime.Text
