@@ -211,6 +211,39 @@ Public Class Modren_UI
         End If
     End Sub
 
+    Private Sub 退出ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 退出ToolStripMenuItem.Click
+        btn_Mainexit_Click(Me, Nothing)
+    End Sub
+
+    Private Sub 停止ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 停止ToolStripMenuItem.Click
+        Try
+            Engine.Stop()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+        NotifyIcon1_MouseDoubleClick(Me, Nothing)
+    End Sub
+
+    Private Sub 播放ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles 播放ToolStripMenuItem1.Click
+        Try
+            Engine.Play()
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
+    Private Sub 暂停ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 暂停ToolStripMenuItem.Click
+        Try
+            Engine.Pause()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
 #Region "窗体拖动移动"
 
     <System.Runtime.InteropServices.DllImport("user32.dll")>
