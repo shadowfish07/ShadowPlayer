@@ -332,7 +332,7 @@ Partial Class Modren_UI
         Me.Btn_PrevMusic.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.Btn_PrevMusic.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_PrevMusic.ForeColor = System.Drawing.Color.White
-        Me.Btn_PrevMusic.Location = New System.Drawing.Point(300, 337)
+        Me.Btn_PrevMusic.Location = New System.Drawing.Point(300, 349)
         Me.Btn_PrevMusic.Name = "Btn_PrevMusic"
         Me.Btn_PrevMusic.Size = New System.Drawing.Size(20, 20)
         Me.Btn_PrevMusic.TabIndex = 30
@@ -347,7 +347,7 @@ Partial Class Modren_UI
         Me.Btn_NextMusic.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.Btn_NextMusic.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_NextMusic.ForeColor = System.Drawing.Color.White
-        Me.Btn_NextMusic.Location = New System.Drawing.Point(399, 337)
+        Me.Btn_NextMusic.Location = New System.Drawing.Point(399, 349)
         Me.Btn_NextMusic.Name = "Btn_NextMusic"
         Me.Btn_NextMusic.Size = New System.Drawing.Size(20, 20)
         Me.Btn_NextMusic.TabIndex = 29
@@ -362,7 +362,7 @@ Partial Class Modren_UI
         Me.Btn_Stop.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.Btn_Stop.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_Stop.ForeColor = System.Drawing.Color.White
-        Me.Btn_Stop.Location = New System.Drawing.Point(366, 337)
+        Me.Btn_Stop.Location = New System.Drawing.Point(366, 349)
         Me.Btn_Stop.Name = "Btn_Stop"
         Me.Btn_Stop.Size = New System.Drawing.Size(20, 20)
         Me.Btn_Stop.TabIndex = 28
@@ -377,7 +377,7 @@ Partial Class Modren_UI
         Me.Btn_PlayPause.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.Btn_PlayPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_PlayPause.ForeColor = System.Drawing.Color.White
-        Me.Btn_PlayPause.Location = New System.Drawing.Point(333, 337)
+        Me.Btn_PlayPause.Location = New System.Drawing.Point(333, 349)
         Me.Btn_PlayPause.Name = "Btn_PlayPause"
         Me.Btn_PlayPause.Size = New System.Drawing.Size(20, 20)
         Me.Btn_PlayPause.TabIndex = 27
