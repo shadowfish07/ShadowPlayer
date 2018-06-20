@@ -26,6 +26,7 @@ Public Class Modren_UI
 
     Private Sub Modren_UI_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         log.Write("正在启动程序")
+        log.PrintMyVision()
         Player.uiMode = "none"
         Player.settings.autoStart = False
         Lbl_MusicName.Text = "双击以添加歌曲"

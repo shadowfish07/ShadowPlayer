@@ -18,6 +18,14 @@
         Trace.Unindent()
     End Sub
 
+    Public Sub PrintMyVision()
+        Me.Indent()
+        Me.Write("版本号： " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString)
+        Me.Write("上次使用时间： " + IO.Directory.GetLastAccessTime(Application.ExecutablePath))
+        Me.Write("程序最后修改时间： " + IO.Directory.GetLastWriteTime(Application.ExecutablePath))
+        Me.Unindent()
+    End Sub
+
     Public Sub EndWrite(Optional message As String = "")
         Me.Write("程序退出")
         Trace.Indent()
