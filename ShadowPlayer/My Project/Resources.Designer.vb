@@ -163,6 +163,26 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
+        Friend ReadOnly Property 上移() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("上移", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property 下移() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("下移", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
         Friend ReadOnly Property 全屏() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("全屏", resourceCulture)
@@ -176,6 +196,26 @@ Namespace My.Resources
         Friend ReadOnly Property 刷新() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("刷新", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property 新增() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("新增", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
+        Friend ReadOnly Property 移除() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("移除", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

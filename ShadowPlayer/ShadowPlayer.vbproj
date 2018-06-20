@@ -204,5 +204,17 @@
   <ItemGroup>
     <None Include="Resources\刷新.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\上移.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\下移.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\新增.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\移除.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
