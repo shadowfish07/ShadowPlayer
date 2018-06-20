@@ -185,10 +185,11 @@
     End Sub
 
     Public Sub ChangeMusic(Optional ByVal nowPlayIndex As Integer = -1, Optional ByVal Play As Boolean = True)
+        If Modren_UI.MusicList.Count = 0 Then Exit Sub
         _timer.Enabled = False
         If nowPlayIndex > -1 Then '指定播放情况
             Modren_UI.nowPlay = nowPlayIndex
-        ElseIf modren_ui.nowPlay < Modren_UI.MusicList.Count - 1 Then '可下一首情况
+        ElseIf Modren_UI.nowPlay < Modren_UI.MusicList.Count - 1 Then '可下一首情况
             Modren_UI.nowPlay += 1
         Else '最后一首情况
             '回到列表初
