@@ -215,7 +215,7 @@ Public Class Modren_UI
     Private Sub Btn_Stop_Click(sender As Object, e As EventArgs) Handles Btn_Stop.Click
         Engine.Stop()
         Btn_PlayPause.BackgroundImage = My.Resources.Play
-        Lbl_NowTime.Text = "00：00"
+        Lbl_NowTime.Text = "00:00"
         playProgres.Flush(0)
     End Sub
 
