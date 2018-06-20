@@ -137,10 +137,12 @@ Public Class Modren_UI
             Try
                 Engine.Play()
                 Btn_PlayPause.BackgroundImage = My.Resources.Pause
+                log.Write("自动播放——闹钟")
             Catch ex As Exception
 
             End Try
         ElseIf Format(Now, "HH:mm:ss") = mainOption.EndTime And mainOption.CloseOpen.Value = True Then
+            log.Write("自动停止——闹钟")
             '自动结束播放
             Try
                 '结束后程序操作

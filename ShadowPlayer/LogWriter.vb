@@ -20,9 +20,9 @@
 
     Public Sub PrintMyVision()
         Me.Indent()
-        Me.Write("版本号： " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString)
-        Me.Write("文件路径： " + Application.ExecutablePath)
-        Me.Write("程序最后修改时间： " + IO.Directory.GetLastWriteTime(Application.ExecutablePath))
+        Trace.WriteLine("版本号： " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString)
+        Trace.WriteLine("文件路径： " + Application.ExecutablePath)
+        Trace.WriteLine("程序最后修改时间： " + IO.Directory.GetLastWriteTime(Application.ExecutablePath))
         Me.Unindent()
     End Sub
 
