@@ -2,7 +2,7 @@
 Imports ShadowPlayer
 Imports WMPLib
 Public Class Modren_UI
-    Const SPECIALVISION As String = " "
+    Const SPECIALVISION As String = ""
 
     Const FILTERS = "音频文件|*.wma;*.wax;*.cda;*.mp3;*.m3u;*.wav;*.mid:*.midi;*.rmi;*.aif;*.aifc;*aiff;*.au;*,snd|
 视频文件|*.mp4;*.wmv;*.wvx;*.asf;*.asx;*.wpl;*.wm;*.wmx;*.wmd;*.wmz;*.vob;*.dvr;*.avi;*.mpeg:*.mpg;*.mlv;*.mpv2;*.mpa;*.mp2|
@@ -79,7 +79,6 @@ Public Class Modren_UI
         playProgres = New PlayProgress(Panel1, 30, Color.FromArgb(180, 198, 214), Color.FromArgb(80, 173, 255))
         e.Dispose
         loaded = True
-        playProgres.Flush(1)
     End Sub
 
     Private Sub player_PlayStateChange(sender As Object, e As _WMPOCXEvents_PlayStateChangeEvent) Handles Player.PlayStateChange
