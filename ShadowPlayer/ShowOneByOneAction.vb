@@ -4,21 +4,26 @@
     '目前只支持左移
 
     Dim ToBeShowedControl() As Control
+    Dim _toShow As Boolean
 
-    Public Sub New(target As Control， targetLocation As PointF, total_time As Single, interval As Integer, ToBeShowedControl() As Control)
+    Public Sub New(target As Control， targetLocation As PointF, total_time As Single, interval As Integer, ToBeShowedControl() As Control, toShow As Boolean)
         MyBase.New(target, targetLocation, total_time, interval)
-        ReDim Me.ToBeShowedControl(ToBeShowedControl.Length - 1)
-        For Each a As Control In ToBeShowedControl
-            Dim i As Integer
-            Me.ToBeShowedControl(i) = a
-        Next
+        Me.ToBeShowedControl = ToBeShowedControl.Clone
+        _toShow = toShow
     End Sub
 
     Private Sub Change(sander As Object, e As VisualActionEventArg) Handles MyBase.OncePace
         For Each c As Control In ToBeShowedControl
-            If _target.Location.X <= c.Location.X Then
-                c.Visible = True
+            If _toShow = True Then
+                If _target.Location.X <= c.Location.X Then
+                    c.Visible = True
+                End If
+            Else
+                If _target.Location.X >= c.Location.X Then
+                    c.Visible = False
+                End If
             End If
+
         Next
     End Sub
 End Class

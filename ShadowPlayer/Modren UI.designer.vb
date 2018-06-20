@@ -529,6 +529,7 @@ Partial Class Modren_UI
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(83, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(719, 521)
+        Me.Controls.Add(Me.Btn_Alarm)
         Me.Controls.Add(Me.Btn_MoveToDown)
         Me.Controls.Add(Me.Btn_MoveToUp)
         Me.Controls.Add(Me.Panel_hideList)
@@ -551,7 +552,6 @@ Partial Class Modren_UI
         Me.Controls.Add(Me.btn_Mainexit)
         Me.Controls.Add(Me.Panel_top)
         Me.Controls.Add(Me.Btn_List)
-        Me.Controls.Add(Me.Btn_Alarm)
         Me.Controls.Add(Me.Btn_Add)
         Me.Controls.Add(Me.Btn_Remove)
         Me.DoubleBuffered = True

@@ -276,6 +276,14 @@ Public Class Modren_UI
             a.Start()
             ListRemainTime = 0
             Timer_List.Stop()
+            Btn_List.Visible = True
+            Btn_Add.Visible = False
+
+            'Dim b As New ShowOneByOneAction(Btn_Alarm, New PointF(651, 85), 300, 10, {Btn_MoveToDown, Btn_MoveToUp, Btn_Remove}, False)
+            'b.Start()
+
+            Dim b As New VisualAction(Btn_Alarm, New PointF(651, 85), 300, 10)
+            b.Start()
         End If
         ListRemainTime += 1
 
@@ -293,9 +301,16 @@ Public Class Modren_UI
         If isListOpen = False Then
             Dim a As New HideListAction(Panel_hideList, New PointF(Panel_hideList.Location.X, Panel_hideList.Location.Y + 300), 300, 10)
             a.Start()
+            'Dim b As New ShowOneByOneAction(Btn_Alarm, New PointF(550, 85), 300, 10, {Btn_MoveToDown, Btn_MoveToUp, Btn_Remove}, True)
+            'b.Start()
+
+            Dim b As New VisualAction(Btn_Alarm, New PointF(550, 85), 300, 10)
+            b.Start()
+
             Timer_List.Start()
             Btn_List.Visible = False
             Btn_Add.Visible = True
+
         End If
     End Sub
 End Class

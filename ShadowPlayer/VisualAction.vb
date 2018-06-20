@@ -82,30 +82,32 @@
         tempX += _stepX
         tempY += _stepY
 
+        Dim isLastPace As Boolean = Me.IsLastPace(tempX, tempY)
+
         If Math.Abs(tempX) > 1 Then
             If tempX > 0 Then
-                _target.Location = New Point(_target.Location.X + Math.Abs(Math.Floor(tempX)), _target.Location.Y)
+                If isLastPace = False Then _target.Location = New Point(_target.Location.X + Math.Abs(Math.Floor(tempX)), _target.Location.Y)
                 changeX = Math.Abs(Math.Floor(tempX))
                 tempX -= Math.Abs(Math.Floor(tempX))
             Else
-                _target.Location = New Point(_target.Location.X - Math.Abs(Math.Ceiling(tempX)), _target.Location.Y)
+                If isLastPace = False Then _target.Location = New Point(_target.Location.X - Math.Abs(Math.Ceiling(tempX)), _target.Location.Y)
                 changeX = -Math.Abs(Math.Ceiling(tempX))
                 tempX += Math.Abs(Math.Ceiling(tempX))
             End If
         End If
-        If Math.Abs(tempY) > 1 Then
+        If Math.Abs(tempY) > 1 And isLastPace = False Then
             If tempY > 0 Then
-                _target.Location = New Point(_target.Location.X, _target.Location.Y + Math.Abs(Math.Floor(tempY)))
+                If isLastPace = False Then _target.Location = New Point(_target.Location.X, _target.Location.Y + Math.Abs(Math.Floor(tempY)))
                 changeY = Math.Abs(Math.Floor(tempY))
                 tempY -= Math.Abs(Math.Floor(tempY))
             Else
-                _target.Location = New Point(_target.Location.X, _target.Location.Y - Math.Abs(Math.Ceiling(tempY)))
+                If isLastPace = False Then _target.Location = New Point(_target.Location.X, _target.Location.Y - Math.Abs(Math.Ceiling(tempY)))
                 changeY = -Math.Abs(Math.Ceiling(tempY))
                 tempY += Math.Abs(Math.Ceiling(tempY))
             End If
         End If
 
-        If (_target.Location.X = TargetLocation.X And _isheightmove = False) Or (_target.Location.Y = TargetLocation.Y And _isweightmove = False) Then
+        If isLastPace = True Then
             changeX = TargetLocation.X - _target.Location.X
             changeY = TargetLocation.Y - _target.Location.Y
 
@@ -120,14 +122,36 @@
         End If
     End Sub
 
-    Protected Function IsLastPace() As Boolean
-        If _stepX > 0 Then
-            If _target.Location.X + _stepX > _targetLocation.X Then
-                Return True
+    Protected Function IsLastPace(toAddX As Single, toAddY As Single) As Boolean
+        If _isHeightMove = True Then
+            If toAddY > 0 Then
+                If _target.Location.Y + Math.Floor(toAddY) >= TargetLocation.Y Then
+                    Return True
+                End If
+            Else
+                If _target.Location.Y + Math.Ceiling(toAddY) <= TargetLocation.Y Then
+                    Return True
+                End If
+            End If
+        ElseIf _isWeightMove = True Then
+            If toAddX > 0 Then
+                If _target.Location.X + Math.Floor(toAddX) >= TargetLocation.X Then
+                    Return True
+                End If
+            Else
+                If _target.Location.X + Math.Ceiling(toAddX) <= TargetLocation.X Then
+                    Return True
+                End If
             End If
         Else
-            If _target.Location.X + _stepX < _targetLocation.X Then
-                Return True
+            If toAddX > 0 Then
+                If _target.Location.X + Math.Floor(toAddX) >= TargetLocation.X Then
+                    Return True
+                End If
+            Else
+                If _target.Location.X + Math.Ceiling(toAddX) <= TargetLocation.X Then
+                    Return True
+                End If
             End If
         End If
         Return False
