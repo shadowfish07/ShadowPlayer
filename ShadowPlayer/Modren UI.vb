@@ -493,16 +493,16 @@ Public Class Modren_UI
         Select Case modeIndex
             Case 0
                 '当前为随机播放
-                Lbl_PlayMode.Text = "列表循环"
-                playMode = CplayMode.ListCycle
-                modeIndex += 1
-            Case 1
-                '当前为列表循环
                 Lbl_PlayMode.Text = "单次列表"
                 playMode = CplayMode.ListOnce
                 modeIndex += 1
-            Case 2
+            Case 1
                 '当前为单次列表
+                Lbl_PlayMode.Text = "列表循环"
+                playMode = CplayMode.ListCycle
+                modeIndex += 1
+            Case 2
+                '当前为列表循环
                 Lbl_PlayMode.Text = "单次播放"
                 playMode = CplayMode.OneOnce
                 modeIndex += 1
