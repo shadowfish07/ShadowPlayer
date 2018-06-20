@@ -21,7 +21,7 @@ Public Class Modren_UI
     End Sub
 
     Private Sub btn_Mainmin_Click(sender As Object, e As EventArgs) Handles btn_Mainmin.Click
-        Me.WindowState = WindowState.Minimized
+        Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub Modren_UI_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -169,6 +169,7 @@ Public Class Modren_UI
 
     Private Sub NotifyIcon1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles NotifyIcon1.MouseDoubleClick
         Me.Show()
+        Me.WindowState = FormWindowState.Normal
     End Sub
 
     Private Sub OpenFileDialog1_FileOk(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles OpenFileDialog1.FileOk
@@ -215,6 +216,8 @@ Public Class Modren_UI
     Shared Function SendMessage(ByVal hWnd As IntPtr, ByVal Msg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
     End Function
 
+
+
     Private Sub MoveForm()
         ReleaseCapture()
         SendMessage(Me.Handle, &HA1, 2, 0)
@@ -222,16 +225,56 @@ Public Class Modren_UI
 
     Private Sub FormDrag(sender As Object, e As MouseEventArgs) Handles Panel_top.MouseDown
         If e.Button = Windows.Forms.MouseButtons.Left Then MoveForm()
-        Me.Refresh()
+        ReFlush()
+
+    End Sub
+
+    Sub ReFlush()
         Try
             playProgres.Flush(Player.Ctlcontrols.currentPosition / Player.currentMedia.duration)
         Catch ex As Exception
             playProgres.Flush(0)
         End Try
-
     End Sub
 
 #End Region
+
+    Private Sub 退出ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 退出ToolStripMenuItem.Click
+        btn_Mainexit_Click(Me, Nothing)
+    End Sub
+
+    Private Sub 停止ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 停止ToolStripMenuItem.Click
+        Try
+            Engine.Stop()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+        NotifyIcon1_MouseDoubleClick(Me, Nothing)
+    End Sub
+
+    Private Sub 播放ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles 播放ToolStripMenuItem1.Click
+        Try
+            Engine.Play()
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
+    Private Sub 暂停ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 暂停ToolStripMenuItem.Click
+        Try
+            Engine.Pause()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub Modren_UI_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        ReFlush()
+    End Sub
 End Class
 
 
