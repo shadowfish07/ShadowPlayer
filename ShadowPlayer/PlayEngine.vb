@@ -22,6 +22,11 @@
         lyr.lbl_down.Visible = False
     End Sub
 
+    Public Sub ChangeLyric()
+        '！！！尚待开发：手动加载最近的歌词
+        lyr.ChangeLyric(Me, Nothing)
+    End Sub
+
     Private Class Lyric
 
         Public WithEvents Timer As New Timer With {.Interval = 100}
@@ -207,6 +212,7 @@
         Modren_UI.lastPlay = Modren_UI.nowPlay
         Modren_UI.Player.URL = Modren_UI.MusicList.Item(Modren_UI.nowPlay).tag
         RaiseEvent ChangedMusic()
+        HideLyric()
         If Play Then Me.Play()
     End Sub
 

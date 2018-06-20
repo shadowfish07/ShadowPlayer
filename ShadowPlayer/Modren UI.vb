@@ -80,7 +80,7 @@ Public Class Modren_UI
     End Sub
 
     Sub FormLoad(e As Object, ev As EventArgs)
-        playProgres = New PlayProgress(Panel1, 30, Color.FromArgb(180, 198, 214), Color.FromArgb(80, 173, 255))
+        playProgres = New PlayProgress(Pnl_Circle, 30, Color.FromArgb(180, 198, 214), Color.FromArgb(80, 173, 255))
         e.Dispose
         loaded = True
     End Sub
@@ -245,14 +245,15 @@ Public Class Modren_UI
         playProgres.Flush(1)
     End Sub
 
-    Private Sub Panel1_Click(sender As Object, e As EventArgs) Handles Panel1.Click
+    Private Sub Panel1_Click(sender As Object, e As EventArgs) Handles Pnl_Circle.Click
         If Lbl_TotalTime.Text = "00:00" Then Exit Sub
-        Dim point_x As Integer = Me.MousePosition.X - Panel1.Location.X - Me.Location.X
-        Dim point_y As Integer = Me.MousePosition.Y - Panel1.Location.Y - Me.Location.Y
+        Dim point_x As Integer = Me.MousePosition.X - Pnl_Circle.Location.X - Me.Location.X
+        Dim point_y As Integer = Me.MousePosition.Y - Pnl_Circle.Location.Y - Me.Location.Y
         If playProgres.IsinYuanHuan(New Point(point_x, point_y)) Then
-            Player.Ctlcontrols.currentPosition = (Panel1.Height - point_y) / Panel1.Height * Player.currentMedia.duration
+            Player.Ctlcontrols.currentPosition = (Pnl_Circle.Height - point_y) / Pnl_Circle.Height * Player.currentMedia.duration
             playProgres.Flush(Player.Ctlcontrols.currentPosition / Player.currentMedia.duration)
             Lbl_NowTime.Text = Player.Ctlcontrols.currentPositionString
+            'Engine.ChangeLyric()
         End If
     End Sub
 

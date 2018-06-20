@@ -39,7 +39,7 @@ Partial Class Modren_UI
         Me.退出ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Lbl_MusicName = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Pnl_Circle = New System.Windows.Forms.Panel()
         Me.Lbl_TotalTime = New System.Windows.Forms.Label()
         Me.Lbl_NowTime = New System.Windows.Forms.Label()
         Me.Lbl_LryicDown = New System.Windows.Forms.Label()
@@ -65,7 +65,7 @@ Partial Class Modren_UI
         Me.Timer_List = New System.Windows.Forms.Timer(Me.components)
         Me.Player = New AxWMPLib.AxWindowsMediaPlayer()
         Me.ContextMenuStrip1.SuspendLayout()
-        Me.Panel1.SuspendLayout()
+        Me.Pnl_Circle.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.Player, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -207,14 +207,14 @@ Partial Class Modren_UI
         Me.Lbl_MusicName.Text = "MusicName"
         Me.Lbl_MusicName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Panel1
+        'Pnl_Circle
         '
-        Me.Panel1.Controls.Add(Me.Lbl_TotalTime)
-        Me.Panel1.Controls.Add(Me.Lbl_NowTime)
-        Me.Panel1.Location = New System.Drawing.Point(259, 128)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(200, 200)
-        Me.Panel1.TabIndex = 26
+        Me.Pnl_Circle.Controls.Add(Me.Lbl_TotalTime)
+        Me.Pnl_Circle.Controls.Add(Me.Lbl_NowTime)
+        Me.Pnl_Circle.Location = New System.Drawing.Point(259, 128)
+        Me.Pnl_Circle.Name = "Pnl_Circle"
+        Me.Pnl_Circle.Size = New System.Drawing.Size(200, 200)
+        Me.Pnl_Circle.TabIndex = 26
         '
         'Lbl_TotalTime
         '
@@ -547,7 +547,7 @@ Partial Class Modren_UI
         Me.Controls.Add(Me.Btn_NextMusic)
         Me.Controls.Add(Me.Btn_Stop)
         Me.Controls.Add(Me.Btn_PlayPause)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.Pnl_Circle)
         Me.Controls.Add(Me.Lbl_MusicName)
         Me.Controls.Add(Me.Lbl_title)
         Me.Controls.Add(Me.btn_Mainmin)
@@ -567,7 +567,7 @@ Partial Class Modren_UI
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "ShadowPlayer"
         Me.ContextMenuStrip1.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
+        Me.Pnl_Circle.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.Player, System.ComponentModel.ISupportInitialize).EndInit()
@@ -591,7 +591,7 @@ Partial Class Modren_UI
     Friend WithEvents 退出ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents Lbl_MusicName As Label
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Pnl_Circle As Panel
     Friend WithEvents Lbl_TotalTime As Label
     Friend WithEvents Lbl_NowTime As Label
     Friend WithEvents Btn_PlayPause As Button
