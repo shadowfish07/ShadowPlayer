@@ -131,6 +131,8 @@
                 Modren_UI.lastPlay = 0
                 RaiseEvent AddedAMusic(s)
                 Modren_UI.Player.URL = Modren_UI.MusicList.Item(Modren_UI.MusicList.Count - 1).tag
+                Modren_UI.SetDealPlayStateChange(CPlayStateChangeSub.Load)
+                Me.Play()
             End If
         Next
     End Sub
@@ -162,7 +164,7 @@
         Modren_UI.chooseItem = sender.index
     End Sub
 
-    Public Sub TimerEnabled(value As Boolean)
+    Public Sub SetTimerEnabled(value As Boolean)
         If value = True Then
             _timer.Start()
         Else

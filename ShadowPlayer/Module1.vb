@@ -42,6 +42,10 @@
         Random
     End Enum
 
+    Public Enum CPlayStateChangeSub
+        Nomral
+        Load
+    End Enum
 
     Public Function Change_trc(str As String) As String
         Dim i As Integer

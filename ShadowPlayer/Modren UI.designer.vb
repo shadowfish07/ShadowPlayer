@@ -564,7 +564,7 @@ Partial Class Modren_UI
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "Modren_UI"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Modren_UI"
+        Me.Text = "ShadowPlayer"
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         CType(Me.Player, System.ComponentModel.ISupportInitialize).EndInit()

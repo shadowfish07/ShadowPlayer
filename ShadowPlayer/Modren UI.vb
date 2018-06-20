@@ -1,4 +1,5 @@
 ﻿Imports AxWMPLib
+Imports ShadowPlayer
 Imports WMPLib
 Public Class Modren_UI
     Const SPECIALVISION As String = " Beta"
@@ -19,6 +20,25 @@ Public Class Modren_UI
 
     Private isListOpen As Boolean = False
     Public ListRemainTime As Integer = 0
+
+    Delegate Sub PlayStateChangeEvent()
+
+    Private _dealPlayStateChange As PlayStateChangeEvent = AddressOf PlayStateChange_Normal
+
+    Public ReadOnly Property DealPlayStateChange As PlayStateChangeEvent
+        Get
+            Return _dealPlayStateChange
+        End Get
+    End Property
+
+    Friend Sub SetDealPlayStateChange(type As CPlayStateChangeSub)
+        Select Case type
+            Case CPlayStateChangeSub.Nomral
+                _dealPlayStateChange = AddressOf PlayStateChange_Normal
+            Case CPlayStateChangeSub.Load
+                _dealPlayStateChange = AddressOf PlayStateChange_Load
+        End Select
+    End Sub
 
     Private Sub btn_Mainexit_Click(sender As Object, e As EventArgs) Handles btn_Mainexit.Click
         Application.Exit()
@@ -66,16 +86,21 @@ Public Class Modren_UI
     End Sub
 
     Private Sub player_PlayStateChange(sender As Object, e As _WMPOCXEvents_PlayStateChangeEvent) Handles Player.PlayStateChange
+        DealPlayStateChange.Invoke
+    End Sub
+
+    Private Sub PlayStateChange_Normal()
+        '正常情况下播放器改变播放状态的处理过程
         Const PLAY As Integer = 0, PUASE As Integer = 1
         If Player.playState = CPlayState.Playing Then
-            Engine.TimerEnabled(True)
+            Engine.SetTimerEnabled(True)
             Btn_PlayPause.BackgroundImage = My.Resources.Pause
             Lbl_TotalTime.Text = Player.currentMedia.durationString
             'NotifyIcon1.Icon = My.Resources.渡船播放器LOGO_playing
             播放ToolStripMenuItem.DropDownItems.Item(PLAY).Enabled = False
             播放ToolStripMenuItem.DropDownItems.Item(PUASE).Enabled = True
         ElseIf Player.playState = CPlayState.Stoping Or Player.playState = CPlayState.Pausing Or Player.playState = CPlayState.Ready Then
-            Engine.TimerEnabled(False)
+            Engine.SetTimerEnabled(False)
             Btn_PlayPause.BackgroundImage = My.Resources.Play
             'NotifyIcon1.Icon = My.Resources.渡船播放器LOGO_stoping
             播放ToolStripMenuItem.DropDownItems.Item(PLAY).Enabled = True
@@ -91,9 +116,17 @@ Public Class Modren_UI
             End If
         ElseIf Player.playState = CPlayState.Stoping Then
             Engine.HideLyric()
-        End If
-        If Player.playState = CPlayState.Stoping Then
             'Zimu.Label1.Text = MusicList(nowPlay).text
+        End If
+    End Sub
+
+    Private Sub PlayStateChange_Load()
+        '仅读取歌曲信息时用的播放器改变播放状态的处理过程
+        If Player.playState = CPlayState.Playing Then
+            Lbl_TotalTime.Text = Player.currentMedia.durationString
+            Engine.Stop()
+        ElseIf Player.playState = CPlayState.Stoping Then
+            SetDealPlayStateChange(CPlayStateChangeSub.Nomral)
         End If
     End Sub
 
@@ -142,7 +175,7 @@ Public Class Modren_UI
         End If
     End Sub
 
-    Private Sub AddMusic(sender As Object, e As EventArgs) Handles Lbl_MusicName.DoubleClick
+    Private Sub AddMusic(sender As Object, e As EventArgs) Handles Lbl_MusicName.DoubleClick, Btn_Add.Click
         OpenFileDialog1.Filter = FILTERS
         OpenFileDialog1.ShowDialog()
     End Sub
@@ -315,6 +348,7 @@ Public Class Modren_UI
     End Sub
 
 #End Region
+
     Private Sub 播放ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles 播放ToolStripMenuItem1.Click
         Try
             Engine.Play()
@@ -330,10 +364,6 @@ Public Class Modren_UI
         Catch ex As Exception
 
         End Try
-    End Sub
-
-    Private Sub Btn_Add_Click(sender As Object, e As EventArgs) Handles Btn_Add.Click
-        Call AddMusic(sender, e)
     End Sub
 
     Private Sub Btn_MoveToUp_Click(sender As Object, e As EventArgs) Handles Btn_MoveToUp.Click
@@ -370,7 +400,7 @@ Public Class Modren_UI
             Call ArrayListRemoveItem(MusicList, chooseItem)
             Call FlowLayoutPanelRemoveItem(FlowLayoutPanel1, chooseItem)
             Player.URL = ""
-            Lbl_MusicName.Text = ""
+            Lbl_MusicName.Text = "双击以添加歌曲"
             Lbl_NowTime.Text = "00:00"
             Lbl_TotalTime.Text = "00:00"
         Catch ex As Exception
