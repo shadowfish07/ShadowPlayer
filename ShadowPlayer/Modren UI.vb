@@ -4,7 +4,7 @@ Imports WMPLib
 Public Class Modren_UI
     Const SPECIALVISION As String = ""
 
-    Const FILTERS = "音频文件|*.wma;*.wax;*.cda;*.mp3;*.m3u;*.wav;*.mid:*.midi;*.rmi;*.aif;*.aifc;*aiff;*.au;*,snd|
+    Const FILTERS = "音频文件|*.wma;*.wax;*.cda;*.mp3;*.m3u;*.wav;*.mid:*.midi;*.rmi;*.aif;*.aifc;*aiff;*.au;*.snd|
 视频文件|*.mp4;*.wmv;*.wvx;*.asf;*.asx;*.wpl;*.wm;*.wmx;*.wmd;*.wmz;*.vob;*.dvr;*.avi;*.mpeg:*.mpg;*.mlv;*.mpv2;*.mpa;*.mp2|
 所有支持格式|*.mp4;*.wma;*.wax;*.cda;*.mp3;*.m3u;*.wav;*.mid:*.midi;*.rmi;*.aif;*.aifc;*aiff;*.au;*,snd;*.wmv;*.wvx;*.asf;*.asx;*.wpl;*.wm;*.wmx;*.wmd;*.wmz;*.vob;*.dvr;*.avi;*.mpeg:*.mpg;*.mlv;*.mpv2;*.mpa;*.mp2"
     Dim playProgres As PlayProgress
@@ -83,6 +83,14 @@ Public Class Modren_UI
         playProgres = New PlayProgress(Pnl_Circle, 30, Color.FromArgb(180, 198, 214), Color.FromArgb(80, 173, 255))
         e.Dispose
         loaded = True
+    End Sub
+
+    Private Sub Modren_UI_DragDrop(sender As Object, e As DragEventArgs) Handles MyBase.DragDrop, FlowLayoutPanel1.DragDrop, Panel1.DragDrop, Lbl_MusicName.DragDrop
+        Engine.Add(e.Data.GetData(DataFormats.FileDrop), FlowLayoutPanel1, ToolTip1)
+    End Sub
+
+    Private Sub Modren_UI_DragOver(sender As Object, e As DragEventArgs) Handles MyBase.DragOver, FlowLayoutPanel1.DragOver, Panel1.DragOver, Lbl_MusicName.DragOver
+        e.Effect = e.Effect.All
     End Sub
 
     Private Sub player_PlayStateChange(sender As Object, e As _WMPOCXEvents_PlayStateChangeEvent) Handles Player.PlayStateChange

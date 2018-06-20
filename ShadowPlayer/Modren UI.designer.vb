@@ -199,6 +199,8 @@ Partial Class Modren_UI
         '
         'Lbl_MusicName
         '
+        Me.Lbl_MusicName.AllowDrop = True
+        Me.Lbl_MusicName.AutoEllipsis = True
         Me.Lbl_MusicName.Font = New System.Drawing.Font("微软雅黑", 15.0!)
         Me.Lbl_MusicName.Location = New System.Drawing.Point(157, 81)
         Me.Lbl_MusicName.Name = "Lbl_MusicName"
