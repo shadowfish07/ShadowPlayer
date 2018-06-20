@@ -60,12 +60,14 @@ Public Class Modren_UI
         Const PLAY As Integer = 0, PUASE As Integer = 1
         If Player.playState = CPlayState.Playing Then
             Engine.TimerEnabled(True)
+            Btn_PlayPause.BackgroundImage = My.Resources.Pause
             Lbl_TotalTime.Text = Player.currentMedia.durationString
             'NotifyIcon1.Icon = My.Resources.渡船播放器LOGO_playing
             播放ToolStripMenuItem.DropDownItems.Item(PLAY).Enabled = False
             播放ToolStripMenuItem.DropDownItems.Item(PUASE).Enabled = True
         ElseIf Player.playState = CPlayState.Stoping Or Player.playState = CPlayState.Pausing Or Player.playState = CPlayState.Ready Then
             Engine.TimerEnabled(False)
+            Btn_PlayPause.BackgroundImage = My.Resources.Play
             'NotifyIcon1.Icon = My.Resources.渡船播放器LOGO_stoping
             播放ToolStripMenuItem.DropDownItems.Item(PLAY).Enabled = True
             播放ToolStripMenuItem.DropDownItems.Item(PUASE).Enabled = False
@@ -148,10 +150,8 @@ Public Class Modren_UI
                 Btn_FullScreen.Visible = False
             End If
             Lbl_MusicName.Text = ListTidy(Dir(MusicList.Item(nowPlay).tag), 32)
-            Btn_PlayPause.BackgroundImage = My.Resources.Pause
         ElseIf Player.playState = WMPPlayState.wmppsPlaying Then
             Engine.Pause()
-            Btn_PlayPause.BackgroundImage = My.Resources.Play
         End If
 
     End Sub
@@ -188,6 +188,10 @@ Public Class Modren_UI
 
     End Sub
 
+    Private Sub Player_DoubleClickEvent(sender As Object, e As _WMPOCXEvents_DoubleClickEvent) Handles Player.DoubleClickEvent
+        Stop
+    End Sub
+
     Private Sub ImageChangeToReplay() Handles Engine.PlayEnd
         Btn_PlayPause.BackgroundImage = My.Resources.刷新
         Lbl_NowTime.Text = Lbl_TotalTime.Text
@@ -204,4 +208,34 @@ Public Class Modren_UI
             Lbl_NowTime.Text = Player.Ctlcontrols.currentPositionString
         End If
     End Sub
+
+#Region "窗体拖动移动"
+
+    <System.Runtime.InteropServices.DllImport("user32.dll")>
+    Shared Function ReleaseCapture() As Boolean
+    End Function
+
+    <System.Runtime.InteropServices.DllImport("user32.dll")>
+    Shared Function SendMessage(ByVal hWnd As IntPtr, ByVal Msg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
+    End Function
+
+    Private Sub MoveForm()
+        ReleaseCapture()
+        SendMessage(Me.Handle, &HA1, 2, 0)
+    End Sub
+
+    Private Sub FormDrag(sender As Object, e As MouseEventArgs) Handles Panel_top.MouseDown
+        If e.Button = Windows.Forms.MouseButtons.Left Then MoveForm()
+        Me.Refresh()
+        Try
+            playProgres.Flush(Player.Ctlcontrols.currentPosition / Player.currentMedia.duration)
+        Catch ex As Exception
+            playProgres.Flush(0)
+        End Try
+
+    End Sub
+
+#End Region
 End Class
+
+

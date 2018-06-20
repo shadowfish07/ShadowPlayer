@@ -57,6 +57,7 @@ Partial Class Modren_UI
         Me.Btn_Alarm = New System.Windows.Forms.Button()
         Me.Lbl_Vision = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel_top = New System.Windows.Forms.Panel()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.Player, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -211,24 +212,24 @@ Partial Class Modren_UI
         '
         'Lbl_TotalTime
         '
-        Me.Lbl_TotalTime.AutoSize = True
         Me.Lbl_TotalTime.Font = New System.Drawing.Font("微软雅黑", 14.0!)
         Me.Lbl_TotalTime.ForeColor = System.Drawing.Color.Silver
-        Me.Lbl_TotalTime.Location = New System.Drawing.Point(70, 110)
+        Me.Lbl_TotalTime.Location = New System.Drawing.Point(41, 110)
         Me.Lbl_TotalTime.Name = "Lbl_TotalTime"
-        Me.Lbl_TotalTime.Size = New System.Drawing.Size(61, 25)
+        Me.Lbl_TotalTime.Size = New System.Drawing.Size(119, 25)
         Me.Lbl_TotalTime.TabIndex = 27
         Me.Lbl_TotalTime.Text = "00:00"
+        Me.Lbl_TotalTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Lbl_NowTime
         '
-        Me.Lbl_NowTime.AutoSize = True
         Me.Lbl_NowTime.Font = New System.Drawing.Font("微软雅黑", 25.0!)
-        Me.Lbl_NowTime.Location = New System.Drawing.Point(46, 65)
+        Me.Lbl_NowTime.Location = New System.Drawing.Point(41, 65)
         Me.Lbl_NowTime.Name = "Lbl_NowTime"
-        Me.Lbl_NowTime.Size = New System.Drawing.Size(108, 45)
+        Me.Lbl_NowTime.Size = New System.Drawing.Size(119, 45)
         Me.Lbl_NowTime.TabIndex = 26
         Me.Lbl_NowTime.Text = "00:00"
+        Me.Lbl_NowTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Lbl_LryicDown
         '
@@ -422,6 +423,13 @@ Partial Class Modren_UI
         Me.Panel2.Size = New System.Drawing.Size(259, 15)
         Me.Panel2.TabIndex = 40
         '
+        'Panel_top
+        '
+        Me.Panel_top.Location = New System.Drawing.Point(-4, -4)
+        Me.Panel_top.Name = "Panel_top"
+        Me.Panel_top.Size = New System.Drawing.Size(725, 68)
+        Me.Panel_top.TabIndex = 41
+        '
         'Modren_UI
         '
         Me.AllowDrop = True
@@ -448,6 +456,7 @@ Partial Class Modren_UI
         Me.Controls.Add(Me.btn_Mainmin)
         Me.Controls.Add(Me.btn_Mainmax)
         Me.Controls.Add(Me.btn_Mainexit)
+        Me.Controls.Add(Me.Panel_top)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ForeColor = System.Drawing.Color.White
@@ -458,7 +467,6 @@ Partial Class Modren_UI
         Me.Text = "Modren_UI"
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
         CType(Me.Player, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
@@ -500,4 +508,5 @@ Partial Class Modren_UI
     Friend WithEvents Btn_Alarm As Button
     Friend WithEvents Lbl_Vision As Label
     Friend WithEvents Panel2 As Panel
+    Friend WithEvents Panel_top As Panel
 End Class
