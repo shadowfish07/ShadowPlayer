@@ -260,14 +260,19 @@ Public Class Modren_UI
     End Sub
 
 #End Region
+#Region "列表动画"
+    Private Sub Btn_List_MouseEnter(sender As Object, e As EventArgs) Handles Btn_List.MouseEnter
+        If isListOpen = False Then
+            Dim a As New HideListAction(Panel_hideList, New PointF(Panel_hideList.Location.X, Panel_hideList.Location.Y + 300), 300, 5)
+            a.Start()
+            Dim b As New ShowOneByOneAction(Btn_Alarm, New PointF(550, 85), 100, 5, {Btn_MoveToDown, Btn_MoveToUp, Btn_Remove}, True)
+            b.Start()
 
-    Private Sub 播放ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles 播放ToolStripMenuItem1.Click
-        Try
-            Engine.Play()
-        Catch ex As Exception
+            Timer_List.Start()
+            Btn_List.Visible = False
+            Btn_Add.Visible = True
 
-        End Try
-
+        End If
     End Sub
 
     Private Sub Timer_List_Tick(sender As Object, e As EventArgs) Handles Timer_List.Tick
@@ -279,13 +284,34 @@ Public Class Modren_UI
             Btn_List.Visible = True
             Btn_Add.Visible = False
 
-            'Dim b As New ShowOneByOneAction(Btn_Alarm, New PointF(651, 85), 300, 10, {Btn_MoveToDown, Btn_MoveToUp, Btn_Remove}, False)
-            'b.Start()
-
-            Dim b As New VisualAction(Btn_Alarm, New PointF(651, 85), 300, 10)
+            Dim b As New ShowOneByOneAction(Btn_Alarm, New PointF(651, 85), 300, 10, {Btn_MoveToDown, Btn_MoveToUp, Btn_Remove}, False)
             b.Start()
         End If
         ListRemainTime += 1
+    End Sub
+
+    Private Sub Btn_Add_MouseEnter(sender As Object, e As EventArgs) Handles Btn_Add.MouseEnter
+        ListRemainTime = 0
+    End Sub
+
+    Private Sub Btn_MoveToDown_MouseEnter(sender As Object, e As EventArgs) Handles Btn_MoveToDown.MouseEnter
+        ListRemainTime = 0
+    End Sub
+
+    Private Sub Btn_MoveToUp_MouseEnter(sender As Object, e As EventArgs) Handles Btn_MoveToUp.MouseEnter
+        ListRemainTime = 0
+    End Sub
+
+    Private Sub Btn_Remove_MouseEnter(sender As Object, e As EventArgs) Handles Btn_Remove.MouseEnter
+        ListRemainTime = 0
+    End Sub
+#End Region
+    Private Sub 播放ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles 播放ToolStripMenuItem1.Click
+        Try
+            Engine.Play()
+        Catch ex As Exception
+
+        End Try
 
     End Sub
 
@@ -295,23 +321,6 @@ Public Class Modren_UI
         Catch ex As Exception
 
         End Try
-    End Sub
-
-    Private Sub Btn_List_MouseEnter(sender As Object, e As EventArgs) Handles Btn_List.MouseEnter
-        If isListOpen = False Then
-            Dim a As New HideListAction(Panel_hideList, New PointF(Panel_hideList.Location.X, Panel_hideList.Location.Y + 300), 300, 10)
-            a.Start()
-            'Dim b As New ShowOneByOneAction(Btn_Alarm, New PointF(550, 85), 300, 10, {Btn_MoveToDown, Btn_MoveToUp, Btn_Remove}, True)
-            'b.Start()
-
-            Dim b As New VisualAction(Btn_Alarm, New PointF(550, 85), 300, 10)
-            b.Start()
-
-            Timer_List.Start()
-            Btn_List.Visible = False
-            Btn_Add.Visible = True
-
-        End If
     End Sub
 End Class
 

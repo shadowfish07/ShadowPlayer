@@ -84,6 +84,7 @@
 
         Dim isLastPace As Boolean = Me.IsLastPace(tempX, tempY)
 
+
         If Math.Abs(tempX) > 1 Then
             If tempX > 0 Then
                 If isLastPace = False Then _target.Location = New Point(_target.Location.X + Math.Abs(Math.Floor(tempX)), _target.Location.Y)

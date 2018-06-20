@@ -23,7 +23,6 @@
                     c.Visible = False
                 End If
             End If
-
         Next
     End Sub
 End Class
