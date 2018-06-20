@@ -28,20 +28,38 @@ Partial Class Settings
         Me.txtLoudTime = New System.Windows.Forms.MaskedTextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PnlStop = New System.Windows.Forms.Panel()
-        Me.GrpStopBehavior = New System.Windows.Forms.GroupBox()
+        Me.Panel3 = New System.Windows.Forms.Panel()
         Me.RdoNext = New System.Windows.Forms.RadioButton()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.RdoStop = New System.Windows.Forms.RadioButton()
         Me.RdoPause = New System.Windows.Forms.RadioButton()
-        Me.txtEndTime = New System.Windows.Forms.MaskedTextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.GrpStopMode = New System.Windows.Forms.GroupBox()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label11 = New System.Windows.Forms.Label()
         Me.RdoSetEndEnabled = New System.Windows.Forms.RadioButton()
         Me.RdoSetMiniEnabled = New System.Windows.Forms.RadioButton()
         Me.RdoSetCloseNothing = New System.Windows.Forms.RadioButton()
+        Me.txtEndTime = New System.Windows.Forms.MaskedTextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.ChkSetTimeEnabled = New System.Windows.Forms.CheckBox()
         Me.ChkSetCloseEnabled = New System.Windows.Forms.CheckBox()
         Me.TabPage_lyric = New System.Windows.Forms.TabPage()
         Me.PnlLryic = New System.Windows.Forms.Panel()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.BtnFilesystem = New System.Windows.Forms.Button()
+        Me.BtnAddLrc = New System.Windows.Forms.Button()
+        Me.TxtOriginLyr = New System.Windows.Forms.TextBox()
+        Me.CboOriginSong = New System.Windows.Forms.ComboBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.CboTextStyle = New System.Windows.Forms.ComboBox()
+        Me.CboLrcFunction = New System.Windows.Forms.ComboBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.LblShowEnLyricFont = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.LblShowCnLyricFont = New System.Windows.Forms.Label()
@@ -50,44 +68,36 @@ Partial Class Settings
         Me.Label10 = New System.Windows.Forms.Label()
         Me.PicEnLyricColor = New System.Windows.Forms.PictureBox()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.CboTextStyle = New System.Windows.Forms.ComboBox()
-        Me.CboLrcFunction = New System.Windows.Forms.ComboBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.LblShowLyricFont = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.PicLyricColor = New System.Windows.Forms.PictureBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ChkLyricOpen = New System.Windows.Forms.CheckBox()
         Me.Panel_top = New System.Windows.Forms.Panel()
+        Me.lbl_CheckUpdates = New System.Windows.Forms.LinkLabel()
+        Me.lbl_buidLevel = New System.Windows.Forms.Label()
+        Me.lbl_mainLevel = New System.Windows.Forms.Label()
         Me.btn_Mainexit = New System.Windows.Forms.Button()
         Me.Lbl_title = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btn_Lyric = New System.Windows.Forms.Button()
         Me.btn_time = New System.Windows.Forms.Button()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.CboOriginSong = New System.Windows.Forms.ComboBox()
-        Me.TxtOriginLyr = New System.Windows.Forms.TextBox()
-        Me.BtnAddLrc = New System.Windows.Forms.Button()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.BtnFilesystem = New System.Windows.Forms.Button()
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.TabControl1.SuspendLayout()
         Me.TabPage_time.SuspendLayout()
         Me.PnlOpen.SuspendLayout()
         Me.PnlStop.SuspendLayout()
-        Me.GrpStopBehavior.SuspendLayout()
-        Me.GrpStopMode.SuspendLayout()
+        Me.Panel3.SuspendLayout()
+        Me.Panel2.SuspendLayout()
         Me.TabPage_lyric.SuspendLayout()
         Me.PnlLryic.SuspendLayout()
+        Me.Panel4.SuspendLayout()
+        Me.Panel5.SuspendLayout()
         CType(Me.PicCnLyricColor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PicEnLyricColor, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
         CType(Me.PicLyricColor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel_top.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -119,7 +129,7 @@ Partial Class Settings
         Me.PnlOpen.Controls.Add(Me.txtLoudTime)
         Me.PnlOpen.Controls.Add(Me.Label1)
         Me.PnlOpen.ForeColor = System.Drawing.Color.Black
-        Me.PnlOpen.Location = New System.Drawing.Point(106, 65)
+        Me.PnlOpen.Location = New System.Drawing.Point(15, 57)
         Me.PnlOpen.Name = "PnlOpen"
         Me.PnlOpen.Size = New System.Drawing.Size(160, 26)
         Me.PnlOpen.TabIndex = 43
@@ -149,33 +159,32 @@ Partial Class Settings
         '
         'PnlStop
         '
-        Me.PnlStop.Controls.Add(Me.GrpStopBehavior)
+        Me.PnlStop.Controls.Add(Me.Panel3)
+        Me.PnlStop.Controls.Add(Me.Panel2)
         Me.PnlStop.Controls.Add(Me.txtEndTime)
         Me.PnlStop.Controls.Add(Me.Label2)
-        Me.PnlStop.Controls.Add(Me.GrpStopMode)
         Me.PnlStop.ForeColor = System.Drawing.Color.Black
-        Me.PnlStop.Location = New System.Drawing.Point(32, 129)
+        Me.PnlStop.Location = New System.Drawing.Point(15, 136)
         Me.PnlStop.Name = "PnlStop"
-        Me.PnlStop.Size = New System.Drawing.Size(305, 139)
+        Me.PnlStop.Size = New System.Drawing.Size(305, 178)
         Me.PnlStop.TabIndex = 44
         '
-        'GrpStopBehavior
+        'Panel3
         '
-        Me.GrpStopBehavior.Controls.Add(Me.RdoNext)
-        Me.GrpStopBehavior.Controls.Add(Me.RdoStop)
-        Me.GrpStopBehavior.Controls.Add(Me.RdoPause)
-        Me.GrpStopBehavior.Location = New System.Drawing.Point(149, 44)
-        Me.GrpStopBehavior.Name = "GrpStopBehavior"
-        Me.GrpStopBehavior.Size = New System.Drawing.Size(153, 77)
-        Me.GrpStopBehavior.TabIndex = 38
-        Me.GrpStopBehavior.TabStop = False
-        Me.GrpStopBehavior.Text = "停止后动作"
+        Me.Panel3.Controls.Add(Me.RdoNext)
+        Me.Panel3.Controls.Add(Me.Label13)
+        Me.Panel3.Controls.Add(Me.RdoStop)
+        Me.Panel3.Controls.Add(Me.RdoPause)
+        Me.Panel3.Location = New System.Drawing.Point(149, 37)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(140, 118)
+        Me.Panel3.TabIndex = 46
         '
         'RdoNext
         '
         Me.RdoNext.AutoSize = True
         Me.RdoNext.Checked = True
-        Me.RdoNext.Location = New System.Drawing.Point(6, 50)
+        Me.RdoNext.Location = New System.Drawing.Point(7, 73)
         Me.RdoNext.Name = "RdoNext"
         Me.RdoNext.Size = New System.Drawing.Size(98, 21)
         Me.RdoNext.TabIndex = 2
@@ -183,10 +192,20 @@ Partial Class Settings
         Me.RdoNext.Text = "切换到下一首"
         Me.RdoNext.UseVisualStyleBackColor = True
         '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("微软雅黑", 10.0!)
+        Me.Label13.Location = New System.Drawing.Point(3, 7)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(79, 20)
+        Me.Label13.TabIndex = 40
+        Me.Label13.Text = "停止后动作"
+        '
         'RdoStop
         '
         Me.RdoStop.AutoSize = True
-        Me.RdoStop.Location = New System.Drawing.Point(6, 33)
+        Me.RdoStop.Location = New System.Drawing.Point(7, 56)
         Me.RdoStop.Name = "RdoStop"
         Me.RdoStop.Size = New System.Drawing.Size(98, 21)
         Me.RdoStop.TabIndex = 1
@@ -196,19 +215,72 @@ Partial Class Settings
         'RdoPause
         '
         Me.RdoPause.AutoSize = True
-        Me.RdoPause.Location = New System.Drawing.Point(6, 16)
+        Me.RdoPause.Location = New System.Drawing.Point(7, 39)
         Me.RdoPause.Name = "RdoPause"
         Me.RdoPause.Size = New System.Drawing.Size(98, 21)
         Me.RdoPause.TabIndex = 0
         Me.RdoPause.Text = "暂停当前歌曲"
         Me.RdoPause.UseVisualStyleBackColor = True
         '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.Label11)
+        Me.Panel2.Controls.Add(Me.RdoSetEndEnabled)
+        Me.Panel2.Controls.Add(Me.RdoSetMiniEnabled)
+        Me.Panel2.Controls.Add(Me.RdoSetCloseNothing)
+        Me.Panel2.Location = New System.Drawing.Point(3, 37)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(140, 118)
+        Me.Panel2.TabIndex = 45
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("微软雅黑", 10.0!)
+        Me.Label11.Location = New System.Drawing.Point(3, 7)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(65, 20)
+        Me.Label11.TabIndex = 40
+        Me.Label11.Text = "停止模式"
+        '
+        'RdoSetEndEnabled
+        '
+        Me.RdoSetEndEnabled.AutoSize = True
+        Me.RdoSetEndEnabled.Location = New System.Drawing.Point(6, 56)
+        Me.RdoSetEndEnabled.Name = "RdoSetEndEnabled"
+        Me.RdoSetEndEnabled.Size = New System.Drawing.Size(110, 21)
+        Me.RdoSetEndEnabled.TabIndex = 37
+        Me.RdoSetEndEnabled.Text = "停止时关闭程序"
+        Me.RdoSetEndEnabled.UseVisualStyleBackColor = True
+        '
+        'RdoSetMiniEnabled
+        '
+        Me.RdoSetMiniEnabled.AutoSize = True
+        Me.RdoSetMiniEnabled.Checked = True
+        Me.RdoSetMiniEnabled.Location = New System.Drawing.Point(6, 74)
+        Me.RdoSetMiniEnabled.Name = "RdoSetMiniEnabled"
+        Me.RdoSetMiniEnabled.Size = New System.Drawing.Size(122, 21)
+        Me.RdoSetMiniEnabled.TabIndex = 38
+        Me.RdoSetMiniEnabled.TabStop = True
+        Me.RdoSetMiniEnabled.Text = "停止时最小化程序"
+        Me.RdoSetMiniEnabled.UseVisualStyleBackColor = True
+        '
+        'RdoSetCloseNothing
+        '
+        Me.RdoSetCloseNothing.AutoSize = True
+        Me.RdoSetCloseNothing.Location = New System.Drawing.Point(6, 39)
+        Me.RdoSetCloseNothing.Name = "RdoSetCloseNothing"
+        Me.RdoSetCloseNothing.Size = New System.Drawing.Size(62, 21)
+        Me.RdoSetCloseNothing.TabIndex = 39
+        Me.RdoSetCloseNothing.Text = "仅停止"
+        Me.RdoSetCloseNothing.UseVisualStyleBackColor = True
+        '
         'txtEndTime
         '
         Me.txtEndTime.AsciiOnly = True
         Me.txtEndTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtEndTime.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.txtEndTime.Location = New System.Drawing.Point(142, 5)
+        Me.txtEndTime.Location = New System.Drawing.Point(68, 5)
         Me.txtEndTime.Mask = "90:00:00"
         Me.txtEndTime.Name = "txtEndTime"
         Me.txtEndTime.RejectInputOnFirstFailure = True
@@ -220,55 +292,11 @@ Partial Class Settings
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(83, 11)
+        Me.Label2.Location = New System.Drawing.Point(9, 11)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(56, 17)
         Me.Label2.TabIndex = 35
         Me.Label2.Text = "关闭时间"
-        '
-        'GrpStopMode
-        '
-        Me.GrpStopMode.Controls.Add(Me.RdoSetEndEnabled)
-        Me.GrpStopMode.Controls.Add(Me.RdoSetMiniEnabled)
-        Me.GrpStopMode.Controls.Add(Me.RdoSetCloseNothing)
-        Me.GrpStopMode.Location = New System.Drawing.Point(8, 43)
-        Me.GrpStopMode.Name = "GrpStopMode"
-        Me.GrpStopMode.Size = New System.Drawing.Size(135, 78)
-        Me.GrpStopMode.TabIndex = 37
-        Me.GrpStopMode.TabStop = False
-        Me.GrpStopMode.Text = "停止模式"
-        '
-        'RdoSetEndEnabled
-        '
-        Me.RdoSetEndEnabled.AutoSize = True
-        Me.RdoSetEndEnabled.Location = New System.Drawing.Point(6, 33)
-        Me.RdoSetEndEnabled.Name = "RdoSetEndEnabled"
-        Me.RdoSetEndEnabled.Size = New System.Drawing.Size(110, 21)
-        Me.RdoSetEndEnabled.TabIndex = 34
-        Me.RdoSetEndEnabled.Text = "停止时关闭程序"
-        Me.RdoSetEndEnabled.UseVisualStyleBackColor = True
-        '
-        'RdoSetMiniEnabled
-        '
-        Me.RdoSetMiniEnabled.AutoSize = True
-        Me.RdoSetMiniEnabled.Checked = True
-        Me.RdoSetMiniEnabled.Location = New System.Drawing.Point(6, 51)
-        Me.RdoSetMiniEnabled.Name = "RdoSetMiniEnabled"
-        Me.RdoSetMiniEnabled.Size = New System.Drawing.Size(122, 21)
-        Me.RdoSetMiniEnabled.TabIndex = 35
-        Me.RdoSetMiniEnabled.TabStop = True
-        Me.RdoSetMiniEnabled.Text = "停止时最小化程序"
-        Me.RdoSetMiniEnabled.UseVisualStyleBackColor = True
-        '
-        'RdoSetCloseNothing
-        '
-        Me.RdoSetCloseNothing.AutoSize = True
-        Me.RdoSetCloseNothing.Location = New System.Drawing.Point(6, 16)
-        Me.RdoSetCloseNothing.Name = "RdoSetCloseNothing"
-        Me.RdoSetCloseNothing.Size = New System.Drawing.Size(62, 21)
-        Me.RdoSetCloseNothing.TabIndex = 36
-        Me.RdoSetCloseNothing.Text = "仅停止"
-        Me.RdoSetCloseNothing.UseVisualStyleBackColor = True
         '
         'ChkSetTimeEnabled
         '
@@ -276,10 +304,11 @@ Partial Class Settings
         Me.ChkSetTimeEnabled.BackColor = System.Drawing.Color.Transparent
         Me.ChkSetTimeEnabled.Checked = True
         Me.ChkSetTimeEnabled.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.ChkSetTimeEnabled.Font = New System.Drawing.Font("微软雅黑", 11.0!)
         Me.ChkSetTimeEnabled.ForeColor = System.Drawing.Color.Black
-        Me.ChkSetTimeEnabled.Location = New System.Drawing.Point(32, 38)
+        Me.ChkSetTimeEnabled.Location = New System.Drawing.Point(11, 33)
         Me.ChkSetTimeEnabled.Name = "ChkSetTimeEnabled"
-        Me.ChkSetTimeEnabled.Size = New System.Drawing.Size(99, 21)
+        Me.ChkSetTimeEnabled.Size = New System.Drawing.Size(118, 24)
         Me.ChkSetTimeEnabled.TabIndex = 41
         Me.ChkSetTimeEnabled.Text = "定时开启播放"
         Me.ChkSetTimeEnabled.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -291,10 +320,11 @@ Partial Class Settings
         Me.ChkSetCloseEnabled.BackColor = System.Drawing.Color.Transparent
         Me.ChkSetCloseEnabled.Checked = True
         Me.ChkSetCloseEnabled.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.ChkSetCloseEnabled.Font = New System.Drawing.Font("微软雅黑", 11.0!)
         Me.ChkSetCloseEnabled.ForeColor = System.Drawing.Color.Black
-        Me.ChkSetCloseEnabled.Location = New System.Drawing.Point(32, 102)
+        Me.ChkSetCloseEnabled.Location = New System.Drawing.Point(11, 106)
         Me.ChkSetCloseEnabled.Name = "ChkSetCloseEnabled"
-        Me.ChkSetCloseEnabled.Size = New System.Drawing.Size(99, 21)
+        Me.ChkSetCloseEnabled.Size = New System.Drawing.Size(118, 24)
         Me.ChkSetCloseEnabled.TabIndex = 42
         Me.ChkSetCloseEnabled.Text = "定时停止播放"
         Me.ChkSetCloseEnabled.UseVisualStyleBackColor = False
@@ -314,6 +344,7 @@ Partial Class Settings
         'PnlLryic
         '
         Me.PnlLryic.AutoScroll = True
+        Me.PnlLryic.Controls.Add(Me.Panel4)
         Me.PnlLryic.Controls.Add(Me.LblShowEnLyricFont)
         Me.PnlLryic.Controls.Add(Me.Label14)
         Me.PnlLryic.Controls.Add(Me.LblShowCnLyricFont)
@@ -322,15 +353,180 @@ Partial Class Settings
         Me.PnlLryic.Controls.Add(Me.Label10)
         Me.PnlLryic.Controls.Add(Me.PicEnLyricColor)
         Me.PnlLryic.Controls.Add(Me.Label9)
-        Me.PnlLryic.Controls.Add(Me.GroupBox1)
         Me.PnlLryic.Controls.Add(Me.LblShowLyricFont)
         Me.PnlLryic.Controls.Add(Me.Label4)
         Me.PnlLryic.Controls.Add(Me.PicLyricColor)
         Me.PnlLryic.Controls.Add(Me.Label3)
         Me.PnlLryic.Location = New System.Drawing.Point(31, 57)
         Me.PnlLryic.Name = "PnlLryic"
-        Me.PnlLryic.Size = New System.Drawing.Size(389, 303)
+        Me.PnlLryic.Size = New System.Drawing.Size(389, 316)
         Me.PnlLryic.TabIndex = 7
+        '
+        'Panel4
+        '
+        Me.Panel4.Controls.Add(Me.Panel5)
+        Me.Panel4.Controls.Add(Me.Label17)
+        Me.Panel4.Controls.Add(Me.Label16)
+        Me.Panel4.Controls.Add(Me.Label15)
+        Me.Panel4.Controls.Add(Me.CboTextStyle)
+        Me.Panel4.Controls.Add(Me.CboLrcFunction)
+        Me.Panel4.Controls.Add(Me.Label6)
+        Me.Panel4.Controls.Add(Me.Label5)
+        Me.Panel4.Location = New System.Drawing.Point(6, 106)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(358, 207)
+        Me.Panel4.TabIndex = 15
+        '
+        'Panel5
+        '
+        Me.Panel5.Controls.Add(Me.Label18)
+        Me.Panel5.Controls.Add(Me.BtnFilesystem)
+        Me.Panel5.Controls.Add(Me.BtnAddLrc)
+        Me.Panel5.Controls.Add(Me.TxtOriginLyr)
+        Me.Panel5.Controls.Add(Me.CboOriginSong)
+        Me.Panel5.Controls.Add(Me.Label8)
+        Me.Panel5.Controls.Add(Me.Label7)
+        Me.Panel5.Location = New System.Drawing.Point(13, 85)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(324, 119)
+        Me.Panel5.TabIndex = 13
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("微软雅黑", 10.0!)
+        Me.Label18.Location = New System.Drawing.Point(16, 0)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(65, 20)
+        Me.Label18.TabIndex = 23
+        Me.Label18.Text = "手动载入"
+        '
+        'BtnFilesystem
+        '
+        Me.BtnFilesystem.BackColor = System.Drawing.Color.FromArgb(CType(CType(102, Byte), Integer), CType(CType(121, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.BtnFilesystem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(83, Byte), Integer))
+        Me.BtnFilesystem.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnFilesystem.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.BtnFilesystem.ForeColor = System.Drawing.Color.White
+        Me.BtnFilesystem.Location = New System.Drawing.Point(277, 63)
+        Me.BtnFilesystem.Name = "BtnFilesystem"
+        Me.BtnFilesystem.Size = New System.Drawing.Size(33, 23)
+        Me.BtnFilesystem.TabIndex = 22
+        Me.BtnFilesystem.Text = "..."
+        Me.BtnFilesystem.UseVisualStyleBackColor = False
+        '
+        'BtnAddLrc
+        '
+        Me.BtnAddLrc.BackColor = System.Drawing.Color.FromArgb(CType(CType(102, Byte), Integer), CType(CType(121, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.BtnAddLrc.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(83, Byte), Integer))
+        Me.BtnAddLrc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnAddLrc.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.BtnAddLrc.ForeColor = System.Drawing.Color.White
+        Me.BtnAddLrc.Location = New System.Drawing.Point(138, 91)
+        Me.BtnAddLrc.Name = "BtnAddLrc"
+        Me.BtnAddLrc.Size = New System.Drawing.Size(75, 25)
+        Me.BtnAddLrc.TabIndex = 21
+        Me.BtnAddLrc.Text = "导入"
+        Me.BtnAddLrc.UseVisualStyleBackColor = False
+        '
+        'TxtOriginLyr
+        '
+        Me.TxtOriginLyr.Location = New System.Drawing.Point(90, 63)
+        Me.TxtOriginLyr.Name = "TxtOriginLyr"
+        Me.TxtOriginLyr.Size = New System.Drawing.Size(185, 23)
+        Me.TxtOriginLyr.TabIndex = 20
+        '
+        'CboOriginSong
+        '
+        Me.CboOriginSong.FormattingEnabled = True
+        Me.CboOriginSong.Location = New System.Drawing.Point(90, 30)
+        Me.CboOriginSong.Name = "CboOriginSong"
+        Me.CboOriginSong.Size = New System.Drawing.Size(220, 25)
+        Me.CboOriginSong.TabIndex = 19
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(28, 66)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(56, 17)
+        Me.Label8.TabIndex = 18
+        Me.Label8.Text = "目标歌词"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(28, 33)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(56, 17)
+        Me.Label7.TabIndex = 17
+        Me.Label7.Text = "目标歌曲"
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(42, 61)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(56, 17)
+        Me.Label17.TabIndex = 12
+        Me.Label17.Text = "编码格式"
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(42, 36)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(56, 17)
+        Me.Label16.TabIndex = 11
+        Me.Label16.Text = "读取方式"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("微软雅黑", 10.0!)
+        Me.Label15.Location = New System.Drawing.Point(9, 9)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(93, 20)
+        Me.Label15.TabIndex = 10
+        Me.Label15.Text = "字幕读取设置"
+        '
+        'CboTextStyle
+        '
+        Me.CboTextStyle.FormattingEnabled = True
+        Me.CboTextStyle.Items.AddRange(New Object() {"UTF-8", "默认", "ASCII", "Unicode"})
+        Me.CboTextStyle.Location = New System.Drawing.Point(121, 61)
+        Me.CboTextStyle.Name = "CboTextStyle"
+        Me.CboTextStyle.Size = New System.Drawing.Size(184, 25)
+        Me.CboTextStyle.TabIndex = 8
+        Me.CboTextStyle.Text = "UTF-8"
+        '
+        'CboLrcFunction
+        '
+        Me.CboLrcFunction.FormattingEnabled = True
+        Me.CboLrcFunction.Items.AddRange(New Object() {"整体读入", "逐行读入"})
+        Me.CboLrcFunction.Location = New System.Drawing.Point(121, 33)
+        Me.CboLrcFunction.Name = "CboLrcFunction"
+        Me.CboLrcFunction.Size = New System.Drawing.Size(184, 25)
+        Me.CboLrcFunction.TabIndex = 6
+        Me.CboLrcFunction.Text = "整体读入"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(-94, 34)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(56, 17)
+        Me.Label6.TabIndex = 7
+        Me.Label6.Text = "文本格式"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(-94, 9)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(80, 17)
+        Me.Label5.TabIndex = 5
+        Me.Label5.Text = "字幕载入算法"
         '
         'LblShowEnLyricFont
         '
@@ -406,58 +602,6 @@ Partial Class Settings
         Me.Label9.TabIndex = 7
         Me.Label9.Text = "中文字幕颜色"
         '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.CboTextStyle)
-        Me.GroupBox1.Controls.Add(Me.GroupBox2)
-        Me.GroupBox1.Controls.Add(Me.CboLrcFunction)
-        Me.GroupBox1.Controls.Add(Me.Label6)
-        Me.GroupBox1.Controls.Add(Me.Label5)
-        Me.GroupBox1.Location = New System.Drawing.Point(2, 106)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(305, 184)
-        Me.GroupBox1.TabIndex = 6
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "字幕文件载入"
-        '
-        'CboTextStyle
-        '
-        Me.CboTextStyle.FormattingEnabled = True
-        Me.CboTextStyle.Items.AddRange(New Object() {"UTF-8", "默认", "ASCII", "Unicode"})
-        Me.CboTextStyle.Location = New System.Drawing.Point(109, 44)
-        Me.CboTextStyle.Name = "CboTextStyle"
-        Me.CboTextStyle.Size = New System.Drawing.Size(184, 25)
-        Me.CboTextStyle.TabIndex = 3
-        Me.CboTextStyle.Text = "UTF-8"
-        '
-        'CboLrcFunction
-        '
-        Me.CboLrcFunction.FormattingEnabled = True
-        Me.CboLrcFunction.Items.AddRange(New Object() {"整体读入", "逐行读入"})
-        Me.CboLrcFunction.Location = New System.Drawing.Point(109, 16)
-        Me.CboLrcFunction.Name = "CboLrcFunction"
-        Me.CboLrcFunction.Size = New System.Drawing.Size(184, 25)
-        Me.CboLrcFunction.TabIndex = 1
-        Me.CboLrcFunction.Text = "整体读入"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(6, 44)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(56, 17)
-        Me.Label6.TabIndex = 2
-        Me.Label6.Text = "文本格式"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 19)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(80, 17)
-        Me.Label5.TabIndex = 0
-        Me.Label5.Text = "字幕载入算法"
-        '
         'LblShowLyricFont
         '
         Me.LblShowLyricFont.Cursor = System.Windows.Forms.Cursors.Hand
@@ -501,21 +645,63 @@ Partial Class Settings
         Me.ChkLyricOpen.Checked = True
         Me.ChkLyricOpen.CheckState = System.Windows.Forms.CheckState.Checked
         Me.ChkLyricOpen.Cursor = System.Windows.Forms.Cursors.Default
+        Me.ChkLyricOpen.Font = New System.Drawing.Font("微软雅黑", 11.0!)
         Me.ChkLyricOpen.Location = New System.Drawing.Point(31, 30)
         Me.ChkLyricOpen.Name = "ChkLyricOpen"
-        Me.ChkLyricOpen.Size = New System.Drawing.Size(75, 21)
+        Me.ChkLyricOpen.Size = New System.Drawing.Size(88, 24)
         Me.ChkLyricOpen.TabIndex = 6
         Me.ChkLyricOpen.Text = "开启字幕"
         Me.ChkLyricOpen.UseVisualStyleBackColor = True
         '
         'Panel_top
         '
+        Me.Panel_top.Controls.Add(Me.lbl_CheckUpdates)
+        Me.Panel_top.Controls.Add(Me.lbl_buidLevel)
+        Me.Panel_top.Controls.Add(Me.lbl_mainLevel)
         Me.Panel_top.Controls.Add(Me.btn_Mainexit)
         Me.Panel_top.Controls.Add(Me.Lbl_title)
         Me.Panel_top.Location = New System.Drawing.Point(-1, 0)
         Me.Panel_top.Name = "Panel_top"
         Me.Panel_top.Size = New System.Drawing.Size(549, 66)
         Me.Panel_top.TabIndex = 42
+        '
+        'lbl_CheckUpdates
+        '
+        Me.lbl_CheckUpdates.AutoSize = True
+        Me.lbl_CheckUpdates.BackColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(83, Byte), Integer))
+        Me.lbl_CheckUpdates.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_CheckUpdates.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline
+        Me.lbl_CheckUpdates.LinkColor = System.Drawing.SystemColors.MenuHighlight
+        Me.lbl_CheckUpdates.Location = New System.Drawing.Point(218, 30)
+        Me.lbl_CheckUpdates.Margin = New System.Windows.Forms.Padding(3, 5, 3, 0)
+        Me.lbl_CheckUpdates.Name = "lbl_CheckUpdates"
+        Me.lbl_CheckUpdates.Size = New System.Drawing.Size(55, 13)
+        Me.lbl_CheckUpdates.TabIndex = 27
+        Me.lbl_CheckUpdates.TabStop = True
+        Me.lbl_CheckUpdates.Text = "检查更新"
+        Me.lbl_CheckUpdates.Visible = False
+        '
+        'lbl_buidLevel
+        '
+        Me.lbl_buidLevel.AutoSize = True
+        Me.lbl_buidLevel.Font = New System.Drawing.Font("微软雅黑", 8.0!)
+        Me.lbl_buidLevel.ForeColor = System.Drawing.Color.White
+        Me.lbl_buidLevel.Location = New System.Drawing.Point(171, 31)
+        Me.lbl_buidLevel.Name = "lbl_buidLevel"
+        Me.lbl_buidLevel.Size = New System.Drawing.Size(38, 16)
+        Me.lbl_buidLevel.TabIndex = 26
+        Me.lbl_buidLevel.Text = "00000"
+        '
+        'lbl_mainLevel
+        '
+        Me.lbl_mainLevel.AutoSize = True
+        Me.lbl_mainLevel.Font = New System.Drawing.Font("微软雅黑", 10.0!)
+        Me.lbl_mainLevel.ForeColor = System.Drawing.Color.White
+        Me.lbl_mainLevel.Location = New System.Drawing.Point(128, 27)
+        Me.lbl_mainLevel.Name = "lbl_mainLevel"
+        Me.lbl_mainLevel.Size = New System.Drawing.Size(51, 20)
+        Me.lbl_mainLevel.TabIndex = 25
+        Me.lbl_mainLevel.Text = "V4.0.0."
         '
         'btn_Mainexit
         '
@@ -539,11 +725,11 @@ Partial Class Settings
         'Lbl_title
         '
         Me.Lbl_title.AutoSize = True
-        Me.Lbl_title.Font = New System.Drawing.Font("微软雅黑", 13.75!)
+        Me.Lbl_title.Font = New System.Drawing.Font("微软雅黑", 18.0!)
         Me.Lbl_title.ForeColor = System.Drawing.Color.White
-        Me.Lbl_title.Location = New System.Drawing.Point(3, 19)
+        Me.Lbl_title.Location = New System.Drawing.Point(3, 16)
         Me.Lbl_title.Name = "Lbl_title"
-        Me.Lbl_title.Size = New System.Drawing.Size(107, 25)
+        Me.Lbl_title.Size = New System.Drawing.Size(134, 31)
         Me.Lbl_title.TabIndex = 23
         Me.Lbl_title.Text = "影子播放器"
         '
@@ -601,81 +787,21 @@ Partial Class Settings
         Me.btn_time.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_time.UseVisualStyleBackColor = False
         '
-        'Label7
+        'LinkLabel1
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(7, 21)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(56, 17)
-        Me.Label7.TabIndex = 0
-        Me.Label7.Text = "目标歌曲"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(6, 54)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(56, 17)
-        Me.Label8.TabIndex = 2
-        Me.Label8.Text = "目标歌词"
-        '
-        'CboOriginSong
-        '
-        Me.CboOriginSong.FormattingEnabled = True
-        Me.CboOriginSong.Location = New System.Drawing.Point(69, 18)
-        Me.CboOriginSong.Name = "CboOriginSong"
-        Me.CboOriginSong.Size = New System.Drawing.Size(220, 25)
-        Me.CboOriginSong.TabIndex = 5
-        '
-        'TxtOriginLyr
-        '
-        Me.TxtOriginLyr.Location = New System.Drawing.Point(69, 51)
-        Me.TxtOriginLyr.Name = "TxtOriginLyr"
-        Me.TxtOriginLyr.Size = New System.Drawing.Size(185, 23)
-        Me.TxtOriginLyr.TabIndex = 6
-        '
-        'BtnAddLrc
-        '
-        Me.BtnAddLrc.BackColor = System.Drawing.Color.FromArgb(CType(CType(102, Byte), Integer), CType(CType(121, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.BtnAddLrc.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(83, Byte), Integer))
-        Me.BtnAddLrc.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnAddLrc.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.BtnAddLrc.ForeColor = System.Drawing.Color.White
-        Me.BtnAddLrc.Location = New System.Drawing.Point(117, 80)
-        Me.BtnAddLrc.Name = "BtnAddLrc"
-        Me.BtnAddLrc.Size = New System.Drawing.Size(75, 25)
-        Me.BtnAddLrc.TabIndex = 15
-        Me.BtnAddLrc.Text = "导入"
-        Me.BtnAddLrc.UseVisualStyleBackColor = False
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.BtnFilesystem)
-        Me.GroupBox2.Controls.Add(Me.BtnAddLrc)
-        Me.GroupBox2.Controls.Add(Me.TxtOriginLyr)
-        Me.GroupBox2.Controls.Add(Me.CboOriginSong)
-        Me.GroupBox2.Controls.Add(Me.Label8)
-        Me.GroupBox2.Controls.Add(Me.Label7)
-        Me.GroupBox2.Location = New System.Drawing.Point(7, 67)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(295, 112)
-        Me.GroupBox2.TabIndex = 4
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "手动载入"
-        '
-        'BtnFilesystem
-        '
-        Me.BtnFilesystem.BackColor = System.Drawing.Color.FromArgb(CType(CType(102, Byte), Integer), CType(CType(121, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.BtnFilesystem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(83, Byte), Integer))
-        Me.BtnFilesystem.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnFilesystem.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.BtnFilesystem.ForeColor = System.Drawing.Color.White
-        Me.BtnFilesystem.Location = New System.Drawing.Point(256, 51)
-        Me.BtnFilesystem.Name = "BtnFilesystem"
-        Me.BtnFilesystem.Size = New System.Drawing.Size(33, 23)
-        Me.BtnFilesystem.TabIndex = 16
-        Me.BtnFilesystem.Text = "..."
-        Me.BtnFilesystem.UseVisualStyleBackColor = False
+        Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(83, Byte), Integer))
+        Me.LinkLabel1.Font = New System.Drawing.Font("微软雅黑", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LinkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline
+        Me.LinkLabel1.LinkColor = System.Drawing.SystemColors.MenuHighlight
+        Me.LinkLabel1.Location = New System.Drawing.Point(121, 5)
+        Me.LinkLabel1.Margin = New System.Windows.Forms.Padding(3, 5, 3, 0)
+        Me.LinkLabel1.Name = "LinkLabel1"
+        Me.LinkLabel1.Size = New System.Drawing.Size(52, 16)
+        Me.LinkLabel1.TabIndex = 6
+        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.Text = "检查更新"
+        Me.LinkLabel1.Visible = False
         '
         'Settings
         '
@@ -699,24 +825,24 @@ Partial Class Settings
         Me.PnlOpen.PerformLayout()
         Me.PnlStop.ResumeLayout(False)
         Me.PnlStop.PerformLayout()
-        Me.GrpStopBehavior.ResumeLayout(False)
-        Me.GrpStopBehavior.PerformLayout()
-        Me.GrpStopMode.ResumeLayout(False)
-        Me.GrpStopMode.PerformLayout()
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         Me.TabPage_lyric.ResumeLayout(False)
         Me.TabPage_lyric.PerformLayout()
         Me.PnlLryic.ResumeLayout(False)
         Me.PnlLryic.PerformLayout()
+        Me.Panel4.ResumeLayout(False)
+        Me.Panel4.PerformLayout()
+        Me.Panel5.ResumeLayout(False)
+        Me.Panel5.PerformLayout()
         CType(Me.PicCnLyricColor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PicEnLyricColor, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         CType(Me.PicLyricColor, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel_top.ResumeLayout(False)
         Me.Panel_top.PerformLayout()
         Me.Panel1.ResumeLayout(False)
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -733,16 +859,11 @@ Partial Class Settings
     Friend WithEvents txtLoudTime As MaskedTextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents PnlStop As Panel
-    Friend WithEvents GrpStopBehavior As GroupBox
     Friend WithEvents RdoNext As RadioButton
     Friend WithEvents RdoStop As RadioButton
     Friend WithEvents RdoPause As RadioButton
     Friend WithEvents txtEndTime As MaskedTextBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents GrpStopMode As GroupBox
-    Friend WithEvents RdoSetEndEnabled As RadioButton
-    Friend WithEvents RdoSetMiniEnabled As RadioButton
-    Friend WithEvents RdoSetCloseNothing As RadioButton
     Friend WithEvents ChkSetTimeEnabled As CheckBox
     Friend WithEvents ChkSetCloseEnabled As CheckBox
     Friend WithEvents PnlLryic As Panel
@@ -754,21 +875,36 @@ Partial Class Settings
     Friend WithEvents Label10 As Label
     Friend WithEvents PicEnLyricColor As PictureBox
     Friend WithEvents Label9 As Label
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents CboTextStyle As ComboBox
-    Friend WithEvents CboLrcFunction As ComboBox
-    Friend WithEvents Label6 As Label
-    Friend WithEvents Label5 As Label
     Friend WithEvents LblShowLyricFont As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents PicLyricColor As PictureBox
     Friend WithEvents Label3 As Label
     Friend WithEvents ChkLyricOpen As CheckBox
-    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents Label13 As Label
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Label11 As Label
+    Friend WithEvents RdoSetEndEnabled As RadioButton
+    Friend WithEvents RdoSetMiniEnabled As RadioButton
+    Friend WithEvents RdoSetCloseNothing As RadioButton
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents Panel5 As Panel
+    Friend WithEvents Label18 As Label
     Friend WithEvents BtnFilesystem As Button
     Friend WithEvents BtnAddLrc As Button
     Friend WithEvents TxtOriginLyr As TextBox
     Friend WithEvents CboOriginSong As ComboBox
     Friend WithEvents Label8 As Label
     Friend WithEvents Label7 As Label
+    Friend WithEvents Label17 As Label
+    Friend WithEvents Label16 As Label
+    Friend WithEvents Label15 As Label
+    Friend WithEvents CboTextStyle As ComboBox
+    Friend WithEvents CboLrcFunction As ComboBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents lbl_mainLevel As Label
+    Friend WithEvents LinkLabel1 As LinkLabel
+    Friend WithEvents lbl_buidLevel As Label
+    Friend WithEvents lbl_CheckUpdates As LinkLabel
 End Class

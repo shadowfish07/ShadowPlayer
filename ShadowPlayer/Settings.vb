@@ -1,4 +1,6 @@
-﻿Public Class Settings
+﻿Imports libVisualAction.Shadowfish.VisualAction
+
+Public Class Settings
     Private Sub PageCommand_Click(sender As Object, e As EventArgs) Handles btn_time.Click, btn_Lyric.Click
         Select Case True
             Case sender Is btn_time
@@ -20,15 +22,29 @@
         Me.Close()
     End Sub
 
-    Private Sub ChkSetTimeEnabled_CheckedChanged(sender As Object, e As EventArgs) Handles ChkSetTimeEnabled.CheckedChanged
-        PnlOpen.Enabled = ChkSetTimeEnabled.Checked
+    Private Sub Options_MouseUp(sender As Object, e As EventArgs) Handles ChkLyricOpen.MouseUp, ChkSetCloseEnabled.MouseUp, ChkSetTimeEnabled.MouseUp
+        Select Case True
+            Case sender Is ChkLyricOpen
+                PnlLryic.Enabled = ChkLyricOpen.Checked
+            Case sender Is ChkSetCloseEnabled
+                PnlStop.Enabled = ChkSetCloseEnabled.Checked
+            Case sender Is ChkSetTimeEnabled
+                PnlOpen.Enabled = ChkSetTimeEnabled.Checked
+        End Select
+        Dim showf As New GradualShow(SetChangedInform, 0.75)
+        showf.Show()
     End Sub
 
-    Private Sub ChkSetCloseEnabled_CheckedChanged(sender As Object, e As EventArgs) Handles ChkSetCloseEnabled.CheckedChanged
-        PnlStop.Enabled = ChkSetCloseEnabled.Checked
+    Private Sub ToChangeSetChangedInform()
+
     End Sub
 
-    Private Sub ChkLyricOpen_CheckedChanged(sender As Object, e As EventArgs) Handles ChkLyricOpen.CheckedChanged
-        PnlLryic.Enabled = ChkLyricOpen.Checked
+    Private Sub Settings_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Lbl_title.Text = "ShadowPlayer"
+        Dim version As String = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString
+        lbl_mainLevel.Text = "V" + version.Substring(0, version.Length - 5)
+        lbl_buidLevel.Text = version.Substring(version.Length - 5)
+        lbl_mainLevel.Left = Lbl_title.Location.X + Lbl_title.Width - 5
+        lbl_buidLevel.Left = lbl_mainLevel.Location.X + lbl_mainLevel.Width - 6
     End Sub
 End Class
