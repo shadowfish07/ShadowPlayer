@@ -10,6 +10,7 @@ Public Class Modren_UI
     Dim WithEvents Engine As PlayEngine
     Public WithEvents MusicList As New ArrayList
     Dim log As New LogWriter("ShadowPlayer_RunTime.log")
+    Dim loaded As Boolean = False
 
     Friend playMode As Cplaynum = Cplaynum.ListOnce
     Public nowPlay As Integer, lastPlay As Integer, chooseItem As Integer = -1
@@ -21,7 +22,7 @@ Public Class Modren_UI
     End Sub
 
     Private Sub btn_Mainmin_Click(sender As Object, e As EventArgs) Handles btn_Mainmin.Click
-        Me.WindowState = FormWindowState.Minimized
+        Me.WindowState = WindowState.Minimized
     End Sub
 
     Private Sub Modren_UI_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -50,6 +51,7 @@ Public Class Modren_UI
     Sub FormLoad(e As Object, ev As EventArgs)
         playProgres = New PlayProgress(Panel1, 30, Color.FromArgb(180, 198, 214), Color.FromArgb(80, 173, 255))
         e.Dispose
+        loaded = True
     End Sub
 
     Private Sub Modren_UI_DragDrop(sender As Object, e As DragEventArgs) Handles MyBase.DragDrop
@@ -98,7 +100,7 @@ Public Class Modren_UI
             '自动开始播放
             Try
                 Engine.Play()
-                Btn_PlayPause.Image = My.Resources.Pause
+                Btn_PlayPause.BackgroundImage = My.Resources.Pause
             Catch ex As Exception
 
             End Try
@@ -109,7 +111,7 @@ Public Class Modren_UI
                 If mainOption.CloseEndOpen.Value = True Then
                     End
                 ElseIf mainOption.CloseMiniOpen.Value = True Then
-                    Btn_PlayPause.Image = My.Resources.Play
+                    Btn_PlayPause.BackgroundImage = My.Resources.Play
                     Me.Hide()
                     Zimu.Hide()
                     Zimu.Timer1.Enabled = False
@@ -169,7 +171,6 @@ Public Class Modren_UI
 
     Private Sub NotifyIcon1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles NotifyIcon1.MouseDoubleClick
         Me.Show()
-        Me.WindowState = FormWindowState.Normal
     End Sub
 
     Private Sub OpenFileDialog1_FileOk(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles OpenFileDialog1.FileOk
@@ -216,8 +217,6 @@ Public Class Modren_UI
     Shared Function SendMessage(ByVal hWnd As IntPtr, ByVal Msg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
     End Function
 
-
-
     Private Sub MoveForm()
         ReleaseCapture()
         SendMessage(Me.Handle, &HA1, 2, 0)
@@ -225,11 +224,10 @@ Public Class Modren_UI
 
     Private Sub FormDrag(sender As Object, e As MouseEventArgs) Handles Panel_top.MouseDown
         If e.Button = Windows.Forms.MouseButtons.Left Then MoveForm()
-        ReFlush()
-
     End Sub
 
-    Sub ReFlush()
+    Private Sub Repaint() Handles Me.Paint
+        If loaded = False Then Exit Sub
         Try
             playProgres.Flush(Player.Ctlcontrols.currentPosition / Player.currentMedia.duration)
         Catch ex As Exception
@@ -238,39 +236,6 @@ Public Class Modren_UI
     End Sub
 
 #End Region
-
-    Private Sub 退出ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 退出ToolStripMenuItem.Click
-        btn_Mainexit_Click(Me, Nothing)
-    End Sub
-
-    Private Sub 停止ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 停止ToolStripMenuItem.Click
-        Try
-            Engine.Stop()
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
-    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
-        NotifyIcon1_MouseDoubleClick(Me, Nothing)
-    End Sub
-
-    Private Sub 播放ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles 播放ToolStripMenuItem1.Click
-        Try
-            Engine.Play()
-        Catch ex As Exception
-
-        End Try
-
-    End Sub
-
-    Private Sub 暂停ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 暂停ToolStripMenuItem.Click
-        Try
-            Engine.Pause()
-        Catch ex As Exception
-
-        End Try
-    End Sub
 End Class
 
 
