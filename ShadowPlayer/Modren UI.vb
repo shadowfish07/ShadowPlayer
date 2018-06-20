@@ -81,8 +81,12 @@ Public Class Modren_UI
         loaded = True
     End Sub
 
-    Private Sub Modren_UI_DragDrop(sender As Object, e As DragEventArgs) Handles MyBase.DragDrop
+    Private Sub Modren_UI_DragDrop(sender As Object, e As DragEventArgs) Handles MyBase.DragDrop, FlowLayoutPanel1.DragDrop, Panel1.DragDrop, Lbl_MusicName.DragDrop
+        Engine.Add(e.Data.GetData(DataFormats.FileDrop), FlowLayoutPanel1, ToolTip1)
+    End Sub
 
+    Private Sub Modren_UI_DragOver(sender As Object, e As DragEventArgs) Handles MyBase.DragOver, FlowLayoutPanel1.DragOver, Panel1.DragOver, Lbl_MusicName.DragOver
+        e.Effect = e.Effect.All
     End Sub
 
     Private Sub player_PlayStateChange(sender As Object, e As _WMPOCXEvents_PlayStateChangeEvent) Handles Player.PlayStateChange

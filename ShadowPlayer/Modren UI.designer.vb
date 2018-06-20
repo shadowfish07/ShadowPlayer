@@ -45,7 +45,6 @@ Partial Class Modren_UI
         Me.Lbl_LryicDown = New System.Windows.Forms.Label()
         Me.Lbl_LryicUp = New System.Windows.Forms.Label()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.Player = New AxWMPLib.AxWindowsMediaPlayer()
         Me.Btn_FullScreen = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Btn_List = New System.Windows.Forms.Button()
@@ -64,10 +63,11 @@ Partial Class Modren_UI
         Me.Btn_MoveToUp = New System.Windows.Forms.Button()
         Me.Btn_MoveToDown = New System.Windows.Forms.Button()
         Me.Timer_List = New System.Windows.Forms.Timer(Me.components)
+        Me.Player = New AxWMPLib.AxWindowsMediaPlayer()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        CType(Me.Player, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
+        CType(Me.Player, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btn_Mainmin
@@ -199,6 +199,8 @@ Partial Class Modren_UI
         '
         'Lbl_MusicName
         '
+        Me.Lbl_MusicName.AllowDrop = True
+        Me.Lbl_MusicName.AutoEllipsis = True
         Me.Lbl_MusicName.Font = New System.Drawing.Font("微软雅黑", 15.0!)
         Me.Lbl_MusicName.Location = New System.Drawing.Point(157, 81)
         Me.Lbl_MusicName.Name = "Lbl_MusicName"
@@ -209,6 +211,7 @@ Partial Class Modren_UI
         '
         'Panel1
         '
+        Me.Panel1.AllowDrop = True
         Me.Panel1.Controls.Add(Me.Lbl_TotalTime)
         Me.Panel1.Controls.Add(Me.Lbl_NowTime)
         Me.Panel1.Location = New System.Drawing.Point(259, 128)
@@ -272,16 +275,6 @@ Partial Class Modren_UI
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(181, 235)
         Me.FlowLayoutPanel1.TabIndex = 34
         Me.FlowLayoutPanel1.WrapContents = False
-        '
-        'Player
-        '
-        Me.Player.Enabled = True
-        Me.Player.Location = New System.Drawing.Point(12, 128)
-        Me.Player.Name = "Player"
-        Me.Player.OcxState = CType(resources.GetObject("Player.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.Player.Size = New System.Drawing.Size(241, 200)
-        Me.Player.TabIndex = 37
-        Me.Player.Visible = False
         '
         'Btn_FullScreen
         '
@@ -524,6 +517,16 @@ Partial Class Modren_UI
         '
         Me.Timer_List.Interval = 1000
         '
+        'Player
+        '
+        Me.Player.Enabled = True
+        Me.Player.Location = New System.Drawing.Point(12, 128)
+        Me.Player.Name = "Player"
+        Me.Player.OcxState = CType(resources.GetObject("Player.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.Player.Size = New System.Drawing.Size(241, 200)
+        Me.Player.TabIndex = 37
+        Me.Player.Visible = False
+        '
         'Modren_UI
         '
         Me.AllowDrop = True
@@ -567,9 +570,9 @@ Partial Class Modren_UI
         Me.Text = "ShadowPlayer"
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
-        CType(Me.Player, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        CType(Me.Player, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

@@ -84,6 +84,7 @@
     End Class
 
     Public Sub Add(filePaths() As String, targetList As FlowLayoutPanel, tooltip As ToolTip)
+        '!!有效性验证
         Dim s As String
         Dim sr As System.IO.StreamReader
         For Each s In filePaths
