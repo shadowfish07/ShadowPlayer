@@ -1,6 +1,14 @@
-﻿Public Class PlayEngine
+﻿Public Class ChangedMusicEvents
+    Inherits EventArgs
+    Public Property NowPlayIndex As Integer = -1
+    Public Sub New(nowPlayIndex)
+        Me.nowPlayIndex = nowPlayIndex
+    End Sub
+End Class
+
+Public Class PlayEngine
     Event AddedAMusic(musicName As String)
-    Event ChangedMusic()
+    Event ChangedMusic(sender As Object, e As ChangedMusicEvents)
     Event PlayEnd()
 
     Dim lyr As Lyric
@@ -47,8 +55,8 @@
                 '双语字幕
                 lbl_up.ForeColor = Modren_UI.mainOption.Lyric_English_ForeColor
                 lbl_down.ForeColor = Modren_UI.mainOption.Lyric_CN_ForeColor
-                lbl_up.Font = Modren_UI.mainOption.Lyric_english_font
-                lbl_down.Font = Modren_UI.mainOption.Lyric_cn_font
+                lbl_up.Font = Modren_UI.mainOption.Lyric_English_Font
+                lbl_down.Font = Modren_UI.mainOption.Lyric_CN_Font
                 lbl_down.Visible = True
                 If Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result) <> "" Then
                     'If StrLength(Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result)) > 46 Then
@@ -64,7 +72,7 @@
             Else
                 '中文字幕
                 lbl_up.ForeColor = Modren_UI.mainOption.Lyric_SingleLine_ForeColor
-                lbl_up.Font = Modren_UI.mainOption.Lyric_SingleLine_font
+                lbl_up.Font = Modren_UI.mainOption.Lyric_SingleLine_Font
                 lbl_down.Visible = False
                 If Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result) <> "" Then
                     'If StrLength(Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result)) > 26 Then
@@ -214,23 +222,14 @@
         Modren_UI.Player.Ctlcontrols.stop()
     End Sub
 
+    ''' <summary>
+    ''' 该公共方法用于更改当前播放的歌曲
+    ''' </summary>
+    ''' <param name="nowPlayIndex">设置要切换成的歌曲序号，若省略，切换至下一首，若没有下一首，回到列表第一首</param>
+    ''' <param name="Play">设置是否开始播放新的歌曲。值为True则开始播放</param>
     Public Sub ChangeMusic(Optional ByVal nowPlayIndex As Integer = -1, Optional ByVal Play As Boolean = True)
-        If Modren_UI.MusicList.Count = 0 Then Exit Sub
         _timer.Enabled = False
-        If nowPlayIndex > -1 Then '指定播放情况
-            Modren_UI.nowPlay = nowPlayIndex
-        ElseIf Modren_UI.nowPlay < Modren_UI.MusicList.Count - 1 Then '可下一首情况
-            Modren_UI.nowPlay += 1
-        Else '最后一首情况
-            '回到列表初
-            Modren_UI.nowPlay = 0
-        End If
-        Dim myFontFamily As System.Drawing.FontFamily = New FontFamily("微软雅黑")
-        Modren_UI.MusicList.Item(Modren_UI.lastPlay).Font = New Font(myFontFamily, 9, FontStyle.Regular)
-        Modren_UI.MusicList.Item(Modren_UI.nowPlay).Font = New Font(myFontFamily, 9, FontStyle.Bold)
-        Modren_UI.lastPlay = Modren_UI.nowPlay
-        Modren_UI.Player.URL = Modren_UI.MusicList.Item(Modren_UI.nowPlay).tag
-        RaiseEvent ChangedMusic()
+        RaiseEvent ChangedMusic(Me, New ChangedMusicEvents(nowPlayIndex))
         HideLyric()
         If Play Then Me.Play()
     End Sub

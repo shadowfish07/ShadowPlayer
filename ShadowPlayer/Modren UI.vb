@@ -223,8 +223,30 @@ Public Class Modren_UI
         Call UpdateMusicNameText(musicname)
     End Sub
 
-    Private Sub Engine_ChangedMusic() Handles Engine.ChangedMusic
+    ''' <summary>
+    ''' 实现更改播放歌曲后歌曲序号、主界面UI等的修改
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub Engine_ChangedMusic(sender As Object, e As ChangedMusicEvents) Handles Engine.ChangedMusic
+        If MusicList.Count = 0 Then Exit Sub
+        If e.NowPlayIndex > -1 Then
+            '指定播放序列，跳转至指定的歌曲
+            nowPlay = e.nowPlayIndex
+        ElseIf nowPlay < MusicList.Count - 1 Then '省略NowPlayIndex时，默认切换至下一首
+            '若当前播放歌曲不是下一首，切换至下一首
+            nowPlay += 1
+        Else
+            '若当前播放歌曲是下一首，回到列表初
+            nowPlay = 0
+        End If
+        Dim myFontFamily As System.Drawing.FontFamily = New FontFamily("微软雅黑")
+        MusicList.Item(lastPlay).Font = New Font(myFontFamily, 9, FontStyle.Regular)
+        MusicList.Item(nowPlay).Font = New Font(myFontFamily, 9, FontStyle.Bold)
+        lastPlay = nowPlay
+        Player.URL = MusicList.Item(nowPlay).tag
         Lbl_MusicName.Text = MusicList(nowPlay).text
+        Btn_Stop_Click(Nothing, Nothing)
     End Sub
 
     Private Sub UpdateMusicNameText(musicname As String)
