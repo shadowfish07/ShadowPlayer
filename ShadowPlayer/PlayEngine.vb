@@ -47,8 +47,8 @@
                 '双语字幕
                 lbl_up.ForeColor = Modren_UI.mainOption.Lyric_English_ForeColor
                 lbl_down.ForeColor = Modren_UI.mainOption.Lyric_CN_ForeColor
-                lbl_up.Font = Modren_UI.mainOption.Lyric_english_font
-                lbl_down.Font = Modren_UI.mainOption.Lyric_cn_font
+                lbl_up.Font = Modren_UI.mainOption.Lyric_English_Font
+                lbl_down.Font = Modren_UI.mainOption.Lyric_CN_Font
                 lbl_down.Visible = True
                 If Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result) <> "" Then
                     'If StrLength(Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result)) > 46 Then
@@ -64,7 +64,7 @@
             Else
                 '中文字幕
                 lbl_up.ForeColor = Modren_UI.mainOption.Lyric_SingleLine_ForeColor
-                lbl_up.Font = Modren_UI.mainOption.Lyric_SingleLine_font
+                lbl_up.Font = Modren_UI.mainOption.Lyric_SingleLine_Font
                 lbl_down.Visible = False
                 If Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result) <> "" Then
                     'If StrLength(Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result)) > 26 Then
@@ -239,7 +239,7 @@
         'next music
         If Modren_UI.Player.currentMedia.duration - 0.3 <= Modren_UI.Player.Ctlcontrols.currentPosition Then
             Select Case Modren_UI.playMode
-                Case Cplaynum.ListOnce
+                Case CplayMode.ListOnce
                     If Modren_UI.nowPlay < Modren_UI.MusicList.Count - 1 Then
                         ChangeMusic()
                     Else
@@ -250,14 +250,14 @@
                         Modren_UI.lastPlay = 0
                         RaiseEvent PlayEnd()
                     End If
-                Case Cplaynum.ListCycle
+                Case CplayMode.ListCycle
                     ChangeMusic()
-                Case Cplaynum.OneOnce
+                Case CplayMode.OneOnce
                     Me.Stop()
                     RaiseEvent PlayEnd()
-                Case Cplaynum.OneCycle
+                Case CplayMode.OneCycle
                     Modren_UI.Player.Ctlcontrols.currentPosition = 0
-                Case Cplaynum.Random
+                Case CplayMode.Random
                     Dim rnd As New Random
                     ChangeMusic(rnd.Next(0, Modren_UI.MusicList.Count))
             End Select

@@ -64,6 +64,8 @@ Partial Class Modren_UI
         Me.Btn_MoveToDown = New System.Windows.Forms.Button()
         Me.Timer_List = New System.Windows.Forms.Timer(Me.components)
         Me.Player = New AxWMPLib.AxWindowsMediaPlayer()
+        Me.label1 = New System.Windows.Forms.Label()
+        Me.lblPlayMode = New System.Windows.Forms.Label()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.Pnl_Circle.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -527,6 +529,30 @@ Partial Class Modren_UI
         Me.Player.TabIndex = 37
         Me.Player.Visible = False
         '
+        'label1
+        '
+        Me.label1.AutoSize = True
+        Me.label1.Font = New System.Drawing.Font("微软雅黑", 10.0!)
+        Me.label1.ForeColor = System.Drawing.Color.White
+        Me.label1.Location = New System.Drawing.Point(579, 365)
+        Me.label1.Name = "label1"
+        Me.label1.Size = New System.Drawing.Size(65, 20)
+        Me.label1.TabIndex = 47
+        Me.label1.Text = "播放模式"
+        Me.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'lblPlayMode
+        '
+        Me.lblPlayMode.AutoSize = True
+        Me.lblPlayMode.Font = New System.Drawing.Font("微软雅黑", 10.0!)
+        Me.lblPlayMode.ForeColor = System.Drawing.Color.Gainsboro
+        Me.lblPlayMode.Location = New System.Drawing.Point(642, 365)
+        Me.lblPlayMode.Name = "lblPlayMode"
+        Me.lblPlayMode.Size = New System.Drawing.Size(65, 20)
+        Me.lblPlayMode.TabIndex = 48
+        Me.lblPlayMode.Text = "列表循环"
+        Me.lblPlayMode.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'Modren_UI
         '
         Me.AllowDrop = True
@@ -534,6 +560,8 @@ Partial Class Modren_UI
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(83, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(719, 521)
+        Me.Controls.Add(Me.lblPlayMode)
+        Me.Controls.Add(Me.label1)
         Me.Controls.Add(Me.Btn_Alarm)
         Me.Controls.Add(Me.Btn_MoveToDown)
         Me.Controls.Add(Me.Btn_MoveToUp)
@@ -618,4 +646,6 @@ Partial Class Modren_UI
     Friend WithEvents Btn_MoveToUp As Button
     Friend WithEvents Btn_MoveToDown As Button
     Friend WithEvents Timer_List As Timer
+    Friend WithEvents label1 As Label
+    Friend WithEvents lblPlayMode As Label
 End Class
