@@ -22,16 +22,70 @@ Public Class Settings
         Me.Close()
     End Sub
 
-    Private Sub Options_MouseUp(sender As Object, e As EventArgs) Handles ChkLyricOpen.MouseUp, ChkSetCloseEnabled.MouseUp, ChkSetTimeEnabled.MouseUp
+    Private Sub Options_Changed(sender As Object, e As EventArgs) Handles ChkLyricOpen.MouseUp, ChkSetCloseEnabled.MouseUp, ChkSetTimeEnabled.MouseUp,
+            btn_saveCloseTime.Click, btn_saveLoudTime.Click,
+            RdoSetCloseNothing.Click, RdoSetEndEnabled.Click, RdoSetMiniEnabled.Click,
+            RdoStop.Click, RdoPause.Click, RdoNext.Click,
+            PicLyricColor.Click, PicCnLyricColor.Click, PicEnLyricColor.Click
+
+        Dim cancel As Boolean = False
+
         Select Case True
             Case sender Is ChkLyricOpen
                 PnlLryic.Enabled = ChkLyricOpen.Checked
+                Modren_UI.mainOption.LyricScreenOpen.Value = ChkLyricOpen.Checked
             Case sender Is ChkSetCloseEnabled
                 PnlStop.Enabled = ChkSetCloseEnabled.Checked
+                Modren_UI.mainOption.CloseOpen.Value = ChkSetCloseEnabled.Checked
             Case sender Is ChkSetTimeEnabled
                 PnlOpen.Enabled = ChkSetTimeEnabled.Checked
+                Modren_UI.mainOption.LoudOpen.Value = ChkSetTimeEnabled.Checked
+            Case sender Is btn_saveLoudTime
+                Modren_UI.mainOption.LoudTime = txtLoudTime.Text
+                btn_saveLoudTime.Visible = False
+            Case sender Is btn_saveCloseTime
+                Modren_UI.mainOption.EndTime = txtEndTime.Text
+                btn_saveCloseTime.Visible = False
+            Case sender Is RdoSetCloseNothing
+                Modren_UI.mainOption.CloseNothingOpen.Value = True
+            Case sender Is RdoSetEndEnabled
+                Modren_UI.mainOption.CloseEndOpen.Value = True
+            Case sender Is RdoSetMiniEnabled
+                Modren_UI.mainOption.CloseMiniOpen.Value = True
+            Case sender Is RdoNext
+                Modren_UI.mainOption.AfterClose_next.Value = True
+            Case sender Is RdoPause
+                Modren_UI.mainOption.AfterClose_puase.Value = True
+            Case sender Is RdoStop
+                Modren_UI.mainOption.AfterClose_stop.Value = True
+            Case sender Is PicLyricColor
+                ColorDialog1.Color = Modren_UI.mainOption.Lyric_SingleLine_ForeColor
+                If ColorDialog1.ShowDialog() = DialogResult.OK Then
+                    PicLyricColor.BackColor = ColorDialog1.Color
+                    Modren_UI.mainOption.Lyric_SingleLine_ForeColor = ColorDialog1.Color
+                Else
+                    cancel = True
+                End If
+            Case sender Is PicCnLyricColor
+                ColorDialog1.Color = Modren_UI.mainOption.Lyric_CN_ForeColor
+                If ColorDialog1.ShowDialog() = DialogResult.OK Then
+                    PicCnLyricColor.BackColor = ColorDialog1.Color
+                    Modren_UI.mainOption.Lyric_CN_ForeColor = ColorDialog1.Color
+                Else
+                    cancel = True
+                End If
+            Case sender Is PicEnLyricColor
+                ColorDialog1.Color = Modren_UI.mainOption.Lyric_English_ForeColor
+                If ColorDialog1.ShowDialog() = DialogResult.OK Then
+                    PicEnLyricColor.BackColor = ColorDialog1.Color
+                    Modren_UI.mainOption.Lyric_English_ForeColor = ColorDialog1.Color
+                Else
+                    cancel = True
+                End If
         End Select
-        SetChangedInform.Show()
+        If cancel = False Then
+            SetChangedInform.Show()
+        End If
     End Sub
 
     Private Sub Settings_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -59,11 +113,33 @@ Public Class Settings
         PicLyricColor.BackColor = Modren_UI.mainOption.Lyric_SingleLine_ForeColor
         PicCnLyricColor.BackColor = Modren_UI.mainOption.Lyric_CN_ForeColor
         PicEnLyricColor.BackColor = Modren_UI.mainOption.Lyric_English_ForeColor
-
+        LblShowLyricFont.Font = New Font(Modren_UI.mainOption.Lyric_SingleLine_Font.FontFamily, 9)
+        LblShowCnLyricFont.Font = New Font(Modren_UI.mainOption.Lyric_CN_Font.FontFamily, 9)
+        LblShowEnLyricFont.Font = New Font(Modren_UI.mainOption.Lyric_English_Font.FontFamily, 9)
     End Sub
     Private Sub lbl_CheckUpdates_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lbl_CheckUpdates.LinkClicked
         Process.Start("https://github.com/shadowfish07/ShadowPlayer/releases")
     End Sub
+
+    Private Sub txtLoud_End_Time_txtChanged(sender As Object, e As EventArgs) Handles txtLoudTime.TextChanged, txtEndTime.TextChanged
+        Select Case True
+            Case sender Is txtLoudTime
+                If txtLoudTime.Text = Modren_UI.mainOption.LoudTime Then
+                    btn_saveLoudTime.Visible = False
+                Else
+                    btn_saveLoudTime.Visible = True
+                End If
+            Case sender Is txtEndTime
+                If txtEndTime.Text = Modren_UI.mainOption.EndTime Then
+                    btn_saveCloseTime.Visible = False
+                Else
+                    btn_saveCloseTime.Visible = True
+                End If
+        End Select
+    End Sub
+
+
+
 
 
 #Region "窗体拖动移动"
@@ -85,6 +161,7 @@ Public Class Settings
     Private Sub FormDrag(sender As Object, e As MouseEventArgs) Handles Panel_top.MouseDown
         If e.Button = Windows.Forms.MouseButtons.Left Then MoveForm()
     End Sub
+
 
 
 

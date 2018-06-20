@@ -24,10 +24,12 @@ Partial Class Settings
     Private Sub InitializeComponent()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage_time = New System.Windows.Forms.TabPage()
+        Me.btn_saveLoudTime = New System.Windows.Forms.Button()
         Me.PnlOpen = New System.Windows.Forms.Panel()
         Me.txtLoudTime = New System.Windows.Forms.MaskedTextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PnlStop = New System.Windows.Forms.Panel()
+        Me.btn_saveCloseTime = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.RdoNext = New System.Windows.Forms.RadioButton()
         Me.Label13 = New System.Windows.Forms.Label()
@@ -83,6 +85,8 @@ Partial Class Settings
         Me.btn_Lyric = New System.Windows.Forms.Button()
         Me.btn_time = New System.Windows.Forms.Button()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
+        Me.FontDialog1 = New System.Windows.Forms.FontDialog()
         Me.TabControl1.SuspendLayout()
         Me.TabPage_time.SuspendLayout()
         Me.PnlOpen.SuspendLayout()
@@ -112,6 +116,7 @@ Partial Class Settings
         '
         'TabPage_time
         '
+        Me.TabPage_time.Controls.Add(Me.btn_saveLoudTime)
         Me.TabPage_time.Controls.Add(Me.PnlOpen)
         Me.TabPage_time.Controls.Add(Me.PnlStop)
         Me.TabPage_time.Controls.Add(Me.ChkSetTimeEnabled)
@@ -123,6 +128,21 @@ Partial Class Settings
         Me.TabPage_time.TabIndex = 0
         Me.TabPage_time.Text = "TabPage1"
         Me.TabPage_time.UseVisualStyleBackColor = True
+        '
+        'btn_saveLoudTime
+        '
+        Me.btn_saveLoudTime.BackColor = System.Drawing.Color.FromArgb(CType(CType(102, Byte), Integer), CType(CType(121, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.btn_saveLoudTime.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(83, Byte), Integer))
+        Me.btn_saveLoudTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_saveLoudTime.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.btn_saveLoudTime.ForeColor = System.Drawing.Color.White
+        Me.btn_saveLoudTime.Location = New System.Drawing.Point(181, 57)
+        Me.btn_saveLoudTime.Name = "btn_saveLoudTime"
+        Me.btn_saveLoudTime.Size = New System.Drawing.Size(75, 25)
+        Me.btn_saveLoudTime.TabIndex = 45
+        Me.btn_saveLoudTime.Text = "保存"
+        Me.btn_saveLoudTime.UseVisualStyleBackColor = False
+        Me.btn_saveLoudTime.Visible = False
         '
         'PnlOpen
         '
@@ -159,6 +179,7 @@ Partial Class Settings
         '
         'PnlStop
         '
+        Me.PnlStop.Controls.Add(Me.btn_saveCloseTime)
         Me.PnlStop.Controls.Add(Me.Panel3)
         Me.PnlStop.Controls.Add(Me.Panel2)
         Me.PnlStop.Controls.Add(Me.txtEndTime)
@@ -168,6 +189,21 @@ Partial Class Settings
         Me.PnlStop.Name = "PnlStop"
         Me.PnlStop.Size = New System.Drawing.Size(305, 178)
         Me.PnlStop.TabIndex = 44
+        '
+        'btn_saveCloseTime
+        '
+        Me.btn_saveCloseTime.BackColor = System.Drawing.Color.FromArgb(CType(CType(102, Byte), Integer), CType(CType(121, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.btn_saveCloseTime.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(83, Byte), Integer))
+        Me.btn_saveCloseTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_saveCloseTime.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.btn_saveCloseTime.ForeColor = System.Drawing.Color.White
+        Me.btn_saveCloseTime.Location = New System.Drawing.Point(166, 5)
+        Me.btn_saveCloseTime.Name = "btn_saveCloseTime"
+        Me.btn_saveCloseTime.Size = New System.Drawing.Size(75, 25)
+        Me.btn_saveCloseTime.TabIndex = 46
+        Me.btn_saveCloseTime.Text = "保存"
+        Me.btn_saveCloseTime.UseVisualStyleBackColor = False
+        Me.btn_saveCloseTime.Visible = False
         '
         'Panel3
         '
@@ -376,6 +412,7 @@ Partial Class Settings
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(358, 207)
         Me.Panel4.TabIndex = 15
+        Me.Panel4.Visible = False
         '
         'Panel5
         '
@@ -907,4 +944,8 @@ Partial Class Settings
     Friend WithEvents LinkLabel1 As LinkLabel
     Friend WithEvents lbl_buidLevel As Label
     Friend WithEvents lbl_CheckUpdates As LinkLabel
+    Friend WithEvents btn_saveLoudTime As Button
+    Friend WithEvents btn_saveCloseTime As Button
+    Friend WithEvents ColorDialog1 As ColorDialog
+    Friend WithEvents FontDialog1 As FontDialog
 End Class

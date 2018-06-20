@@ -71,8 +71,10 @@ Public Class Modren_UI
         AddHandler FormLoaded.Tick, AddressOf FormLoad
         FormLoaded.Enabled = True
         '设置字幕颜色
-        Lbl_LryicUp.ForeColor = mainOption.Lyric_CN_ForeColor
-        Lbl_LryicDown.ForeColor = mainOption.Lyric_English_ForeColor
+        Lbl_LryicUp.ForeColor = mainOption.Lyric_English_ForeColor
+        Lbl_LryicDown.ForeColor = mainOption.Lyric_CN_ForeColor
+        Lbl_LryicUp.Font = mainOption.Lyric_english_font
+        Lbl_LryicDown.Font = mainOption.Lyric_CN_font
 
         log.Write("程序启动成功")
     End Sub
@@ -203,7 +205,16 @@ Public Class Modren_UI
         playProgres.Flush(0)
     End Sub
 
-    Private Sub UpdateMusicNameText(musicname As String) Handles Engine.AddedAMusic
+    Private Sub Engine_AddMusic(musicname As String) Handles Engine.AddedAMusic
+        Call UpdateMusicNameText(musicname)
+    End Sub
+
+    Private Sub Engine_ChangedMusic() Handles Engine.ChangedMusic
+        Lbl_MusicName.Text = MusicList(nowPlay).text
+    End Sub
+
+    Private Sub UpdateMusicNameText(musicname As String)
+        '输入路径转换为歌名
         Lbl_MusicName.Text = ListTidy(Dir(musicname), 32)
     End Sub
 
