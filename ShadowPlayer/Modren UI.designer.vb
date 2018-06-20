@@ -29,7 +29,6 @@ Partial Class Modren_UI
         Me.btn_Mainexit = New System.Windows.Forms.Button()
         Me.Lbl_title = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.TmrMusicEnd = New System.Windows.Forms.Timer(Me.components)
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
@@ -55,6 +54,7 @@ Partial Class Modren_UI
         Me.Btn_NextMusic = New System.Windows.Forms.Button()
         Me.Btn_Stop = New System.Windows.Forms.Button()
         Me.Btn_PlayPause = New System.Windows.Forms.Button()
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.Player, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -132,11 +132,6 @@ Partial Class Modren_UI
         '
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 1000
-        '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.FilterIndex = 3
-        Me.OpenFileDialog1.Multiselect = True
         '
         'TmrMusicEnd
         '
@@ -389,6 +384,11 @@ Partial Class Modren_UI
         Me.Btn_PlayPause.TabIndex = 27
         Me.Btn_PlayPause.UseVisualStyleBackColor = False
         '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FilterIndex = 3
+        Me.OpenFileDialog1.Multiselect = True
+        '
         'Modren_UI
         '
         Me.AllowDrop = True
@@ -435,7 +435,6 @@ Partial Class Modren_UI
     Friend WithEvents btn_Mainexit As Button
     Friend WithEvents Lbl_title As Label
     Friend WithEvents Timer1 As Timer
-    Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents TmrMusicEnd As Timer
     Friend WithEvents NotifyIcon1 As NotifyIcon
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
@@ -461,4 +460,5 @@ Partial Class Modren_UI
     Friend WithEvents Button1 As Button
     Friend WithEvents Player As AxWMPLib.AxWindowsMediaPlayer
     Friend WithEvents Button2 As Button
+    Friend WithEvents OpenFileDialog1 As OpenFileDialog
 End Class

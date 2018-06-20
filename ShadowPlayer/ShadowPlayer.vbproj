@@ -98,6 +98,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="OptionClass.vb" />
+    <Compile Include="PlayEngine.vb" />
     <Compile Include="PlayProgress.vb" />
     <Compile Include="VisualAction.vb" />
     <Compile Include="zimu.designer.vb">
@@ -177,6 +178,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\favicon-20180902104146803.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\labelback1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\labelback2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\labelback3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

@@ -1,31 +1,15 @@
 ﻿Imports WMPLib
 Public Class Modren_UI
-    Dim playProgres As PlayProgress
-    Public Class PlayEngine
+    Const FILTERS = "音频文件|*.wma;*.wax;*.cda;*.mp3;*.m3u;*.wav;*.mid:*.midi;*.rmi;*.aif;*.aifc;*aiff;*.au;*,snd|
+视频文件|*.mp4;*.wmv;*.wvx;*.asf;*.asx;*.wpl;*.wm;*.wmx;*.wmd;*.wmz;*.vob;*.dvr;*.avi;*.mpeg:*.mpg;*.mlv;*.mpv2;*.mpa;*.mp2|
+所有支持格式|*.mp4;*.wma;*.wax;*.cda;*.mp3;*.m3u;*.wav;*.mid:*.midi;*.rmi;*.aif;*.aifc;*aiff;*.au;*,snd;*.wmv;*.wvx;*.asf;*.asx;*.wpl;*.wm;*.wmx;*.wmd;*.wmz;*.vob;*.dvr;*.avi;*.mpeg:*.mpg;*.mlv;*.mpv2;*.mpa;*.mp2"
+    Public playProgres As PlayProgress
+    Dim WithEvents engine As New PlayEngine
+    Public WithEvents MusicList As New ArrayList
+    Dim choosefile As Boolean = False
 
-        Dim _timer As Timer
+    Public nowPlay As Integer, lastPlay As Integer, chooseItem As Integer = -1
 
-
-        Public Sub Play()
-
-        End Sub
-
-        Public Sub Pause()
-
-        End Sub
-
-        Public Sub [Stop]()
-
-        End Sub
-
-        Public Sub ChangeMusic()
-
-        End Sub
-
-        Private Sub Wait_Until_Music_End()
-
-        End Sub
-    End Class
     Private Sub btn_Mainexit_Click(sender As Object, e As EventArgs) Handles btn_Mainexit.Click
         Application.Exit()
     End Sub
@@ -43,10 +27,13 @@ Public Class Modren_UI
         Lbl_MusicName.Text = ""
         NotifyIcon1.Icon = My.Resources.LOGO_Play
 
+
+        '调用载入后PlayProgress绘制
         Dim FormLoaded As New Timer
         FormLoaded.Interval = 30
         AddHandler FormLoaded.Tick, AddressOf FormLoad
         FormLoaded.Enabled = True
+        '
 
         Trace.WriteLine("[" + Now.ToString + "]" + "程序启动成功")
         sw.Close()
@@ -58,4 +45,29 @@ Public Class Modren_UI
         e.Dispose
     End Sub
 
+    Private Sub Modren_UI_DragDrop(sender As Object, e As DragEventArgs) Handles MyBase.DragDrop
+
+    End Sub
+
+    Private Sub Lbl_MusicName_Click(sender As Object, e As EventArgs) Handles Lbl_MusicName.DoubleClick
+        OpenFileDialog1.Filter = "音频文件|*.wma;*.wax;*.cda;*.mp3;*.m3u;*.wav;*.mid:*.midi;*.rmi;*.aif;*.aifc;*aiff;*.au;*,snd|
+视频文件|*.mp4;*.wmv;*.wvx;*.asf;*.asx;*.wpl;*.wm;*.wmx;*.wmd;*.wmz;*.vob;*.dvr;*.avi;*.mpeg:*.mpg;*.mlv;*.mpv2;*.mpa;*.mp2|
+所有支持格式|*.mp4;*.wma;*.wax;*.cda;*.mp3;*.m3u;*.wav;*.mid:*.midi;*.rmi;*.aif;*.aifc;*aiff;*.au;*,snd;*.wmv;*.wvx;*.asf;*.asx;*.wpl;*.wm;*.wmx;*.wmd;*.wmz;*.vob;*.dvr;*.avi;*.mpeg:*.mpg;*.mlv;*.mpv2;*.mpa;*.mp2"
+        OpenFileDialog1.ShowDialog()
+        If chooseFile = False Then
+            Exit Sub
+        Else
+            chooseFile = False
+        End If
+        engine.Add(OpenFileDialog1.FileNames, FlowLayoutPanel1, ToolTip1)
+
+    End Sub
+
+    Private Sub UpdateMusicNameText(musicname As String) Handles engine.AddedAMusic
+        Lbl_MusicName.Text = ListTidy(Dir(musicname), 32)
+    End Sub
+
+    Private Sub OpenFileDialog1_FileOk(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles OpenFileDialog1.FileOk
+        choosefile = True
+    End Sub
 End Class
