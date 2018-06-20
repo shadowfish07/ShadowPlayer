@@ -18,7 +18,7 @@ Public Class Modren_UI
     Public mainOption As New OptionClass
 
     Private isListOpen As Boolean = False
-    Private ListRemainTime As Integer = 0
+    Public ListRemainTime As Integer = 0
 
     Private Sub btn_Mainexit_Click(sender As Object, e As EventArgs) Handles btn_Mainexit.Click
         Application.Exit()

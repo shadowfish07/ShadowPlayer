@@ -106,6 +106,7 @@
     <Compile Include="OptionClass.vb" />
     <Compile Include="PlayEngine.vb" />
     <Compile Include="PlayProgress.vb" />
+    <Compile Include="ShowOneByOneAction.vb" />
     <Compile Include="VisualAction.vb" />
     <Compile Include="VisualActionEventArg.vb" />
     <Compile Include="zimu.designer.vb">

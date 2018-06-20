@@ -140,6 +140,7 @@
             sender.image = My.Resources.ListMouseMoveImage
         End If
 
+        Modren_UI.ListRemainTime = 0
         'sender.GetObLyrImage.BackColor = Color.FromArgb(58, 83, 163)
     End Sub
 
