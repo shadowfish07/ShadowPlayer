@@ -1,4 +1,4 @@
-﻿Public Class MyLabel
+﻿Public Class LabelWithIndex
     Inherits System.Windows.Forms.Label
 
     Public Property Index As Integer
@@ -7,32 +7,32 @@
     Private LyrImage As PictureBox
 
     Sub New()
-        MouseMoveImage = My.Resources.labelback1
+        'MouseMoveImage = My.Resources.labelback1
 
     End Sub
 
     Sub New(SetMouseMoveImage As Object)
         If SetMouseMoveImage = Nothing Then
-            MouseMoveImage = My.Resources.labelback1
+            'MouseMoveImage = My.Resources.labelback1
         Else
-            MouseMoveImage = SetMouseMoveImage
+            'MouseMoveImage = SetMouseMoveImage
         End If
     End Sub
 
     Public Sub CreatLyrImage()
         LyrImage = New PictureBox
-        Main.Controls.Add(LyrImage)
+        Modren_UI.Controls.Add(LyrImage)
         With LyrImage
             .Visible = False
             .Size = New Size(16, 16)
             .Location = New Point(245, Me.Location.Y + Me.Size.Height / 2 - .Size.Height / 2 + 147)
-            .Image = My.Resources.attachment_1_16
+            '.Image = My.Resources.attachment_1_16
             .BackColor = Color.FromArgb(87, 135, 195)
             .BringToFront()
         End With
-        AddHandler LyrImage.MouseMove, AddressOf Main.LyrImage_MouseMove
-        AddHandler LyrImage.MouseLeave, AddressOf Main.LyrImage_MouseLeave
-        AddHandler LyrImage.MouseUp, AddressOf Main.LyrImage_MouseUp
+        'AddHandler LyrImage.MouseMove, AddressOf Modren_UI.LyrImage_MouseMove
+        'AddHandler LyrImage.MouseLeave, AddressOf Modren_UI.LyrImage_MouseLeave
+        'AddHandler LyrImage.MouseUp, AddressOf Modren_UI.LyrImage_MouseUp
     End Sub
 
 
@@ -40,7 +40,7 @@
         Return LyrImage
     End Function
 
-    Shared Sub ObLyrImageExchange(ob1 As MyLabel, ob2 As MyLabel)
+    Shared Sub ObLyrImageExchange(ob1 As LabelWithIndex, ob2 As LabelWithIndex)
         Dim temp As Point = New Point(245, ob1.LyrImage.Location.Y)
         ob1.LyrImage.Location = New Point(245, ob2.LyrImage.Location.Y)
         ob2.LyrImage.Location = temp
@@ -55,9 +55,9 @@
         Protected HaveLyrics As Boolean = False
         Protected HaveLanguages As Boolean = False
         Private _Lyrics2 As Hashtable = New Hashtable
-        Private parent As MyLabel
+        Private parent As LabelWithIndex
 
-        Public Sub New(obj As MyLabel)
+        Public Sub New(obj As LabelWithIndex)
             parent = obj
         End Sub
 

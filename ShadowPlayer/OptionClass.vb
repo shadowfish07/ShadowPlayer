@@ -12,9 +12,7 @@
         Private _Value As Boolean
         Private _OnlyOneTrue() As Myboolean
         Private _OnlyOneFalse() As Myboolean
-        Private _MainformPictureboxImage() As Image '{on,off,on_grey,off_grey}
         Private _Children() As Myboolean
-        Public Property MainformPicturebox As PictureBox
         Public Property Enabled As Boolean = True
 
         Public Property OnlyOneTrue(index As Integer) As Myboolean
@@ -33,14 +31,7 @@
                 _OnlyOneFalse(index) = Value
             End Set
         End Property
-        Public Property MainformPictureboxImage(index As Integer) As Image
-            Get
-                Return _MainformPictureboxImage(index)
-            End Get
-            Set
-                _MainformPictureboxImage(index) = Value
-            End Set
-        End Property
+
         Public Property Children(index As Integer) As Myboolean
             Get
                 Return _Children(index)
@@ -51,7 +42,7 @@
         End Property
 
         Public Sub New(Value As Boolean, Optional OnlyOneTrue() As Myboolean = Nothing, Optional OnlyOneFalse() As Myboolean = Nothing, Optional _
-                       Children() As Myboolean = Nothing, Optional MainformPictureboxImage() As Image = Nothing)
+                       Children() As Myboolean = Nothing)
             '检测是否存在只有一个为真/假时Value值的非法性
             '
             _Value = Value
@@ -71,11 +62,6 @@
             Else
                 ReDim _Children(-1)
             End If
-            If Not MainformPictureboxImage Is Nothing Then
-                ReDim _MainformPictureboxImage(UBound(MainformPictureboxImage))
-            Else
-                ReDim _MainformPictureboxImage(-1)
-            End If
 
             For i = 0 To UBound(_OnlyOneTrue)
                 Me.OnlyOneTrue(i) = _OnlyOneTrue(i)
@@ -86,14 +72,7 @@
             For i = 0 To UBound(_Children)
                 Me.Children(i) = _Children(i)
             Next
-            If MainformPictureboxImage Is Nothing Then
-                _MainformPictureboxImage = {My.Resources.checkbox_on, My.Resources.checkbox_off, My.Resources.checkbox_on_grey, My.Resources.checkbox_off_grey}
-            Else
-                ReDim _MainformPictureboxImage(UBound(_MainformPictureboxImage))
-                For i = 0 To UBound(_MainformPictureboxImage)
-                    _MainformPictureboxImage(i) = MainformPictureboxImage(i)
-                Next
-            End If
+
         End Sub
 
         Public Property Value As Boolean
@@ -104,7 +83,7 @@
                 If Enabled = False Then Exit Property
                 _Value = Value
                 Call DealOnlys()
-                If Not (Me.MainformPicturebox Is Nothing) Then Me.MainformPicturebox.Image = Me.MainformPictureboxImage((CInt(Value) + 1) Mod 2 + 2 * ((CInt(Me.Enabled) + 1) Mod 2))
+
             End Set
         End Property
 
@@ -118,18 +97,14 @@
                 For i = 0 To UBound(_OnlyOneTrue)
                     If Not (_OnlyOneTrue Is Me) Then
                         _OnlyOneTrue(i).Value = False
-                        If Not (_OnlyOneTrue(i).MainformPicturebox Is Nothing) Then
-                            _OnlyOneTrue(i).MainformPicturebox.Image = _OnlyOneTrue(i).MainformPictureboxImage((CInt(Value) + 1) Mod 2 + 2 * ((CInt(_Children(i).Enabled) + 1) Mod 2))
-                        End If
+
                     End If
                 Next
             Else
                 For i = 0 To UBound(_OnlyOneFalse)
                     If Not (_OnlyOneFalse Is Me) Then
                         _OnlyOneFalse(i).Value = True
-                        If Not (_OnlyOneFalse(i).MainformPicturebox Is Nothing) Then
-                            _OnlyOneFalse(i).MainformPicturebox.Image = _OnlyOneFalse(i).MainformPictureboxImage((CInt(Value) + 1) Mod 2 + 2 * ((CInt(_Children(i).Enabled) + 1) Mod 2))
-                        End If
+
                     End If
                 Next
             End If
@@ -140,10 +115,7 @@
             Dim i As Integer
             For i = 0 To UBound(_Children)
                 _Children(i).Enabled = Value
-                If Not (_Children(i).MainformPicturebox Is Nothing) Then
-                    _Children(i).MainformPicturebox.Image = _Children(i).MainformPictureboxImage((CInt(Value) + 1) Mod 2 + 2 * ((CInt(_Children(i).Enabled) + 1) Mod 2))
-                    _Children(i).MainformPicturebox.Enabled = _Children(i).Enabled
-                End If
+
             Next
         End Sub
 
@@ -164,19 +136,6 @@
 
     Public Sub New()
 
-    End Sub
-
-    Public Sub New(Options() As EOptions, PictureBox() As PictureBox)
-        '将选项与MIAN按钮对应
-        If UBound(Options) <> UBound(PictureBox) Then
-            Throw New ArgumentException("参数数组长度应相等")
-            Stop
-        End If
-        Dim i As Integer
-        For i = 0 To UBound(Options)
-            Dim op As Myboolean() = {_LoudOpen, _CloseOpen, _CloseEndOpen, _CloseMiniOpen, _AfterClose_puase, _AfterClose_stop, _AfterClose_next, _LyricScreenOpen}
-            op(Options(i)).MainformPicturebox = PictureBox(i)
-        Next
     End Sub
 
     Public Enum EOptions
