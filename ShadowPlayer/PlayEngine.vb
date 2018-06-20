@@ -212,6 +212,9 @@ Public Class PlayEngine
 
     Public Sub Play()
         Modren_UI.Player.Ctlcontrols.play()
+        If PlayEngine.IsFileVideo(MusicList(nowPlay).tag) And Modren_UI.mainOption.Video_AutoFullScreen Then
+            Player.fullScreen = True
+        End If
     End Sub
 
     Public Sub Pause()
