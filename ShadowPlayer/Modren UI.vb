@@ -164,4 +164,18 @@ Public Class Modren_UI
     Private Sub Modren_UI_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         log.EndWrite()
     End Sub
+
+    Private Sub ImageChangeToReplay() Handles Engine.PlayEnd
+        Btn_PlayPause.Image = My.Resources.刷新
+    End Sub
+
+    Private Sub Panel1_Click(sender As Object, e As EventArgs) Handles Panel1.Click
+        Dim point_x As Integer = Me.MousePosition.X - Panel1.Location.X - Me.Location.X
+        Dim point_y As Integer = Me.MousePosition.Y - Panel1.Location.Y - Me.Location.Y
+        If playProgres.IsinYuanHuan(New Point(point_x, point_y)) Then
+            Player.Ctlcontrols.currentPosition = (Panel1.Height - point_y) / Panel1.Height * Player.currentMedia.duration
+            playProgres.Flush(Player.Ctlcontrols.currentPosition / Player.currentMedia.duration)
+            Lbl_NowTime.Text = Player.Ctlcontrols.currentPositionString
+        End If
+    End Sub
 End Class

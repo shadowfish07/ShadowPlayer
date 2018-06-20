@@ -190,5 +190,14 @@
   <ItemGroup>
     <None Include="Resources\labelback3.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Content.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\闹钟.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\刷新.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

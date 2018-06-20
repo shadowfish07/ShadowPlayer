@@ -59,8 +59,8 @@ Public Class PlayProgress
         Return temp
     End Function
 
-    Public Function IsinYuanHuan() As Boolean
-
+    Public Function IsinYuanHuan(pos As Point) As Boolean
+        Return yuanHuan.IsVisible(pos)
     End Function
 
     Public Sub Flush(rate As Single)

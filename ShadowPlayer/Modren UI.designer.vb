@@ -48,12 +48,13 @@ Partial Class Modren_UI
         Me.Player = New AxWMPLib.AxWindowsMediaPlayer()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.Btn_ControlMusicList = New System.Windows.Forms.Button()
+        Me.Btn_List = New System.Windows.Forms.Button()
         Me.Btn_PrevMusic = New System.Windows.Forms.Button()
         Me.Btn_NextMusic = New System.Windows.Forms.Button()
         Me.Btn_Stop = New System.Windows.Forms.Button()
         Me.Btn_PlayPause = New System.Windows.Forms.Button()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.Btn_Alarm = New System.Windows.Forms.Button()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.Player, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -304,21 +305,20 @@ Partial Class Modren_UI
         Me.Button1.TabIndex = 36
         Me.Button1.UseVisualStyleBackColor = False
         '
-        'Btn_ControlMusicList
+        'Btn_List
         '
-        Me.Btn_ControlMusicList.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.Play
-        Me.Btn_ControlMusicList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Btn_ControlMusicList.FlatAppearance.BorderSize = 0
-        Me.Btn_ControlMusicList.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
-        Me.Btn_ControlMusicList.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
-        Me.Btn_ControlMusicList.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btn_ControlMusicList.ForeColor = System.Drawing.Color.White
-        Me.Btn_ControlMusicList.Location = New System.Drawing.Point(698, 96)
-        Me.Btn_ControlMusicList.Name = "Btn_ControlMusicList"
-        Me.Btn_ControlMusicList.Size = New System.Drawing.Size(20, 20)
-        Me.Btn_ControlMusicList.TabIndex = 35
-        Me.Btn_ControlMusicList.UseVisualStyleBackColor = False
-        Me.Btn_ControlMusicList.Visible = False
+        Me.Btn_List.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.Content
+        Me.Btn_List.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Btn_List.FlatAppearance.BorderSize = 0
+        Me.Btn_List.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.Btn_List.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.Btn_List.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_List.ForeColor = System.Drawing.Color.White
+        Me.Btn_List.Location = New System.Drawing.Point(686, 91)
+        Me.Btn_List.Name = "Btn_List"
+        Me.Btn_List.Size = New System.Drawing.Size(32, 32)
+        Me.Btn_List.TabIndex = 35
+        Me.Btn_List.UseVisualStyleBackColor = False
         '
         'Btn_PrevMusic
         '
@@ -385,6 +385,22 @@ Partial Class Modren_UI
         Me.OpenFileDialog1.FilterIndex = 3
         Me.OpenFileDialog1.Multiselect = True
         '
+        'Btn_Alarm
+        '
+        Me.Btn_Alarm.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.闹钟
+        Me.Btn_Alarm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Btn_Alarm.FlatAppearance.BorderSize = 0
+        Me.Btn_Alarm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.Btn_Alarm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.Btn_Alarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_Alarm.ForeColor = System.Drawing.Color.White
+        Me.Btn_Alarm.Location = New System.Drawing.Point(655, 91)
+        Me.Btn_Alarm.Name = "Btn_Alarm"
+        Me.Btn_Alarm.Size = New System.Drawing.Size(32, 32)
+        Me.Btn_Alarm.TabIndex = 38
+        Me.Btn_Alarm.UseVisualStyleBackColor = False
+        Me.Btn_Alarm.Visible = False
+        '
         'Modren_UI
         '
         Me.AllowDrop = True
@@ -392,10 +408,11 @@ Partial Class Modren_UI
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(83, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(719, 521)
+        Me.Controls.Add(Me.Btn_Alarm)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Player)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.Btn_ControlMusicList)
+        Me.Controls.Add(Me.Btn_List)
         Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Controls.Add(Me.Lbl_LryicDown)
         Me.Controls.Add(Me.Lbl_LryicUp)
@@ -451,9 +468,10 @@ Partial Class Modren_UI
     Friend WithEvents Lbl_LryicDown As Label
     Friend WithEvents Lbl_LryicUp As Label
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
-    Friend WithEvents Btn_ControlMusicList As Button
+    Friend WithEvents Btn_List As Button
     Friend WithEvents Button1 As Button
     Friend WithEvents Player As AxWMPLib.AxWindowsMediaPlayer
     Friend WithEvents Button2 As Button
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents Btn_Alarm As Button
 End Class

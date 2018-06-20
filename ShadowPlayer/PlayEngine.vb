@@ -1,5 +1,6 @@
 ﻿Public Class PlayEngine
     Event AddedAMusic(musicName As String)
+    Event PlayEnd()
 
     Dim lyr As Lyric
     Dim WithEvents _timer As New Timer With {.Interval = 200, .Enabled = False}
@@ -81,7 +82,6 @@
             Return -1
         End Function
     End Class
-
 
     Public Sub Add(filePaths() As String, targetList As FlowLayoutPanel, tooltip As ToolTip)
         Dim s As String
@@ -204,13 +204,13 @@
                         Modren_UI.Player.URL = Modren_UI.MusicList.Item(0).tag
                         Modren_UI.nowPlay = 0
                         Modren_UI.lastPlay = 0
-                        '播放按钮变成重放图标！！
+                        RaiseEvent PlayEnd()
                     End If
                 Case Cplaynum.ListCycle
                     ChangeMusic()
                 Case Cplaynum.OneOnce
                     Me.Stop()
-                    '播放按钮变成重放图标！！
+                    RaiseEvent PlayEnd()
                 Case Cplaynum.OneCycle
                     Modren_UI.Player.Ctlcontrols.currentPosition = 0
                 Case Cplaynum.Random
