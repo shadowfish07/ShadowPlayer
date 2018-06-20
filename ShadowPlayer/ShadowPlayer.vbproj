@@ -52,6 +52,10 @@
     <ApplicationIcon>Resources\favicon-20180902104146803.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="libVisualAction, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libVisualAction\bin\Release\libVisualAction.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -106,6 +110,18 @@
     <Compile Include="OptionClass.vb" />
     <Compile Include="PlayEngine.vb" />
     <Compile Include="PlayProgress.vb" />
+    <Compile Include="SetChangedInform.Designer.vb">
+      <DependentUpon>SetChangedInform.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SetChangedInform.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.Designer.vb">
+      <DependentUpon>Settings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ShowOneByOneAction.vb" />
     <Compile Include="VisualAction.vb" />
     <Compile Include="VisualActionEventArg.vb" />
@@ -128,6 +144,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MusicListLabel.resx">
       <DependentUpon>MusicListLabel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SetChangedInform.resx">
+      <DependentUpon>SetChangedInform.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="zimu.resx">
       <DependentUpon>zimu.vb</DependentUpon>
@@ -216,6 +238,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\移除.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\success.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

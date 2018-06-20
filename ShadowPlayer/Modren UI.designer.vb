@@ -39,14 +39,14 @@ Partial Class Modren_UI
         Me.退出ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Lbl_MusicName = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Pnl_Circle = New System.Windows.Forms.Panel()
         Me.Lbl_TotalTime = New System.Windows.Forms.Label()
         Me.Lbl_NowTime = New System.Windows.Forms.Label()
         Me.Lbl_LryicDown = New System.Windows.Forms.Label()
         Me.Lbl_LryicUp = New System.Windows.Forms.Label()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Btn_FullScreen = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Btn_Settings = New System.Windows.Forms.Button()
         Me.Btn_List = New System.Windows.Forms.Button()
         Me.Btn_PrevMusic = New System.Windows.Forms.Button()
         Me.Btn_NextMusic = New System.Windows.Forms.Button()
@@ -65,7 +65,7 @@ Partial Class Modren_UI
         Me.Timer_List = New System.Windows.Forms.Timer(Me.components)
         Me.Player = New AxWMPLib.AxWindowsMediaPlayer()
         Me.ContextMenuStrip1.SuspendLayout()
-        Me.Panel1.SuspendLayout()
+        Me.Pnl_Circle.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.Player, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -75,8 +75,8 @@ Partial Class Modren_UI
         Me.btn_Mainmin.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_Mainmin.BackColor = System.Drawing.Color.Transparent
         Me.btn_Mainmin.FlatAppearance.BorderSize = 0
-        Me.btn_Mainmin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
-        Me.btn_Mainmin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.btn_Mainmin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(103, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(196, Byte), Integer))
+        Me.btn_Mainmin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(194, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.btn_Mainmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_Mainmin.Font = New System.Drawing.Font("Segoe UI Symbol", 11.25!)
         Me.btn_Mainmin.ForeColor = System.Drawing.Color.White
@@ -94,8 +94,8 @@ Partial Class Modren_UI
         Me.btn_Mainmax.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btn_Mainmax.BackColor = System.Drawing.Color.Transparent
         Me.btn_Mainmax.FlatAppearance.BorderSize = 0
-        Me.btn_Mainmax.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
-        Me.btn_Mainmax.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.btn_Mainmax.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(103, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(196, Byte), Integer))
+        Me.btn_Mainmax.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(194, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.btn_Mainmax.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_Mainmax.Font = New System.Drawing.Font("Segoe UI Symbol", 11.25!)
         Me.btn_Mainmax.ForeColor = System.Drawing.Color.White
@@ -207,14 +207,14 @@ Partial Class Modren_UI
         Me.Lbl_MusicName.Text = "MusicName"
         Me.Lbl_MusicName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Panel1
+        'Pnl_Circle
         '
-        Me.Panel1.Controls.Add(Me.Lbl_TotalTime)
-        Me.Panel1.Controls.Add(Me.Lbl_NowTime)
-        Me.Panel1.Location = New System.Drawing.Point(259, 128)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(200, 200)
-        Me.Panel1.TabIndex = 26
+        Me.Pnl_Circle.Controls.Add(Me.Lbl_TotalTime)
+        Me.Pnl_Circle.Controls.Add(Me.Lbl_NowTime)
+        Me.Pnl_Circle.Location = New System.Drawing.Point(259, 128)
+        Me.Pnl_Circle.Name = "Pnl_Circle"
+        Me.Pnl_Circle.Size = New System.Drawing.Size(200, 200)
+        Me.Pnl_Circle.TabIndex = 26
         '
         'Lbl_TotalTime
         '
@@ -291,21 +291,21 @@ Partial Class Modren_UI
         Me.Btn_FullScreen.UseVisualStyleBackColor = False
         Me.Btn_FullScreen.Visible = False
         '
-        'Button1
+        'Btn_Settings
         '
-        Me.Button1.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.设置
-        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
-        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(509, 12)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(16, 16)
-        Me.Button1.TabIndex = 36
-        Me.Button1.TabStop = False
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.Btn_Settings.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.设置
+        Me.Btn_Settings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Btn_Settings.FlatAppearance.BorderSize = 0
+        Me.Btn_Settings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.Btn_Settings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.Btn_Settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_Settings.ForeColor = System.Drawing.Color.White
+        Me.Btn_Settings.Location = New System.Drawing.Point(509, 12)
+        Me.Btn_Settings.Name = "Btn_Settings"
+        Me.Btn_Settings.Size = New System.Drawing.Size(16, 16)
+        Me.Btn_Settings.TabIndex = 36
+        Me.Btn_Settings.TabStop = False
+        Me.Btn_Settings.UseVisualStyleBackColor = False
         '
         'Btn_List
         '
@@ -539,7 +539,7 @@ Partial Class Modren_UI
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Btn_FullScreen)
         Me.Controls.Add(Me.Player)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.Btn_Settings)
         Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Controls.Add(Me.Lbl_LryicDown)
         Me.Controls.Add(Me.Lbl_LryicUp)
@@ -547,7 +547,7 @@ Partial Class Modren_UI
         Me.Controls.Add(Me.Btn_NextMusic)
         Me.Controls.Add(Me.Btn_Stop)
         Me.Controls.Add(Me.Btn_PlayPause)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.Pnl_Circle)
         Me.Controls.Add(Me.Lbl_MusicName)
         Me.Controls.Add(Me.Lbl_title)
         Me.Controls.Add(Me.btn_Mainmin)
@@ -567,7 +567,7 @@ Partial Class Modren_UI
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "ShadowPlayer"
         Me.ContextMenuStrip1.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
+        Me.Pnl_Circle.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.Player, System.ComponentModel.ISupportInitialize).EndInit()
@@ -591,7 +591,7 @@ Partial Class Modren_UI
     Friend WithEvents 退出ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents Lbl_MusicName As Label
-    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Pnl_Circle As Panel
     Friend WithEvents Lbl_TotalTime As Label
     Friend WithEvents Lbl_NowTime As Label
     Friend WithEvents Btn_PlayPause As Button
@@ -602,7 +602,7 @@ Partial Class Modren_UI
     Friend WithEvents Lbl_LryicUp As Label
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents Btn_List As Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents Btn_Settings As Button
     Friend WithEvents Player As AxWMPLib.AxWindowsMediaPlayer
     Friend WithEvents Btn_FullScreen As Button
     Friend WithEvents OpenFileDialog1 As OpenFileDialog

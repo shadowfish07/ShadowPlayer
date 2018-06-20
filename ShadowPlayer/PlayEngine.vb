@@ -1,5 +1,6 @@
 ﻿Public Class PlayEngine
     Event AddedAMusic(musicName As String)
+    Event ChangedMusic()
     Event PlayEnd()
 
     Dim lyr As Lyric
@@ -21,6 +22,11 @@
         lyr.lbl_down.Visible = False
     End Sub
 
+    Public Sub ChangeLyric()
+        '！！！尚待开发：手动加载最近的歌词
+        lyr.ChangeLyric(Me, Nothing)
+    End Sub
+
     Private Class Lyric
 
         Public WithEvents Timer As New Timer With {.Interval = 100}
@@ -36,6 +42,10 @@
             If result = -1 Then Exit Sub
             If Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.GetHaveLanguages Then
                 '双语字幕
+                lbl_up.ForeColor = Modren_UI.mainOption.Lyric_English_ForeColor
+                lbl_down.ForeColor = Modren_UI.mainOption.Lyric_CN_ForeColor
+                lbl_up.Font = Modren_UI.mainOption.Lyric_english_font
+                lbl_down.Font = Modren_UI.mainOption.Lyric_cn_font
                 lbl_down.Visible = True
                 If Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result) <> "" Then
                     'If StrLength(Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result)) > 46 Then
@@ -50,6 +60,8 @@
                 End If
             Else
                 '中文字幕
+                lbl_up.ForeColor = Modren_UI.mainOption.Lyric_SingleLine_ForeColor
+                lbl_up.Font = Modren_UI.mainOption.Lyric_SingleLine_font
                 lbl_down.Visible = False
                 If Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result) <> "" Then
                     'If StrLength(Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result)) > 26 Then
@@ -200,6 +212,8 @@
         Modren_UI.MusicList.Item(Modren_UI.nowPlay).Font = New Font(myFontFamily, 9, FontStyle.Bold)
         Modren_UI.lastPlay = Modren_UI.nowPlay
         Modren_UI.Player.URL = Modren_UI.MusicList.Item(Modren_UI.nowPlay).tag
+        RaiseEvent ChangedMusic()
+        HideLyric()
         If Play Then Me.Play()
     End Sub
 
