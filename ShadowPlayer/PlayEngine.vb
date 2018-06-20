@@ -136,12 +136,15 @@
     End Sub
 
     Private Sub Listmousemove(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        sender.image = My.Resources.labelback2
+        If sender.mouseleaveimage Is Nothing Then
+            sender.image = My.Resources.ListMouseMoveImage
+        End If
+
         'sender.GetObLyrImage.BackColor = Color.FromArgb(58, 83, 163)
     End Sub
 
     Private Sub Listmouseleave(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        sender.image = sender.MouseMoveImage
+        sender.image = sender.MouseLeaveImage
         'sender.GetObLyrImage.BackColor = Color.FromArgb(87, 135, 195)
     End Sub
 
@@ -151,10 +154,10 @@
 
     Private Sub ListClick(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If Modren_UI.chooseItem <> -1 And Modren_UI.chooseItem <= Modren_UI.MusicList.Count - 1 Then
-            Modren_UI.MusicList(Modren_UI.chooseItem).MouseMoveImage = My.Resources.labelback1
-            Modren_UI.MusicList(Modren_UI.chooseItem).image = My.Resources.labelback1
+            Modren_UI.MusicList(Modren_UI.chooseItem).MouseLeaveImage = Nothing
+            Modren_UI.MusicList(Modren_UI.chooseItem).image = Nothing
         End If
-        sender.MouseMoveImage = My.Resources.labelback3
+        sender.MouseLeaveImage = My.Resources.ListChosenImage
         Modren_UI.chooseItem = sender.index
     End Sub
 

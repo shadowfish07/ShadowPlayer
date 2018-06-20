@@ -2,12 +2,12 @@
     Inherits System.Windows.Forms.Label
 
     Public Property Index As Integer
-    Public Property MouseMoveImage As Object
+    Public Property MouseLeaveImage As Object
     Public Lyric As Lyrics = New Lyrics
     ' Private LyrImage As PictureBox
 
     Sub New()
-        MouseMoveImage = Nothing
+        MouseLeaveImage = Nothing
 
     End Sub
 

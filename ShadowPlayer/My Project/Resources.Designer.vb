@@ -73,9 +73,9 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
-        Friend ReadOnly Property labelback1() As System.Drawing.Bitmap
+        Friend ReadOnly Property ListChosenImage() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("labelback1", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("ListChosenImage", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -83,19 +83,9 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
-        Friend ReadOnly Property labelback2() As System.Drawing.Bitmap
+        Friend ReadOnly Property ListMouseMoveImage() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("labelback2", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
-        '''</summary>
-        Friend ReadOnly Property labelback3() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("labelback3", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("ListMouseMoveImage", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
