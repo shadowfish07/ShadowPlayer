@@ -1,7 +1,10 @@
 ﻿Imports WMPLib
 Public Class Modren_UI
+    Dim playProgres As PlayProgress
     Public Class PlayEngine
+
         Dim _timer As Timer
+
 
         Public Sub Play()
 
@@ -39,7 +42,20 @@ Public Class Modren_UI
         Player.settings.autoStart = False
         Lbl_MusicName.Text = ""
         NotifyIcon1.Icon = My.Resources.LOGO_Play
+
+        Dim FormLoaded As New Timer
+        FormLoaded.Interval = 30
+        AddHandler FormLoaded.Tick, AddressOf FormLoad
+        FormLoaded.Enabled = True
+
         Trace.WriteLine("[" + Now.ToString + "]" + "程序启动成功")
         sw.Close()
     End Sub
+
+    Sub FormLoad(e As Object, ev As EventArgs)
+        playProgres = New PlayProgress(Panel1, 30, Color.AliceBlue, Color.Green)
+        playProgres.Flush(0.3)
+        e.Dispose
+    End Sub
+
 End Class
