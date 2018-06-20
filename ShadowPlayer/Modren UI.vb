@@ -140,6 +140,10 @@ Public Class Modren_UI
         If Player.playState = CPlayState.Pausing Or Player.playState = CPlayState.Stoping Or Player.playState = CPlayState.Ready Then
             If MusicList.Count = 0 Then Exit Sub '后面可提示错误
             Engine.Play()
+            If IO.Path.GetExtension(MusicList.Item(nowPlay).tag) = ".mp4" Then
+                Player.Show()
+            End If
+            Debug.Print()
             Lbl_MusicName.Text = ListTidy(Dir(MusicList.Item(nowPlay).tag), 32)
             Btn_PlayPause.BackgroundImage = My.Resources.Pause
         ElseIf Player.playState = WMPPlayState.wmppsPlaying Then
