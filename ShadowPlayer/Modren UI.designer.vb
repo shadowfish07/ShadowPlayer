@@ -403,7 +403,6 @@ Partial Class Modren_UI
         Me.Btn_Alarm.Size = New System.Drawing.Size(32, 32)
         Me.Btn_Alarm.TabIndex = 38
         Me.Btn_Alarm.UseVisualStyleBackColor = False
-        Me.Btn_Alarm.Visible = False
         '
         'Lbl_Vision
         '
