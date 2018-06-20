@@ -228,7 +228,12 @@
 
     Public Property EndTime As String
         Get
-            Return _EndTime
+            If _CloseOpen.Value Then
+                Return _EndTime
+            Else
+                Return "未设置"
+            End If
+
         End Get
         Set(value As String)
             _EndTime = value
@@ -237,7 +242,12 @@
 
     Public Property LoudTime As String
         Get
-            Return _LoudTime
+            If _LoudOpen.Value Then
+                Return _LoudTime
+            Else
+                Return "未设置"
+            End If
+
         End Get
         Set(value As String)
             _LoudTime = value

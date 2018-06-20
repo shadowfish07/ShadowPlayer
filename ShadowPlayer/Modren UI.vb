@@ -38,6 +38,10 @@ Public Class Modren_UI
 
         Lbl_Vision.Text = "Version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString + SPECIALVISION
 
+        If mainOption.LoudOpen.Value Then
+            ToolTip1.SetToolTip(Btn_Alarm, "闹钟已开启" + vbCrLf + "开启时间： " + mainOption.LoudTime + vbCrLf + "关闭时间： " + mainOption.EndTime)
+        End If
+
         '调用载入后PlayProgress绘制
         Dim FormLoaded As New Timer
         FormLoaded.Interval = 30
