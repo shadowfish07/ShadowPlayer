@@ -205,7 +205,7 @@ Public Class Modren_UI
                 Player.Hide()
                 Btn_FullScreen.Visible = False
             End If
-            Lbl_MusicName.Text = ListTidy(Dir(MusicList.Item(nowPlay).tag), 32)
+            Lbl_MusicName.Text = Dir(MusicList.Item(nowPlay).tag)
         ElseIf Player.playState = WMPPlayState.wmppsPlaying Then
             Engine.Pause()
         End If
@@ -229,7 +229,7 @@ Public Class Modren_UI
 
     Private Sub UpdateMusicNameText(musicname As String)
         '输入路径转换为歌名
-        Lbl_MusicName.Text = ListTidy(Dir(musicname), 32)
+        Lbl_MusicName.Text = Dir(musicname)
     End Sub
 
     Private Sub NotifyIcon1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles NotifyIcon1.MouseDoubleClick
