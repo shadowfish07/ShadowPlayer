@@ -381,6 +381,10 @@ Public Class Modren_UI
         chooseItem -= 1
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Btn_Settings.Click
+        Settings.Show()
+    End Sub
+
     Private Sub Btn_MoveToDown_Click(sender As Object, e As EventArgs) Handles Btn_MoveToDown.Click
         If chooseItem = -1 Or chooseItem = MusicList.Count - 1 Then Exit Sub
         Dim temp As MusicListLabel = New MusicListLabel

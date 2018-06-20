@@ -46,7 +46,7 @@ Partial Class Modren_UI
         Me.Lbl_LryicUp = New System.Windows.Forms.Label()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Btn_FullScreen = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Btn_Settings = New System.Windows.Forms.Button()
         Me.Btn_List = New System.Windows.Forms.Button()
         Me.Btn_PrevMusic = New System.Windows.Forms.Button()
         Me.Btn_NextMusic = New System.Windows.Forms.Button()
@@ -291,21 +291,21 @@ Partial Class Modren_UI
         Me.Btn_FullScreen.UseVisualStyleBackColor = False
         Me.Btn_FullScreen.Visible = False
         '
-        'Button1
+        'Btn_Settings
         '
-        Me.Button1.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.设置
-        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button1.FlatAppearance.BorderSize = 0
-        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
-        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(509, 12)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(16, 16)
-        Me.Button1.TabIndex = 36
-        Me.Button1.TabStop = False
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.Btn_Settings.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.设置
+        Me.Btn_Settings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Btn_Settings.FlatAppearance.BorderSize = 0
+        Me.Btn_Settings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.Btn_Settings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.Btn_Settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_Settings.ForeColor = System.Drawing.Color.White
+        Me.Btn_Settings.Location = New System.Drawing.Point(509, 12)
+        Me.Btn_Settings.Name = "Btn_Settings"
+        Me.Btn_Settings.Size = New System.Drawing.Size(16, 16)
+        Me.Btn_Settings.TabIndex = 36
+        Me.Btn_Settings.TabStop = False
+        Me.Btn_Settings.UseVisualStyleBackColor = False
         '
         'Btn_List
         '
@@ -539,7 +539,7 @@ Partial Class Modren_UI
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Btn_FullScreen)
         Me.Controls.Add(Me.Player)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.Btn_Settings)
         Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Controls.Add(Me.Lbl_LryicDown)
         Me.Controls.Add(Me.Lbl_LryicUp)
@@ -602,7 +602,7 @@ Partial Class Modren_UI
     Friend WithEvents Lbl_LryicUp As Label
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents Btn_List As Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents Btn_Settings As Button
     Friend WithEvents Player As AxWMPLib.AxWindowsMediaPlayer
     Friend WithEvents Btn_FullScreen As Button
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
