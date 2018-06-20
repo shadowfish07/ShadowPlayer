@@ -10,8 +10,8 @@ Public Class OptionClass
     Private _AfterClose_stop As New Myboolean(False)
     Private _AfterClose_next As New Myboolean(True)
     Private _LyricScreenOpen As New Myboolean(True)
-    Private _LoudTime As String = "13:30:02"
-    Private _EndTime As String = "13:34:40"
+    Private _LoudTime As String = "13:29:50"
+    Private _EndTime As String = "13:34:20"
 
     Public Property Lyric_SingleLine_ForeColor As Color = Color.Gold
     Public Property Lyric_CN_ForeColor As Color = Color.Gold
