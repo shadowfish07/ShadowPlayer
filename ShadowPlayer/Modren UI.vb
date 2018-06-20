@@ -187,6 +187,9 @@ Public Class Modren_UI
         End If
     End Sub
 
+    ''' <summary>
+    ''' 程序隐藏至任务栏
+    ''' </summary>
     Private Sub HideForm()
         Me.Hide()
         Settings.Hide()
