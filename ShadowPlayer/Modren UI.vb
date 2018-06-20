@@ -35,7 +35,7 @@ Public Class Modren_UI
 
         Engine = New PlayEngine(Lbl_LryicUp, Lbl_LryicDown)
 
-        Lbl_Vision.Text = "Vision " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString + SPECIALVISION
+        Lbl_Vision.Text = "Version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString + SPECIALVISION
 
         '调用载入后PlayProgress绘制
         Dim FormLoaded As New Timer
