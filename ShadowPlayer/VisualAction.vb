@@ -8,42 +8,28 @@
     Event OncePace(isLastPace As Boolean)
 
     Public Sub New(target As Control， targetLocation As PointF, total_time As Single, interval As Integer)
-        Dim [step] As Single, c As Single, x As Single, y As Single, sin As Single, cos As Single
         Me.Target = target
         Me.TargetLocation = targetLocation
         _timer.Interval = interval
         Call GetStep(total_time)
-        [step] = total_time / _timer.Interval
-        x = targetLocation.X - target.Location.X : y = targetLocation.Y - target.Location.Y
-        c = Math.Sqrt(x ^ 2 + y ^ 2)
-        sin = y / c : cos = x / c
-        If x >= 0 Then
-            _stepX = sin * [step]
-        Else
-            _stepX = -sin * [step]
-        End If
-        If y >= 0 Then
-            _stepY = cos * [step]
-        Else
-            _stepY = -cos * [step]
-        End If
     End Sub
 
     Private Sub GetStep(total_time As Single)
         Dim [step] As Single, x As Single, y As Single, c As Single, sin As Single, cos As Single
-        [step] = total_time / _timer.Interval
+
         x = TargetLocation.X - Target.Location.X : y = TargetLocation.Y - Target.Location.Y
         c = Math.Sqrt(x ^ 2 + y ^ 2)
-        sin = y / c : cos = x / c
+        [step] = c / (total_time / _timer.Interval)
+        sin = Math.Abs(y / c) : cos = Math.Abs(x / c)
         If x >= 0 Then
-            _stepX = sin * [step]
+            _stepX = cos * [step]
         Else
-            _stepX = -sin * [step]
+            _stepX = -cos * [step]
         End If
         If y >= 0 Then
-            _stepY = cos * [step]
+            _stepY = sin * [step]
         Else
-            _stepY = -cos * [step]
+            _stepY = -sin * [step]
         End If
     End Sub
 
@@ -67,7 +53,7 @@
 
 
     Public Sub Start(Optional total_time As Single = -1)
-        If total_time = -1 Then
+        If total_time <> -1 Then
             Call GetStep(total_time)
         End If
         _timer.Start()
@@ -78,23 +64,49 @@
     End Sub
 
     Private Sub Timer_Tick() Handles _timer.Tick
-        If IsLastPace() Then
-            _target.Location = CType(New PointF(CType(_targetLocation, Point)), Point)
+        Static tempLocation As PointF = New PointF(_target.Location.X, _target.Location.Y)
+        Static tempX As Single = 0
+        Static tempY As Single = 0
+        tempX += _stepX
+        tempY += _stepY
+        If Math.Abs(tempX) > 1 Then
+            If tempX > 0 Then
+                _target.Location = New Point(_target.Location.X + Math.Abs(Math.Floor(tempX)), _target.Location.Y)
+                tempX -= Math.Abs(Math.Floor(tempX))
+            Else
+                _target.Location = New Point(_target.Location.X - Math.Abs(Math.Ceiling(tempX)), _target.Location.Y)
+                tempX += Math.Abs(Math.Ceiling(tempX))
+            End If
+        End If
+        If Math.Abs(tempY) > 1 Then
+            If tempY > 0 Then
+                _target.Location = New Point(_target.Location.X, _target.Location.Y + Math.Abs(Math.Floor(tempY)))
+                tempY -= Math.Abs(Math.Floor(tempY))
+            Else
+                _target.Location = New Point(_target.Location.X, _target.Location.Y - Math.Abs(Math.Ceiling(tempY)))
+                tempY += Math.Abs(Math.Ceiling(tempY))
+            End If
+        End If
+
+        If _target.Location.X = TargetLocation.X Or _target.Location.Y = TargetLocation.Y Then
+            _target.Location = Point.Round(TargetLocation)
             _timer.Stop()
+            tempLocation = Nothing
+            tempX = 0
+            tempY = 0
             RaiseEvent OncePace(True)
         Else
-            _target.Location = New PointF(_target.Location.X + _stepX, _target.Location.Y + _stepY)
             RaiseEvent OncePace(False)
         End If
     End Sub
 
     Private Function IsLastPace() As Boolean
         If _stepX > 0 Then
-            If _targetLocation.X + _stepX > _targetLocation.X Then
+            If _target.Location.X + _stepX > _targetLocation.X Then
                 Return True
             End If
         Else
-            If _targetLocation.X + _stepX < _targetLocation.X Then
+            If _target.Location.X + _stepX < _targetLocation.X Then
                 Return True
             End If
         End If

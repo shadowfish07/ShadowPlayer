@@ -227,6 +227,37 @@ Public Class Modren_UI
         NotifyIcon1_MouseDoubleClick(Me, Nothing)
     End Sub
 
+#Region "窗体拖动移动"
+
+    <System.Runtime.InteropServices.DllImport("user32.dll")>
+    Shared Function ReleaseCapture() As Boolean
+    End Function
+
+    <System.Runtime.InteropServices.DllImport("user32.dll")>
+    Shared Function SendMessage(ByVal hWnd As IntPtr, ByVal Msg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
+    End Function
+
+
+    Private Sub MoveForm()
+        ReleaseCapture()
+        SendMessage(Me.Handle, &HA1, 2, 0)
+    End Sub
+
+    Private Sub FormDrag(sender As Object, e As MouseEventArgs) Handles Panel_top.MouseDown
+        If e.Button = Windows.Forms.MouseButtons.Left Then MoveForm()
+    End Sub
+
+    Private Sub Repaint() Handles Me.Paint
+        If loaded = False Then Exit Sub
+        Try
+            playProgres.Flush(Player.Ctlcontrols.currentPosition / Player.currentMedia.duration)
+        Catch ex As Exception
+            playProgres.Flush(0)
+        End Try
+    End Sub
+
+#End Region
+
     Private Sub 播放ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles 播放ToolStripMenuItem1.Click
         Try
             Engine.Play()
@@ -244,41 +275,7 @@ Public Class Modren_UI
         End Try
     End Sub
 
-#Region "窗体拖动移动"
 
-    <System.Runtime.InteropServices.DllImport("user32.dll")>
-    Shared Function ReleaseCapture() As Boolean
-    End Function
-
-    <System.Runtime.InteropServices.DllImport("user32.dll")>
-    Shared Function SendMessage(ByVal hWnd As IntPtr, ByVal Msg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
-    End Function
-
-
-    Private Sub MoveForm()
-        ReleaseCapture()
-        SendMessage(Me.Handle, &HA1, 2, 0)
-    End Sub
-
-    Private Sub Btn_NextMusic_Click(sender As Object, e As EventArgs) Handles Btn_NextMusic.Click
-        Dim a As New VisualAction(btn_Mainmin, New PointF(100, 100), 1000, 20)
-        a.Start()
-    End Sub
-
-    Private Sub FormDrag(sender As Object, e As MouseEventArgs) Handles Panel_top.MouseDown
-        If e.Button = Windows.Forms.MouseButtons.Left Then MoveForm()
-    End Sub
-
-    Private Sub Repaint() Handles Me.Paint
-        If loaded = False Then Exit Sub
-        Try
-            playProgres.Flush(Player.Ctlcontrols.currentPosition / Player.currentMedia.duration)
-        Catch ex As Exception
-            playProgres.Flush(0)
-        End Try
-    End Sub
-
-#End Region
 End Class
 
 
