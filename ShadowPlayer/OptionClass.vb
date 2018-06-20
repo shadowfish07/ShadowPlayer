@@ -7,7 +7,7 @@
     Private _AfterClose_stop As New Myboolean(False, {_AfterClose_next, _AfterClose_puase, _AfterClose_stop})
     Private _AfterClose_next As New Myboolean(True, {_AfterClose_next, _AfterClose_puase, _AfterClose_stop})
     Private _LyricScreenOpen As New Myboolean(True)
-    Private _LoudTime As String = "13:30:25"
+    Private _LoudTime As String = "13:30:22"
     Private _EndTime As String = "13:34:40"
 
     Public Class Myboolean
