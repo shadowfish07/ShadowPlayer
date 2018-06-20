@@ -142,6 +142,10 @@ Public Class Modren_UI
             Engine.Play()
             If IO.Path.GetExtension(MusicList.Item(nowPlay).tag) = ".mp4" Then
                 Player.Show()
+                Btn_FullScreen.Visible = True
+            Else
+                Player.Hide()
+                Btn_FullScreen.Visible = False
             End If
             Lbl_MusicName.Text = ListTidy(Dir(MusicList.Item(nowPlay).tag), 32)
             Btn_PlayPause.BackgroundImage = My.Resources.Pause
@@ -173,6 +177,15 @@ Public Class Modren_UI
 
     Private Sub Modren_UI_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         log.EndWrite()
+    End Sub
+
+    Private Sub FullScreen(sender As Object, e As EventArgs) Handles Btn_FullScreen.Click
+        Try
+            Player.fullScreen = True
+        Catch ex As Exception
+
+        End Try
+
     End Sub
 
     Private Sub ImageChangeToReplay() Handles Engine.PlayEnd

@@ -46,7 +46,7 @@ Partial Class Modren_UI
         Me.Lbl_LryicUp = New System.Windows.Forms.Label()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Player = New AxWMPLib.AxWindowsMediaPlayer()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Btn_FullScreen = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Btn_List = New System.Windows.Forms.Button()
         Me.Btn_PrevMusic = New System.Windows.Forms.Button()
@@ -277,21 +277,21 @@ Partial Class Modren_UI
         Me.Player.TabIndex = 37
         Me.Player.Visible = False
         '
-        'Button2
+        'Btn_FullScreen
         '
-        Me.Button2.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.全屏
-        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
-        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.ForeColor = System.Drawing.Color.White
-        Me.Button2.Location = New System.Drawing.Point(237, 334)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(16, 16)
-        Me.Button2.TabIndex = 37
-        Me.Button2.UseVisualStyleBackColor = False
-        Me.Button2.Visible = False
+        Me.Btn_FullScreen.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.全屏
+        Me.Btn_FullScreen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Btn_FullScreen.FlatAppearance.BorderSize = 0
+        Me.Btn_FullScreen.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.Btn_FullScreen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.Btn_FullScreen.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_FullScreen.ForeColor = System.Drawing.Color.White
+        Me.Btn_FullScreen.Location = New System.Drawing.Point(237, 334)
+        Me.Btn_FullScreen.Name = "Btn_FullScreen"
+        Me.Btn_FullScreen.Size = New System.Drawing.Size(16, 16)
+        Me.Btn_FullScreen.TabIndex = 37
+        Me.Btn_FullScreen.UseVisualStyleBackColor = False
+        Me.Btn_FullScreen.Visible = False
         '
         'Button1
         '
@@ -431,7 +431,7 @@ Partial Class Modren_UI
         Me.ClientSize = New System.Drawing.Size(719, 521)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Btn_Alarm)
-        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Btn_FullScreen)
         Me.Controls.Add(Me.Player)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Btn_List)
@@ -495,7 +495,7 @@ Partial Class Modren_UI
     Friend WithEvents Btn_List As Button
     Friend WithEvents Button1 As Button
     Friend WithEvents Player As AxWMPLib.AxWindowsMediaPlayer
-    Friend WithEvents Button2 As Button
+    Friend WithEvents Btn_FullScreen As Button
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents Btn_Alarm As Button
     Friend WithEvents Lbl_Vision As Label
