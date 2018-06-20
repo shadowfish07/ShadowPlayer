@@ -26,7 +26,8 @@ Public Class Settings
             btn_saveCloseTime.Click, btn_saveLoudTime.Click,
             RdoSetCloseNothing.Click, RdoSetEndEnabled.Click, RdoSetMiniEnabled.Click,
             RdoStop.Click, RdoPause.Click, RdoNext.Click,
-            PicLyricColor.Click, PicCnLyricColor.Click, PicEnLyricColor.Click
+            PicLyricColor.Click, PicCnLyricColor.Click, PicEnLyricColor.Click,
+            LblShowLyricFont.Click, LblShowCnLyricFont.Click, LblShowEnLyricFont.Click
 
         Dim cancel As Boolean = False
 
@@ -79,6 +80,30 @@ Public Class Settings
                 If ColorDialog1.ShowDialog() = DialogResult.OK Then
                     PicEnLyricColor.BackColor = ColorDialog1.Color
                     Modren_UI.mainOption.Lyric_English_ForeColor = ColorDialog1.Color
+                Else
+                    cancel = True
+                End If
+            Case sender Is LblShowLyricFont
+                FontDialog1.Font = Modren_UI.mainOption.Lyric_SingleLine_Font
+                If FontDialog1.ShowDialog = DialogResult.OK Then
+                    LblShowLyricFont.Font = New Font(FontDialog1.Font.FontFamily, 9)
+                    Modren_UI.mainOption.Lyric_SingleLine_Font = FontDialog1.Font
+                Else
+                    cancel = True
+                End If
+            Case sender Is LblShowCnLyricFont
+                FontDialog1.Font = Modren_UI.mainOption.Lyric_CN_Font
+                If FontDialog1.ShowDialog = DialogResult.OK Then
+                    LblShowCnLyricFont.Font = New Font(FontDialog1.Font.FontFamily, 9)
+                    Modren_UI.mainOption.Lyric_CN_Font = FontDialog1.Font
+                Else
+                    cancel = True
+                End If
+            Case sender Is LblShowEnLyricFont
+                FontDialog1.Font = Modren_UI.mainOption.Lyric_English_Font
+                If FontDialog1.ShowDialog = DialogResult.OK Then
+                    LblShowEnLyricFont.Font = New Font(FontDialog1.Font.FontFamily, 9)
+                    Modren_UI.mainOption.Lyric_English_Font = FontDialog1.Font
                 Else
                     cancel = True
                 End If
