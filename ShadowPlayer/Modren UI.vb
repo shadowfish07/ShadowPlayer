@@ -145,12 +145,12 @@ Public Class Modren_UI
         Dim preventSleep
         If mainOption.PreventSleep_Open.Value = True Then
             If mainOption.PreventSleep_Alltime.Value = True Then
-                preventSleep = SetThreadExecutionState(ES_DISPLAY_REQUIRED Or ES_SYSTEM_REQUIRED)
+                preventSleep = SetThreadExecutionState(PREVENTSLEEP_DISPLAY Or PREVENTSLEEP_SYSTEM)
             Else
                 If mainOption.PreventSleep_Playing.Value And Player.playState = WMPPlayState.wmppsPlaying Then
-                    preventSleep = SetThreadExecutionState(ES_DISPLAY_REQUIRED Or ES_SYSTEM_REQUIRED)
+                    preventSleep = SetThreadExecutionState(PREVENTSLEEP_DISPLAY Or PREVENTSLEEP_SYSTEM)
                 ElseIf mainOption.PreventSleep_Alarm.Value And (mainOption.Alarm_LoudOpen.Value Or mainOption.Alarm_CloseOpen.Value) Then
-                    preventSleep = SetThreadExecutionState(ES_DISPLAY_REQUIRED Or ES_SYSTEM_REQUIRED)
+                    preventSleep = SetThreadExecutionState(PREVENTSLEEP_DISPLAY Or PREVENTSLEEP_SYSTEM)
                 End If
             End If
         End If

@@ -94,8 +94,8 @@
 
     End Function
 
-    Public Const ES_SYSTEM_REQUIRED = &H1
-    Public Const ES_DISPLAY_REQUIRED = &H2
+    Public Const PREVENTSLEEP_SYSTEM = &H1
+    Public Const PREVENTSLEEP_DISPLAY = &H2
     Public Const ES_CONTINUOUS = &H0
 
 End Module
