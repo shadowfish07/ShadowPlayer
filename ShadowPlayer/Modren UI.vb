@@ -54,11 +54,13 @@ Public Class Modren_UI
     Private Sub player_PlayStateChange(sender As Object, e As _WMPOCXEvents_PlayStateChangeEvent) Handles Player.PlayStateChange
         Const PLAY As Integer = 0, PUASE As Integer = 1
         If Player.playState = CPlayState.Playing Then
+            Engine.TimerEnabled(True)
             Lbl_TotalTime.Text = Player.currentMedia.durationString
             'NotifyIcon1.Icon = My.Resources.渡船播放器LOGO_playing
             播放ToolStripMenuItem.DropDownItems.Item(PLAY).Enabled = False
             播放ToolStripMenuItem.DropDownItems.Item(PUASE).Enabled = True
         ElseIf Player.playState = CPlayState.Stoping Or Player.playState = CPlayState.Pausing Or Player.playState = CPlayState.Ready Then
+            Engine.TimerEnabled(False)
             'NotifyIcon1.Icon = My.Resources.渡船播放器LOGO_stoping
             播放ToolStripMenuItem.DropDownItems.Item(PLAY).Enabled = True
             播放ToolStripMenuItem.DropDownItems.Item(PUASE).Enabled = False
@@ -166,10 +168,13 @@ Public Class Modren_UI
     End Sub
 
     Private Sub ImageChangeToReplay() Handles Engine.PlayEnd
-        Btn_PlayPause.Image = My.Resources.刷新
+        Btn_PlayPause.BackgroundImage = My.Resources.刷新
+        Lbl_NowTime.Text = Lbl_TotalTime.Text
+        playProgres.Flush(1)
     End Sub
 
     Private Sub Panel1_Click(sender As Object, e As EventArgs) Handles Panel1.Click
+        If Lbl_TotalTime.Text = "00:00" Then Exit Sub
         Dim point_x As Integer = Me.MousePosition.X - Panel1.Location.X - Me.Location.X
         Dim point_y As Integer = Me.MousePosition.Y - Panel1.Location.Y - Me.Location.Y
         If playProgres.IsinYuanHuan(New Point(point_x, point_y)) Then

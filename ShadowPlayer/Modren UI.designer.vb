@@ -368,7 +368,7 @@ Partial Class Modren_UI
         'Btn_PlayPause
         '
         Me.Btn_PlayPause.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.Play
-        Me.Btn_PlayPause.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Btn_PlayPause.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.Btn_PlayPause.FlatAppearance.BorderSize = 0
         Me.Btn_PlayPause.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
         Me.Btn_PlayPause.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent

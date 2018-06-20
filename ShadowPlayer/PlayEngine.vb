@@ -3,7 +3,7 @@
     Event PlayEnd()
 
     Dim lyr As Lyric
-    Dim WithEvents _timer As New Timer With {.Interval = 200, .Enabled = False}
+    Dim WithEvents _timer As New Timer With {.Interval = 100, .Enabled = False}
 
     Public Sub New(up As Label, down As Label)
         lyr = New Lyric(up, down)
@@ -158,19 +158,24 @@
         Modren_UI.chooseItem = sender.index
     End Sub
 
+    Public Sub TimerEnabled(value As Boolean)
+        If value = True Then
+            _timer.Start()
+        Else
+            _timer.Stop()
+        End If
+    End Sub
+
     Public Sub Play()
         Modren_UI.Player.Ctlcontrols.play()
-
     End Sub
 
     Public Sub Pause()
         Modren_UI.Player.Ctlcontrols.pause()
-
     End Sub
 
     Public Sub [Stop]()
         Modren_UI.Player.Ctlcontrols.stop()
-
     End Sub
 
     Public Sub ChangeMusic(Optional ByVal nowPlayIndex As Integer = -1, Optional ByVal Play As Boolean = True)
