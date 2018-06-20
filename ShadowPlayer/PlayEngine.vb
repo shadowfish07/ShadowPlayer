@@ -1,14 +1,14 @@
-﻿Public Class ChangedMusicEvents
+﻿Public Class ChangedMusicEventArgs
     Inherits EventArgs
     Public Property NowPlayIndex As Integer = -1
     Public Sub New(nowPlayIndex)
-        Me.nowPlayIndex = nowPlayIndex
+        Me.NowPlayIndex = nowPlayIndex
     End Sub
 End Class
 
 Public Class PlayEngine
     Event AddedAMusic(musicName As String)
-    Event ChangedMusic(sender As Object, e As ChangedMusicEvents)
+    Event ChangedMusic(sender As Object, e As ChangedMusicEventArgs)
     Event PlayEnd()
 
     Dim lyr As Lyric
@@ -229,7 +229,7 @@ Public Class PlayEngine
     ''' <param name="Play">设置是否开始播放新的歌曲。值为True则开始播放</param>
     Public Sub ChangeMusic(Optional ByVal nowPlayIndex As Integer = -1, Optional ByVal Play As Boolean = True)
         _timer.Enabled = False
-        RaiseEvent ChangedMusic(Me, New ChangedMusicEvents(nowPlayIndex))
+        RaiseEvent ChangedMusic(Me, New ChangedMusicEventArgs(nowPlayIndex))
         HideLyric()
         If Play Then Me.Play()
     End Sub

@@ -19,7 +19,9 @@ Public Class Modren_UI
     Public mainOption As New OptionClass
 
     Private isListOpen As Boolean = False
-    Public ListRemainTime As Integer = 0
+
+    '分别为列表、播放模式的动画重置时间
+    Public ListRemainTime As Integer = 0, PlayModeReminTime As Integer = 0
 
     Delegate Sub PlayStateChangeEvent()
 
@@ -235,7 +237,7 @@ Public Class Modren_UI
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub Engine_ChangedMusic(sender As Object, e As ChangedMusicEvents) Handles Engine.ChangedMusic
+    Private Sub Engine_ChangedMusic(sender As Object, e As ChangedMusicEventArgs) Handles Engine.ChangedMusic
         If MusicList.Count = 0 Then Exit Sub
         If e.NowPlayIndex > -1 Then
             '指定播放序列，跳转至指定的歌曲
@@ -352,6 +354,7 @@ Public Class Modren_UI
     End Sub
 
 #End Region
+
 #Region "列表动画"
     Private Sub Btn_List_MouseEnter(sender As Object, e As EventArgs) Handles Btn_List.MouseEnter
         If isListOpen = False Then
@@ -397,6 +400,31 @@ Public Class Modren_UI
     Private Sub Btn_Remove_MouseEnter(sender As Object, e As EventArgs) Handles Btn_Remove.MouseEnter
         ListRemainTime = 0
     End Sub
+#End Region
+#Region "播放模式动画"
+    Private Sub Timer_PlayMode_Tick(sender As Object, e As EventArgs) Handles Timer_PlayMode.Tick
+        If PlayModeReminTime = 3 Then
+            PlayModeReminTime = 0
+            Timer_PlayMode.Stop()
+            Dim b As New VisualAction(label1, New PointF(642, 365), 100, 5)
+            b.Start()
+        End If
+        PlayModeReminTime += 1
+    End Sub
+
+    Private Sub Lbl_PlayMode_MouseEnter(sender As Object, e As EventArgs) Handles Lbl_PlayMode.MouseEnter
+        If Timer_PlayMode.Enabled = False Then
+            Dim a As New VisualAction(label1, New PointF(579, 365), 100, 5)
+            a.Start()
+            Timer_PlayMode.Start()
+        End If
+        PlayModeReminTime = 0
+    End Sub
+
+    Private Sub label1_MouseEnter(sender As Object, e As EventArgs) Handles label1.MouseEnter
+        PlayModeReminTime = 0
+    End Sub
+#End Region
 
     Private Sub Btn_NextMusic_Click(sender As Object, e As EventArgs) Handles Btn_NextMusic.Click
         Engine.ChangeMusic()
@@ -405,8 +433,6 @@ Public Class Modren_UI
     Private Sub Btn_PrevMusic_Click(sender As Object, e As EventArgs) Handles Btn_PrevMusic.Click
         Engine.ChangeMusic(nowPlay - 1)
     End Sub
-
-#End Region
 
     Private Sub 播放ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles 播放ToolStripMenuItem1.Click
         Try
@@ -462,32 +488,32 @@ Public Class Modren_UI
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
-    Private Sub lblPlayMode_MouseDown(sender As Object, e As EventArgs) Handles lblPlayMode.MouseDown
-        Static modeIndex = 0
+    Private Sub lblPlayMode_MouseDown(sender As Object, e As EventArgs) Handles Lbl_PlayMode.MouseDown
+        Static modeIndex = 1
         Select Case modeIndex
             Case 0
-                '当前为单次列表
-                lblPlayMode.Text = "列表循环"
+                '当前为随机播放
+                Lbl_PlayMode.Text = "列表循环"
                 playMode = CplayMode.ListCycle
                 modeIndex += 1
             Case 1
                 '当前为列表循环
-                lblPlayMode.Text = "单次列表"
-                playMode = CplayMode.OneOnce
+                Lbl_PlayMode.Text = "单次列表"
+                playMode = CplayMode.ListOnce
                 modeIndex += 1
             Case 2
                 '当前为单次列表
-                lblPlayMode.Text = "单次播放"
+                Lbl_PlayMode.Text = "单次播放"
                 playMode = CplayMode.OneOnce
                 modeIndex += 1
             Case 3
                 '当前为单次播放
-                lblPlayMode.Text = "循环单首"
+                Lbl_PlayMode.Text = "循环单首"
                 playMode = CplayMode.OneCycle
                 modeIndex += 1
             Case 4
                 '当前为循环单首
-                lblPlayMode.Text = "随机播放"
+                Lbl_PlayMode.Text = "随机播放"
                 playMode = CplayMode.Random
                 modeIndex = 0
         End Select
@@ -507,6 +533,8 @@ Public Class Modren_UI
         End Try
     End Sub
 
+
+
     ''' <summary>
     ''' 防止按钮失去焦点出现白色边框
     ''' </summary>
@@ -523,6 +551,8 @@ Public Class Modren_UI
     Private Sub Lbl_title_DoubleClick(sender As Object, e As EventArgs) Handles Lbl_title.DoubleClick
         HideForm()
     End Sub
+
+
 End Class
 
 

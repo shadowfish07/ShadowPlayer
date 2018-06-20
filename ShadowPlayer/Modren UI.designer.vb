@@ -65,7 +65,8 @@ Partial Class Modren_UI
         Me.Timer_List = New System.Windows.Forms.Timer(Me.components)
         Me.Player = New AxWMPLib.AxWindowsMediaPlayer()
         Me.label1 = New System.Windows.Forms.Label()
-        Me.lblPlayMode = New System.Windows.Forms.Label()
+        Me.Lbl_PlayMode = New System.Windows.Forms.Label()
+        Me.Timer_PlayMode = New System.Windows.Forms.Timer(Me.components)
         Me.ContextMenuStrip1.SuspendLayout()
         Me.Pnl_Circle.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -534,24 +535,28 @@ Partial Class Modren_UI
         Me.label1.AutoSize = True
         Me.label1.Font = New System.Drawing.Font("微软雅黑", 10.0!)
         Me.label1.ForeColor = System.Drawing.Color.White
-        Me.label1.Location = New System.Drawing.Point(579, 365)
+        Me.label1.Location = New System.Drawing.Point(642, 365)
         Me.label1.Name = "label1"
         Me.label1.Size = New System.Drawing.Size(65, 20)
         Me.label1.TabIndex = 47
         Me.label1.Text = "播放模式"
         Me.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'lblPlayMode
+        'Lbl_PlayMode
         '
-        Me.lblPlayMode.AutoSize = True
-        Me.lblPlayMode.Font = New System.Drawing.Font("微软雅黑", 10.0!)
-        Me.lblPlayMode.ForeColor = System.Drawing.Color.Gainsboro
-        Me.lblPlayMode.Location = New System.Drawing.Point(642, 365)
-        Me.lblPlayMode.Name = "lblPlayMode"
-        Me.lblPlayMode.Size = New System.Drawing.Size(65, 20)
-        Me.lblPlayMode.TabIndex = 48
-        Me.lblPlayMode.Text = "列表循环"
-        Me.lblPlayMode.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Lbl_PlayMode.AutoSize = True
+        Me.Lbl_PlayMode.Font = New System.Drawing.Font("微软雅黑", 10.0!)
+        Me.Lbl_PlayMode.ForeColor = System.Drawing.Color.Gainsboro
+        Me.Lbl_PlayMode.Location = New System.Drawing.Point(642, 365)
+        Me.Lbl_PlayMode.Name = "Lbl_PlayMode"
+        Me.Lbl_PlayMode.Size = New System.Drawing.Size(65, 20)
+        Me.Lbl_PlayMode.TabIndex = 48
+        Me.Lbl_PlayMode.Text = "列表循环"
+        Me.Lbl_PlayMode.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Timer_PlayMode
+        '
+        Me.Timer_PlayMode.Interval = 1000
         '
         'Modren_UI
         '
@@ -560,7 +565,7 @@ Partial Class Modren_UI
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(83, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(719, 521)
-        Me.Controls.Add(Me.lblPlayMode)
+        Me.Controls.Add(Me.Lbl_PlayMode)
         Me.Controls.Add(Me.label1)
         Me.Controls.Add(Me.Btn_Alarm)
         Me.Controls.Add(Me.Btn_MoveToDown)
@@ -647,5 +652,6 @@ Partial Class Modren_UI
     Friend WithEvents Btn_MoveToDown As Button
     Friend WithEvents Timer_List As Timer
     Friend WithEvents label1 As Label
-    Friend WithEvents lblPlayMode As Label
+    Friend WithEvents Lbl_PlayMode As Label
+    Friend WithEvents Timer_PlayMode As Timer
 End Class
