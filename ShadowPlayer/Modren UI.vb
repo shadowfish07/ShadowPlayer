@@ -10,6 +10,7 @@ Public Class Modren_UI
     Dim WithEvents Engine As PlayEngine
     Public WithEvents MusicList As New ArrayList
     Dim log As New LogWriter("ShadowPlayer_RunTime.log")
+    Dim loaded As Boolean = False
 
     Friend playMode As Cplaynum = Cplaynum.ListOnce
     Public nowPlay As Integer, lastPlay As Integer, chooseItem As Integer = -1
@@ -50,6 +51,7 @@ Public Class Modren_UI
     Sub FormLoad(e As Object, ev As EventArgs)
         playProgres = New PlayProgress(Panel1, 30, Color.FromArgb(180, 198, 214), Color.FromArgb(80, 173, 255))
         e.Dispose
+        loaded = True
     End Sub
 
     Private Sub Modren_UI_DragDrop(sender As Object, e As DragEventArgs) Handles MyBase.DragDrop
@@ -98,7 +100,7 @@ Public Class Modren_UI
             '自动开始播放
             Try
                 Engine.Play()
-                Btn_PlayPause.Image = My.Resources.Pause
+                Btn_PlayPause.BackgroundImage = My.Resources.Pause
             Catch ex As Exception
 
             End Try
@@ -109,7 +111,7 @@ Public Class Modren_UI
                 If mainOption.CloseEndOpen.Value = True Then
                     End
                 ElseIf mainOption.CloseMiniOpen.Value = True Then
-                    Btn_PlayPause.Image = My.Resources.Play
+                    Btn_PlayPause.BackgroundImage = My.Resources.Play
                     Me.Hide()
                     Zimu.Hide()
                     Zimu.Timer1.Enabled = False
@@ -222,13 +224,15 @@ Public Class Modren_UI
 
     Private Sub FormDrag(sender As Object, e As MouseEventArgs) Handles Panel_top.MouseDown
         If e.Button = Windows.Forms.MouseButtons.Left Then MoveForm()
-        Me.Refresh()
+    End Sub
+
+    Private Sub Repaint() Handles Me.Paint
+        If loaded = False Then Exit Sub
         Try
             playProgres.Flush(Player.Ctlcontrols.currentPosition / Player.currentMedia.duration)
         Catch ex As Exception
             playProgres.Flush(0)
         End Try
-
     End Sub
 
 #End Region

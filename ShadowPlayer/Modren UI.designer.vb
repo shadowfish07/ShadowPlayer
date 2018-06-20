@@ -291,6 +291,7 @@ Partial Class Modren_UI
         Me.Btn_FullScreen.Name = "Btn_FullScreen"
         Me.Btn_FullScreen.Size = New System.Drawing.Size(16, 16)
         Me.Btn_FullScreen.TabIndex = 37
+        Me.Btn_FullScreen.TabStop = False
         Me.Btn_FullScreen.UseVisualStyleBackColor = False
         Me.Btn_FullScreen.Visible = False
         '
@@ -307,6 +308,7 @@ Partial Class Modren_UI
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(16, 16)
         Me.Button1.TabIndex = 36
+        Me.Button1.TabStop = False
         Me.Button1.UseVisualStyleBackColor = False
         '
         'Btn_List
@@ -322,6 +324,7 @@ Partial Class Modren_UI
         Me.Btn_List.Name = "Btn_List"
         Me.Btn_List.Size = New System.Drawing.Size(32, 32)
         Me.Btn_List.TabIndex = 35
+        Me.Btn_List.TabStop = False
         Me.Btn_List.UseVisualStyleBackColor = False
         '
         'Btn_PrevMusic
@@ -337,6 +340,7 @@ Partial Class Modren_UI
         Me.Btn_PrevMusic.Name = "Btn_PrevMusic"
         Me.Btn_PrevMusic.Size = New System.Drawing.Size(20, 20)
         Me.Btn_PrevMusic.TabIndex = 30
+        Me.Btn_PrevMusic.TabStop = False
         Me.Btn_PrevMusic.UseVisualStyleBackColor = False
         '
         'Btn_NextMusic
@@ -352,6 +356,7 @@ Partial Class Modren_UI
         Me.Btn_NextMusic.Name = "Btn_NextMusic"
         Me.Btn_NextMusic.Size = New System.Drawing.Size(20, 20)
         Me.Btn_NextMusic.TabIndex = 29
+        Me.Btn_NextMusic.TabStop = False
         Me.Btn_NextMusic.UseVisualStyleBackColor = False
         '
         'Btn_Stop
@@ -367,6 +372,7 @@ Partial Class Modren_UI
         Me.Btn_Stop.Name = "Btn_Stop"
         Me.Btn_Stop.Size = New System.Drawing.Size(20, 20)
         Me.Btn_Stop.TabIndex = 28
+        Me.Btn_Stop.TabStop = False
         Me.Btn_Stop.UseVisualStyleBackColor = False
         '
         'Btn_PlayPause
@@ -382,6 +388,7 @@ Partial Class Modren_UI
         Me.Btn_PlayPause.Name = "Btn_PlayPause"
         Me.Btn_PlayPause.Size = New System.Drawing.Size(20, 20)
         Me.Btn_PlayPause.TabIndex = 27
+        Me.Btn_PlayPause.TabStop = False
         Me.Btn_PlayPause.UseVisualStyleBackColor = False
         '
         'OpenFileDialog1
@@ -402,6 +409,7 @@ Partial Class Modren_UI
         Me.Btn_Alarm.Name = "Btn_Alarm"
         Me.Btn_Alarm.Size = New System.Drawing.Size(32, 32)
         Me.Btn_Alarm.TabIndex = 38
+        Me.Btn_Alarm.TabStop = False
         Me.Btn_Alarm.UseVisualStyleBackColor = False
         '
         'Lbl_Vision
@@ -460,6 +468,7 @@ Partial Class Modren_UI
         Me.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ForeColor = System.Drawing.Color.White
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "Modren_UI"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
