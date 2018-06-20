@@ -143,7 +143,6 @@ Public Class Modren_UI
             If IO.Path.GetExtension(MusicList.Item(nowPlay).tag) = ".mp4" Then
                 Player.Show()
             End If
-            Debug.Print()
             Lbl_MusicName.Text = ListTidy(Dir(MusicList.Item(nowPlay).tag), 32)
             Btn_PlayPause.BackgroundImage = My.Resources.Pause
         ElseIf Player.playState = WMPPlayState.wmppsPlaying Then
