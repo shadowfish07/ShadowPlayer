@@ -30,4 +30,9 @@ Public Class Modren_UI
     Private Sub btn_Mainmin_Click(sender As Object, e As EventArgs) Handles btn_Mainmin.Click
         Me.WindowState = WindowState.Minimized
     End Sub
+
+    Private Sub Modren_UI_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Player.uiMode = "none"
+        Player.settings.autoStart = False
+    End Sub
 End Class

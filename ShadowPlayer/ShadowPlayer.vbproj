@@ -97,6 +97,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="OptionClass.vb" />
+    <Compile Include="PlayProgress.vb" />
     <Compile Include="VisualAction.vb" />
     <Compile Include="zimu.designer.vb">
       <DependentUpon>zimu.vb</DependentUpon>

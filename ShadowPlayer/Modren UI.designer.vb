@@ -47,17 +47,17 @@ Partial Class Modren_UI
         Me.Lbl_LryicDown = New System.Windows.Forms.Label()
         Me.Lbl_LryicUp = New System.Windows.Forms.Label()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.AxWindowsMediaPlayer1 = New AxWMPLib.AxWindowsMediaPlayer()
+        Me.Player = New AxWMPLib.AxWindowsMediaPlayer()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Btn_ControlMusicList = New System.Windows.Forms.Button()
         Me.Btn_PrevMusic = New System.Windows.Forms.Button()
         Me.Btn_NextMusic = New System.Windows.Forms.Button()
         Me.Btn_Stop = New System.Windows.Forms.Button()
         Me.Btn_PlayPause = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        CType(Me.AxWindowsMediaPlayer1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Player, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btn_Mainmin
@@ -272,15 +272,31 @@ Partial Class Modren_UI
         Me.FlowLayoutPanel1.TabIndex = 34
         Me.FlowLayoutPanel1.WrapContents = False
         '
-        'AxWindowsMediaPlayer1
+        'Player
         '
-        Me.AxWindowsMediaPlayer1.Enabled = True
-        Me.AxWindowsMediaPlayer1.Location = New System.Drawing.Point(12, 128)
-        Me.AxWindowsMediaPlayer1.Name = "AxWindowsMediaPlayer1"
-        Me.AxWindowsMediaPlayer1.OcxState = CType(resources.GetObject("AxWindowsMediaPlayer1.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.AxWindowsMediaPlayer1.Size = New System.Drawing.Size(241, 200)
-        Me.AxWindowsMediaPlayer1.TabIndex = 37
-        Me.AxWindowsMediaPlayer1.Visible = False
+        Me.Player.Enabled = True
+        Me.Player.Location = New System.Drawing.Point(12, 128)
+        Me.Player.Name = "Player"
+        Me.Player.OcxState = CType(resources.GetObject("Player.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.Player.Size = New System.Drawing.Size(241, 200)
+        Me.Player.TabIndex = 37
+        Me.Player.Visible = False
+        '
+        'Button2
+        '
+        Me.Button2.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.全屏
+        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button2.FlatAppearance.BorderSize = 0
+        Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.ForeColor = System.Drawing.Color.White
+        Me.Button2.Location = New System.Drawing.Point(237, 334)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(16, 16)
+        Me.Button2.TabIndex = 37
+        Me.Button2.UseVisualStyleBackColor = False
+        Me.Button2.Visible = False
         '
         'Button1
         '
@@ -291,7 +307,7 @@ Partial Class Modren_UI
         Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(502, 8)
+        Me.Button1.Location = New System.Drawing.Point(509, 12)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(16, 16)
         Me.Button1.TabIndex = 36
@@ -373,22 +389,6 @@ Partial Class Modren_UI
         Me.Btn_PlayPause.TabIndex = 27
         Me.Btn_PlayPause.UseVisualStyleBackColor = False
         '
-        'Button2
-        '
-        Me.Button2.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.全屏
-        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button2.FlatAppearance.BorderSize = 0
-        Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
-        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.ForeColor = System.Drawing.Color.White
-        Me.Button2.Location = New System.Drawing.Point(237, 334)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(16, 16)
-        Me.Button2.TabIndex = 37
-        Me.Button2.UseVisualStyleBackColor = False
-        Me.Button2.Visible = False
-        '
         'Modren_UI
         '
         Me.AllowDrop = True
@@ -397,7 +397,7 @@ Partial Class Modren_UI
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(83, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(719, 521)
         Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.AxWindowsMediaPlayer1)
+        Me.Controls.Add(Me.Player)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Btn_ControlMusicList)
         Me.Controls.Add(Me.FlowLayoutPanel1)
@@ -423,7 +423,7 @@ Partial Class Modren_UI
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        CType(Me.AxWindowsMediaPlayer1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Player, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -458,6 +458,6 @@ Partial Class Modren_UI
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents Btn_ControlMusicList As Button
     Friend WithEvents Button1 As Button
-    Friend WithEvents AxWindowsMediaPlayer1 As AxWMPLib.AxWindowsMediaPlayer
+    Friend WithEvents Player As AxWMPLib.AxWindowsMediaPlayer
     Friend WithEvents Button2 As Button
 End Class
