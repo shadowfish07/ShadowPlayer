@@ -1,4 +1,9 @@
-﻿Public Class Modren_UI
+﻿Imports WMPLib
+Public Class Modren_UI
+    Public Class PlayEngine
+        Dim _timer As Timer
+
+    End Class
     Private Sub btn_Mainexit_Click(sender As Object, e As EventArgs) Handles btn_Mainexit.Click
         Application.Exit()
     End Sub

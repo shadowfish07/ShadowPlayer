@@ -46,14 +46,17 @@ Partial Class Modren_UI
         Me.Lbl_NowTime = New System.Windows.Forms.Label()
         Me.Lbl_LryicDown = New System.Windows.Forms.Label()
         Me.Lbl_LryicUp = New System.Windows.Forms.Label()
+        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Btn_ControlMusicList = New System.Windows.Forms.Button()
         Me.Btn_PrevMusic = New System.Windows.Forms.Button()
         Me.Btn_NextMusic = New System.Windows.Forms.Button()
         Me.Btn_Stop = New System.Windows.Forms.Button()
         Me.Btn_PlayPause = New System.Windows.Forms.Button()
-        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.Btn_ControlMusicList = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.AxWindowsMediaPlayer1 = New AxWMPLib.AxWindowsMediaPlayer()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        CType(Me.AxWindowsMediaPlayer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btn_Mainmin
@@ -256,66 +259,6 @@ Partial Class Modren_UI
         Me.Lbl_LryicUp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.Lbl_LryicUp.Visible = False
         '
-        'Btn_PrevMusic
-        '
-        Me.Btn_PrevMusic.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.Prev
-        Me.Btn_PrevMusic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Btn_PrevMusic.FlatAppearance.BorderSize = 0
-        Me.Btn_PrevMusic.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
-        Me.Btn_PrevMusic.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
-        Me.Btn_PrevMusic.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btn_PrevMusic.ForeColor = System.Drawing.Color.White
-        Me.Btn_PrevMusic.Location = New System.Drawing.Point(288, 337)
-        Me.Btn_PrevMusic.Name = "Btn_PrevMusic"
-        Me.Btn_PrevMusic.Size = New System.Drawing.Size(20, 20)
-        Me.Btn_PrevMusic.TabIndex = 30
-        Me.Btn_PrevMusic.UseVisualStyleBackColor = False
-        '
-        'Btn_NextMusic
-        '
-        Me.Btn_NextMusic.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.NextP
-        Me.Btn_NextMusic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Btn_NextMusic.FlatAppearance.BorderSize = 0
-        Me.Btn_NextMusic.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
-        Me.Btn_NextMusic.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
-        Me.Btn_NextMusic.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btn_NextMusic.ForeColor = System.Drawing.Color.White
-        Me.Btn_NextMusic.Location = New System.Drawing.Point(411, 337)
-        Me.Btn_NextMusic.Name = "Btn_NextMusic"
-        Me.Btn_NextMusic.Size = New System.Drawing.Size(20, 20)
-        Me.Btn_NextMusic.TabIndex = 29
-        Me.Btn_NextMusic.UseVisualStyleBackColor = False
-        '
-        'Btn_Stop
-        '
-        Me.Btn_Stop.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.StopP
-        Me.Btn_Stop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Btn_Stop.FlatAppearance.BorderSize = 0
-        Me.Btn_Stop.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
-        Me.Btn_Stop.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
-        Me.Btn_Stop.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btn_Stop.ForeColor = System.Drawing.Color.White
-        Me.Btn_Stop.Location = New System.Drawing.Point(370, 337)
-        Me.Btn_Stop.Name = "Btn_Stop"
-        Me.Btn_Stop.Size = New System.Drawing.Size(20, 20)
-        Me.Btn_Stop.TabIndex = 28
-        Me.Btn_Stop.UseVisualStyleBackColor = False
-        '
-        'Btn_PlayPause
-        '
-        Me.Btn_PlayPause.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.Play
-        Me.Btn_PlayPause.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Btn_PlayPause.FlatAppearance.BorderSize = 0
-        Me.Btn_PlayPause.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
-        Me.Btn_PlayPause.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
-        Me.Btn_PlayPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btn_PlayPause.ForeColor = System.Drawing.Color.White
-        Me.Btn_PlayPause.Location = New System.Drawing.Point(329, 337)
-        Me.Btn_PlayPause.Name = "Btn_PlayPause"
-        Me.Btn_PlayPause.Size = New System.Drawing.Size(20, 20)
-        Me.Btn_PlayPause.TabIndex = 27
-        Me.Btn_PlayPause.UseVisualStyleBackColor = False
-        '
         'FlowLayoutPanel1
         '
         Me.FlowLayoutPanel1.AutoScroll = True
@@ -342,6 +285,92 @@ Partial Class Modren_UI
         Me.Btn_ControlMusicList.Size = New System.Drawing.Size(20, 20)
         Me.Btn_ControlMusicList.TabIndex = 35
         Me.Btn_ControlMusicList.UseVisualStyleBackColor = False
+        Me.Btn_ControlMusicList.Visible = False
+        '
+        'Btn_PrevMusic
+        '
+        Me.Btn_PrevMusic.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.Prev
+        Me.Btn_PrevMusic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Btn_PrevMusic.FlatAppearance.BorderSize = 0
+        Me.Btn_PrevMusic.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.Btn_PrevMusic.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.Btn_PrevMusic.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_PrevMusic.ForeColor = System.Drawing.Color.White
+        Me.Btn_PrevMusic.Location = New System.Drawing.Point(282, 337)
+        Me.Btn_PrevMusic.Name = "Btn_PrevMusic"
+        Me.Btn_PrevMusic.Size = New System.Drawing.Size(32, 32)
+        Me.Btn_PrevMusic.TabIndex = 30
+        Me.Btn_PrevMusic.UseVisualStyleBackColor = False
+        '
+        'Btn_NextMusic
+        '
+        Me.Btn_NextMusic.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.NextP
+        Me.Btn_NextMusic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Btn_NextMusic.FlatAppearance.BorderSize = 0
+        Me.Btn_NextMusic.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.Btn_NextMusic.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.Btn_NextMusic.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_NextMusic.ForeColor = System.Drawing.Color.White
+        Me.Btn_NextMusic.Location = New System.Drawing.Point(405, 337)
+        Me.Btn_NextMusic.Name = "Btn_NextMusic"
+        Me.Btn_NextMusic.Size = New System.Drawing.Size(32, 32)
+        Me.Btn_NextMusic.TabIndex = 29
+        Me.Btn_NextMusic.UseVisualStyleBackColor = False
+        '
+        'Btn_Stop
+        '
+        Me.Btn_Stop.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.StopP
+        Me.Btn_Stop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Btn_Stop.FlatAppearance.BorderSize = 0
+        Me.Btn_Stop.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.Btn_Stop.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.Btn_Stop.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_Stop.ForeColor = System.Drawing.Color.White
+        Me.Btn_Stop.Location = New System.Drawing.Point(364, 337)
+        Me.Btn_Stop.Name = "Btn_Stop"
+        Me.Btn_Stop.Size = New System.Drawing.Size(32, 32)
+        Me.Btn_Stop.TabIndex = 28
+        Me.Btn_Stop.UseVisualStyleBackColor = False
+        '
+        'Btn_PlayPause
+        '
+        Me.Btn_PlayPause.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.Play
+        Me.Btn_PlayPause.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Btn_PlayPause.FlatAppearance.BorderSize = 0
+        Me.Btn_PlayPause.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.Btn_PlayPause.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.Btn_PlayPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_PlayPause.ForeColor = System.Drawing.Color.White
+        Me.Btn_PlayPause.Location = New System.Drawing.Point(323, 337)
+        Me.Btn_PlayPause.Name = "Btn_PlayPause"
+        Me.Btn_PlayPause.Size = New System.Drawing.Size(32, 32)
+        Me.Btn_PlayPause.TabIndex = 27
+        Me.Btn_PlayPause.UseVisualStyleBackColor = False
+        '
+        'Button1
+        '
+        Me.Button1.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.设置
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.ForeColor = System.Drawing.Color.White
+        Me.Button1.Location = New System.Drawing.Point(502, 8)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(16, 16)
+        Me.Button1.TabIndex = 36
+        Me.Button1.UseVisualStyleBackColor = False
+        '
+        'AxWindowsMediaPlayer1
+        '
+        Me.AxWindowsMediaPlayer1.Enabled = True
+        Me.AxWindowsMediaPlayer1.Location = New System.Drawing.Point(12, 128)
+        Me.AxWindowsMediaPlayer1.Name = "AxWindowsMediaPlayer1"
+        Me.AxWindowsMediaPlayer1.OcxState = CType(resources.GetObject("AxWindowsMediaPlayer1.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.AxWindowsMediaPlayer1.Size = New System.Drawing.Size(241, 200)
+        Me.AxWindowsMediaPlayer1.TabIndex = 37
+        Me.AxWindowsMediaPlayer1.Visible = False
         '
         'Modren_UI
         '
@@ -350,6 +379,8 @@ Partial Class Modren_UI
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(83, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(719, 521)
+        Me.Controls.Add(Me.AxWindowsMediaPlayer1)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Btn_ControlMusicList)
         Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Controls.Add(Me.Lbl_LryicDown)
@@ -374,6 +405,7 @@ Partial Class Modren_UI
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.AxWindowsMediaPlayer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -407,4 +439,6 @@ Partial Class Modren_UI
     Friend WithEvents Lbl_LryicUp As Label
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents Btn_ControlMusicList As Button
+    Friend WithEvents Button1 As Button
+    Friend WithEvents AxWindowsMediaPlayer1 As AxWMPLib.AxWindowsMediaPlayer
 End Class
