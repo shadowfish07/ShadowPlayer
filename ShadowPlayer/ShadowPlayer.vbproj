@@ -174,5 +174,8 @@
   <ItemGroup>
     <None Include="Resources\全屏.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\favicon-20180902104146803.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

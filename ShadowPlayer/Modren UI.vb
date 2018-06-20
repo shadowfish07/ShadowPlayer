@@ -38,6 +38,7 @@ Public Class Modren_UI
         Player.uiMode = "none"
         Player.settings.autoStart = False
         Lbl_MusicName.Text = ""
+        NotifyIcon1.Icon = My.Resources.LOGO_Play
         Trace.WriteLine("[" + Now.ToString + "]" + "程序启动成功")
         sw.Close()
     End Sub
