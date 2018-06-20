@@ -290,7 +290,31 @@ Public Class OptionClass
             ReDim _Children(ubound)
         End Sub
 
+#Region "=、<>重载"
+        Shared Operator =(p1 As Myboolean, p2 As Myboolean)
+            Return p1.Value = p2.Value
+        End Operator
 
+        Shared Operator =(p1 As Myboolean, p2 As Boolean)
+            Return p1.Value = p2
+        End Operator
+
+        Shared Operator =(p1 As Boolean, p2 As Myboolean)
+            Return p1 = p2.Value
+        End Operator
+
+        Shared Operator <>(p1 As Myboolean, p2 As Boolean)
+            Return p1.Value <> p2
+        End Operator
+
+        Shared Operator <>(p1 As Boolean, p2 As Myboolean)
+            Return p1 <> p2.Value
+        End Operator
+
+        Shared Operator <>(p1 As Myboolean, p2 As Myboolean)
+            Return p1.Value <> p2.Value
+        End Operator
+#End Region
         Public Sub New(Value As Boolean)
             _Value = Value
         End Sub

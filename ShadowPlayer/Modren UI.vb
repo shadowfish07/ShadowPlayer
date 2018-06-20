@@ -51,6 +51,9 @@ Public Class Modren_UI
     End Sub
 
     Private Sub Modren_UI_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim a As New OptionClass.Myboolean(True)
+        Dim b As New OptionClass.Myboolean(False)
+        If a <> b Then Debug.Print("1")
         log.Write("正在启动程序")
         log.PrintMyVision()
         Player.uiMode = "none"
