@@ -10,6 +10,7 @@ Public Class PlayEngine
     Event AddedAMusic(musicName As String)
     Event ChangedMusic(sender As Object, e As ChangedMusicEventArgs)
     Event PlayEnd()
+    Event Played(sender As Object, e As EventArgs)
 
     Dim lyr As Lyric
     Dim WithEvents _timer As New Timer With {.Interval = 100, .Enabled = False}
@@ -212,9 +213,7 @@ Public Class PlayEngine
 
     Public Sub Play()
         Modren_UI.Player.Ctlcontrols.play()
-        If PlayEngine.IsFileVideo(MusicList(nowPlay).tag) And Modren_UI.mainOption.Video_AutoFullScreen Then
-            Player.fullScreen = True
-        End If
+        RaiseEvent Played(Me, Nothing)
     End Sub
 
     Public Sub Pause()

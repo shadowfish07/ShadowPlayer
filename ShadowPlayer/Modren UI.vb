@@ -169,9 +169,6 @@ Public Class Modren_UI
                 Engine.Play()
                 Btn_PlayPause.BackgroundImage = My.Resources.Pause
                 log.Write("自动播放——闹钟")
-                'If PlayEngine.IsFileVideo(MusicList(nowPlay).tag) Then
-                '    Player.fullScreen = True
-                'End If
             Catch ex As Exception
 
             End Try
@@ -273,6 +270,17 @@ Public Class Modren_UI
         Player.URL = MusicList.Item(nowPlay).tag
         Lbl_MusicName.Text = MusicList(nowPlay).text
         Btn_Stop_Click(Nothing, Nothing)
+    End Sub
+
+    ''' <summary>
+    ''' 实现Engine类调用Play时主界面的修改
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub Engine_played(sender As Object, e As EventArgs) Handles Engine.Played
+        If PlayEngine.IsFileVideo(MusicList(nowPlay).tag) And Modren_UI.mainOption.Video_AutoFullScreen Then
+            Player.fullScreen = True
+        End If
     End Sub
 
     Private Sub UpdateMusicNameText(musicname As String)

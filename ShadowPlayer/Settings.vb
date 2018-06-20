@@ -30,7 +30,6 @@ Public Class Settings
             RdoStop.Click, RdoPause.Click, RdoNext.Click,
             PicLyricColor.Click, PicCnLyricColor.Click, PicEnLyricColor.Click,
             LblShowLyricFont.Click, LblShowCnLyricFont.Click, LblShowEnLyricFont.Click,
-            chkAutoFullScreen.Click,
             Chk_PreventSleep_Alarm.Click, Chk_PreventSleep_AllTime.Click, Chk_PreventSleep_Playing.Click, Chk_PreventSleep_Open.Click, Chk_PreventSleep_Display.Click, Chk_PreventSleep_system.Click
 
         Dim cancel As Boolean = False
