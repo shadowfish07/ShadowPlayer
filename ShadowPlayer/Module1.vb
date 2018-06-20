@@ -4,6 +4,8 @@
     'Public Option_afterClose_puase As Boolean = False, Option_afterClose_stop As Boolean = False, Option_afterClose_next As Boolean = True
     'Public Option_lyricScreenOpen As Boolean = True
 
+
+
     Public Function ListTidy(ByVal text As String, length As Integer) As String
         If Len(text) <= length Then
             ListTidy = text
@@ -24,6 +26,21 @@
         Return StrLength
     End Function
 
+    Public Enum CPlayState
+        Playing = 3
+        Stoping = 1
+        Pausing = 2
+        Undifined = 0
+        Ready = 10
+        Connecting = 9
+    End Enum
+    Public Enum Cplaynum
+        ListOnce = 1
+        ListCycle
+        OneOnce
+        OneCycle
+        Random
+    End Enum
 
 
     Public Function Change_trc(str As String) As String

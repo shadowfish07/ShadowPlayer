@@ -7,6 +7,8 @@
     Private _AfterClose_stop As New Myboolean(False, {_AfterClose_next, _AfterClose_puase, _AfterClose_stop})
     Private _AfterClose_next As New Myboolean(True, {_AfterClose_next, _AfterClose_puase, _AfterClose_stop})
     Private _LyricScreenOpen As New Myboolean(True)
+    Private _LoudTime As String = "13:50:35"
+    Private _EndTime As String = "13:54:20"
 
     Public Class Myboolean
         Private _Value As Boolean
@@ -132,6 +134,8 @@
         _AfterClose_stop = New Myboolean(False, {_AfterClose_next, _AfterClose_puase, _AfterClose_stop})
         _AfterClose_next = New Myboolean(True, {_AfterClose_next, _AfterClose_puase, _AfterClose_stop})
         _LyricScreenOpen = New Myboolean(True)
+        _LoudTime = "13:50:35"
+        _EndTime = "13:54:20"
     End Sub
 
     Public Sub New()
@@ -219,6 +223,24 @@
         End Get
         Set
             _LoudOpen = Value
+        End Set
+    End Property
+
+    Public Property EndTime As String
+        Get
+            Return _EndTime
+        End Get
+        Set(value As String)
+            _EndTime = value
+        End Set
+    End Property
+
+    Public Property LoudTime As String
+        Get
+            Return _LoudTime
+        End Get
+        Set(value As String)
+            _LoudTime = value
         End Set
     End Property
 End Class

@@ -1,7 +1,7 @@
 ﻿Public Class PlayEngine
     Event AddedAMusic(musicName As String)
 
-    Dim _timer As Timer
+    Dim WithEvents _timer As New Timer With {.Interval = 200, .Enabled = False}
 
     Public Sub Add(filePaths() As String, targetList As FlowLayoutPanel, tooltip As ToolTip)
         Dim s As String
@@ -14,7 +14,7 @@
             Modren_UI.MusicList.Item(Modren_UI.MusicList.Count - 1).AutoEllipsis = True
             Modren_UI.MusicList.Item(Modren_UI.MusicList.Count - 1).text = Dir(s)
             Modren_UI.MusicList.Item(Modren_UI.MusicList.Count - 1).tag = s
-            Modren_UI.MusicList.Item(Modren_UI.MusicList.Count - 1).width = 239
+            Modren_UI.MusicList.Item(Modren_UI.MusicList.Count - 1).width = 170
             Modren_UI.MusicList.Item(Modren_UI.MusicList.Count - 1).image = My.Resources.labelback1
             lab.CreatLyrImage()
             '导入歌词文件
@@ -79,22 +79,64 @@
     End Sub
 
     Public Sub Play()
+        Modren_UI.Player.Ctlcontrols.play()
 
     End Sub
 
     Public Sub Pause()
+        Modren_UI.Player.Ctlcontrols.pause()
 
     End Sub
 
     Public Sub [Stop]()
+        Modren_UI.Player.Ctlcontrols.stop()
 
     End Sub
 
-    Public Sub ChangeMusic(listIndex As Integer)
-
+    Public Sub ChangeMusic(Optional ByVal nowPlayIndex As Integer = -1, Optional ByVal Play As Boolean = True)
+        _timer.Enabled = False
+        If nowPlayIndex > -1 Then '指定播放情况
+            Modren_UI.nowPlay = nowPlayIndex
+        ElseIf modren_ui.nowPlay < Modren_UI.MusicList.Count - 1 Then '可下一首情况
+            Modren_UI.nowPlay += 1
+        Else '最后一首情况
+            '回到列表初
+            Modren_UI.nowPlay = 0
+        End If
+        Dim myFontFamily As System.Drawing.FontFamily = New FontFamily("微软雅黑")
+        Modren_UI.MusicList.Item(Modren_UI.lastPlay).Font = New Font(myFontFamily, 9, FontStyle.Regular)
+        Modren_UI.MusicList.Item(Modren_UI.nowPlay).Font = New Font(myFontFamily, 9, FontStyle.Bold)
+        Modren_UI.lastPlay = Modren_UI.nowPlay
+        Modren_UI.Player.URL = Modren_UI.MusicList.Item(Modren_UI.nowPlay).tag
+        If Play Then Me.Play()
     End Sub
 
-    Private Sub Wait_Until_Music_End()
+    Private Sub Wait_Until_Music_End(sender As Object, e As EventArgs) Handles _timer.Tick
+        'next music
+        If Modren_UI.Player.currentMedia.duration - 0.3 <= Modren_UI.Player.Ctlcontrols.currentPosition Then
+            Select Case Modren_UI.playMode
+                Case Cplaynum.ListOnce
+                    If Modren_UI.nowPlay < Modren_UI.MusicList.Count - 1 Then
+                        ChangeMusic()
+                    Else
+                        '回到列表初并停止播放
+                        Me.Stop()
+                        Modren_UI.Player.URL = Modren_UI.MusicList.Item(0).tag
+                        Modren_UI.nowPlay = 0
+                        Modren_UI.lastPlay = 0
+                    End If
+                Case Cplaynum.ListCycle
+                    ChangeMusic()
+                Case Cplaynum.OneOnce
+                    Me.Stop()
+                Case Cplaynum.OneCycle
+                    Modren_UI.Player.Ctlcontrols.currentPosition = 0
+                Case Cplaynum.Random
+                    Dim rnd As New Random
+                    ChangeMusic(rnd.Next(0, Modren_UI.MusicList.Count))
+            End Select
 
+        End If
     End Sub
+
 End Class
