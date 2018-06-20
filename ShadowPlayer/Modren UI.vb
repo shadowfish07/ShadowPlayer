@@ -449,7 +449,8 @@ Public Class Modren_UI
     ''' <param name="e"></param>
     Private Sub Btn_Add_Paint(sender As Object, e As PaintEventArgs) Handles Btn_Add.Paint, btn_Mainmin.Paint,
             Btn_PlayPause.Paint, Btn_Stop.Paint, Btn_FullScreen.Paint, Btn_NextMusic.Paint,
-            Btn_PrevMusic.Paint, Btn_NextMusic.Paint, Btn_MoveToUp.Paint, Btn_MoveToDown.Paint
+            Btn_PrevMusic.Paint, Btn_NextMusic.Paint, Btn_MoveToUp.Paint, Btn_MoveToDown.Paint, Btn_Settings.Paint，
+            Btn_Remove.Paint
         Dim ctl As Button = sender
         ctl.FlatAppearance.BorderColor = ctl.Parent.BackColor
     End Sub
