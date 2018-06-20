@@ -3,17 +3,23 @@
 Public Class OptionClass
     Private _alarm_LoudOpen As New Myboolean(True)
     Private _alarm_CloseOpen As New Myboolean(True)
+
     Private _whenClose_EndOpen As New Myboolean(False)
     Private _whenClose_MiniOpen As New Myboolean(True)
     Private _whenClose_NothingOpen As New Myboolean(False)
+
     Private _afterClose_puase As New Myboolean(False)
     Private _afterClose_stop As New Myboolean(False)
     Private _afterClose_next As New Myboolean(True)
+
     Private _lyricScreen_Open As New Myboolean(True)
+
     Private _preventSleep_Alltime As New Myboolean(False)
     Private _preventSleep_Alarm As New Myboolean(True)
     Private _preventSleep_Playing As New Myboolean(True)
     Private _preventSleep_Open As New Myboolean(True)
+    Private _preventSleep_System As New Myboolean(True)
+    Private _preventSleep_Display As New Myboolean(True)
 
     Private _alarm_LoudTime As String = "13:29:50"
     Private _alarm_EndTime As String = "13:34:20"
@@ -222,6 +228,24 @@ Public Class OptionClass
         End Get
         Set(value As Myboolean)
             _preventSleep_Open = value
+        End Set
+    End Property
+
+    Public Property PreventSleep_System As Myboolean
+        Get
+            Return _preventSleep_System
+        End Get
+        Set(value As Myboolean)
+            _preventSleep_System = value
+        End Set
+    End Property
+
+    Public Property PreventSleep_Display As Myboolean
+        Get
+            Return _preventSleep_Display
+        End Get
+        Set(value As Myboolean)
+            _preventSleep_Display = value
         End Set
     End Property
 

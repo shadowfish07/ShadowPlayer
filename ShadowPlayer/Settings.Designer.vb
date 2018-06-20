@@ -78,10 +78,10 @@ Partial Class Settings
         Me.ChkLyricOpen = New System.Windows.Forms.CheckBox()
         Me.TabPage_others = New System.Windows.Forms.TabPage()
         Me.pnl_sleep = New System.Windows.Forms.Panel()
-        Me.Chk_PreventSleepPlaying = New System.Windows.Forms.CheckBox()
-        Me.Chk_PreventSleepAlarm = New System.Windows.Forms.CheckBox()
-        Me.Chk_PreventSleepAllTime = New System.Windows.Forms.CheckBox()
-        Me.Chk_PreventOpen = New System.Windows.Forms.CheckBox()
+        Me.Chk_PreventSleep_Playing = New System.Windows.Forms.CheckBox()
+        Me.Chk_PreventSleep_Alarm = New System.Windows.Forms.CheckBox()
+        Me.Chk_PreventSleep_AllTime = New System.Windows.Forms.CheckBox()
+        Me.Chk_PreventSleep_Open = New System.Windows.Forms.CheckBox()
         Me.Panel_top = New System.Windows.Forms.Panel()
         Me.lbl_CheckUpdates = New System.Windows.Forms.LinkLabel()
         Me.lbl_buidLevel = New System.Windows.Forms.Label()
@@ -95,6 +95,8 @@ Partial Class Settings
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         Me.FontDialog1 = New System.Windows.Forms.FontDialog()
+        Me.Chk_PreventSleep_Display = New System.Windows.Forms.CheckBox()
+        Me.Chk_PreventSleep_system = New System.Windows.Forms.CheckBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage_time.SuspendLayout()
         Me.PnlOpen.SuspendLayout()
@@ -715,7 +717,7 @@ Partial Class Settings
         'TabPage_others
         '
         Me.TabPage_others.Controls.Add(Me.pnl_sleep)
-        Me.TabPage_others.Controls.Add(Me.Chk_PreventOpen)
+        Me.TabPage_others.Controls.Add(Me.Chk_PreventSleep_Open)
         Me.TabPage_others.Location = New System.Drawing.Point(4, 26)
         Me.TabPage_others.Name = "TabPage_others"
         Me.TabPage_others.Size = New System.Drawing.Size(466, 379)
@@ -725,57 +727,59 @@ Partial Class Settings
         '
         'pnl_sleep
         '
-        Me.pnl_sleep.Controls.Add(Me.Chk_PreventSleepPlaying)
-        Me.pnl_sleep.Controls.Add(Me.Chk_PreventSleepAlarm)
-        Me.pnl_sleep.Controls.Add(Me.Chk_PreventSleepAllTime)
+        Me.pnl_sleep.Controls.Add(Me.Chk_PreventSleep_system)
+        Me.pnl_sleep.Controls.Add(Me.Chk_PreventSleep_Display)
+        Me.pnl_sleep.Controls.Add(Me.Chk_PreventSleep_Playing)
+        Me.pnl_sleep.Controls.Add(Me.Chk_PreventSleep_Alarm)
+        Me.pnl_sleep.Controls.Add(Me.Chk_PreventSleep_AllTime)
         Me.pnl_sleep.Location = New System.Drawing.Point(42, 57)
         Me.pnl_sleep.Name = "pnl_sleep"
-        Me.pnl_sleep.Size = New System.Drawing.Size(190, 89)
+        Me.pnl_sleep.Size = New System.Drawing.Size(224, 111)
         Me.pnl_sleep.TabIndex = 8
         '
-        'Chk_PreventSleepPlaying
+        'Chk_PreventSleep_Playing
         '
-        Me.Chk_PreventSleepPlaying.AutoSize = True
-        Me.Chk_PreventSleepPlaying.Location = New System.Drawing.Point(3, 52)
-        Me.Chk_PreventSleepPlaying.Name = "Chk_PreventSleepPlaying"
-        Me.Chk_PreventSleepPlaying.Size = New System.Drawing.Size(171, 21)
-        Me.Chk_PreventSleepPlaying.TabIndex = 49
-        Me.Chk_PreventSleepPlaying.Text = "歌曲播放时阻止计算机休眠"
-        Me.Chk_PreventSleepPlaying.UseVisualStyleBackColor = True
+        Me.Chk_PreventSleep_Playing.AutoSize = True
+        Me.Chk_PreventSleep_Playing.Location = New System.Drawing.Point(3, 52)
+        Me.Chk_PreventSleep_Playing.Name = "Chk_PreventSleep_Playing"
+        Me.Chk_PreventSleep_Playing.Size = New System.Drawing.Size(171, 21)
+        Me.Chk_PreventSleep_Playing.TabIndex = 49
+        Me.Chk_PreventSleep_Playing.Text = "歌曲播放时阻止计算机休眠"
+        Me.Chk_PreventSleep_Playing.UseVisualStyleBackColor = True
         '
-        'Chk_PreventSleepAlarm
+        'Chk_PreventSleep_Alarm
         '
-        Me.Chk_PreventSleepAlarm.AutoSize = True
-        Me.Chk_PreventSleepAlarm.Location = New System.Drawing.Point(3, 31)
-        Me.Chk_PreventSleepAlarm.Name = "Chk_PreventSleepAlarm"
-        Me.Chk_PreventSleepAlarm.Size = New System.Drawing.Size(171, 21)
-        Me.Chk_PreventSleepAlarm.TabIndex = 48
-        Me.Chk_PreventSleepAlarm.Text = "设置闹钟时阻止计算机休眠"
-        Me.Chk_PreventSleepAlarm.UseVisualStyleBackColor = True
+        Me.Chk_PreventSleep_Alarm.AutoSize = True
+        Me.Chk_PreventSleep_Alarm.Location = New System.Drawing.Point(3, 31)
+        Me.Chk_PreventSleep_Alarm.Name = "Chk_PreventSleep_Alarm"
+        Me.Chk_PreventSleep_Alarm.Size = New System.Drawing.Size(171, 21)
+        Me.Chk_PreventSleep_Alarm.TabIndex = 48
+        Me.Chk_PreventSleep_Alarm.Text = "设置闹钟时阻止计算机休眠"
+        Me.Chk_PreventSleep_Alarm.UseVisualStyleBackColor = True
         '
-        'Chk_PreventSleepAllTime
+        'Chk_PreventSleep_AllTime
         '
-        Me.Chk_PreventSleepAllTime.AutoSize = True
-        Me.Chk_PreventSleepAllTime.Location = New System.Drawing.Point(3, 10)
-        Me.Chk_PreventSleepAllTime.Name = "Chk_PreventSleepAllTime"
-        Me.Chk_PreventSleepAllTime.Size = New System.Drawing.Size(171, 21)
-        Me.Chk_PreventSleepAllTime.TabIndex = 47
-        Me.Chk_PreventSleepAllTime.Text = "程序运行时阻止计算机休眠"
-        Me.Chk_PreventSleepAllTime.UseVisualStyleBackColor = True
+        Me.Chk_PreventSleep_AllTime.AutoSize = True
+        Me.Chk_PreventSleep_AllTime.Location = New System.Drawing.Point(3, 10)
+        Me.Chk_PreventSleep_AllTime.Name = "Chk_PreventSleep_AllTime"
+        Me.Chk_PreventSleep_AllTime.Size = New System.Drawing.Size(171, 21)
+        Me.Chk_PreventSleep_AllTime.TabIndex = 47
+        Me.Chk_PreventSleep_AllTime.Text = "程序运行时阻止计算机休眠"
+        Me.Chk_PreventSleep_AllTime.UseVisualStyleBackColor = True
         '
-        'Chk_PreventOpen
+        'Chk_PreventSleep_Open
         '
-        Me.Chk_PreventOpen.AutoSize = True
-        Me.Chk_PreventOpen.Checked = True
-        Me.Chk_PreventOpen.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.Chk_PreventOpen.Cursor = System.Windows.Forms.Cursors.Default
-        Me.Chk_PreventOpen.Font = New System.Drawing.Font("微软雅黑", 11.0!)
-        Me.Chk_PreventOpen.Location = New System.Drawing.Point(23, 33)
-        Me.Chk_PreventOpen.Name = "Chk_PreventOpen"
-        Me.Chk_PreventOpen.Size = New System.Drawing.Size(133, 24)
-        Me.Chk_PreventOpen.TabIndex = 7
-        Me.Chk_PreventOpen.Text = "阻止计算机休眠"
-        Me.Chk_PreventOpen.UseVisualStyleBackColor = True
+        Me.Chk_PreventSleep_Open.AutoSize = True
+        Me.Chk_PreventSleep_Open.Checked = True
+        Me.Chk_PreventSleep_Open.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.Chk_PreventSleep_Open.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Chk_PreventSleep_Open.Font = New System.Drawing.Font("微软雅黑", 11.0!)
+        Me.Chk_PreventSleep_Open.Location = New System.Drawing.Point(23, 33)
+        Me.Chk_PreventSleep_Open.Name = "Chk_PreventSleep_Open"
+        Me.Chk_PreventSleep_Open.Size = New System.Drawing.Size(133, 24)
+        Me.Chk_PreventSleep_Open.TabIndex = 7
+        Me.Chk_PreventSleep_Open.Text = "阻止计算机休眠"
+        Me.Chk_PreventSleep_Open.UseVisualStyleBackColor = True
         '
         'Panel_top
         '
@@ -949,6 +953,26 @@ Partial Class Settings
         Me.LinkLabel1.Text = "检查更新"
         Me.LinkLabel1.Visible = False
         '
+        'Chk_PreventSleep_Display
+        '
+        Me.Chk_PreventSleep_Display.AutoSize = True
+        Me.Chk_PreventSleep_Display.Location = New System.Drawing.Point(2, 79)
+        Me.Chk_PreventSleep_Display.Name = "Chk_PreventSleep_Display"
+        Me.Chk_PreventSleep_Display.Size = New System.Drawing.Size(111, 21)
+        Me.Chk_PreventSleep_Display.TabIndex = 50
+        Me.Chk_PreventSleep_Display.Text = "阻止显示器休眠"
+        Me.Chk_PreventSleep_Display.UseVisualStyleBackColor = True
+        '
+        'Chk_PreventSleep_system
+        '
+        Me.Chk_PreventSleep_system.AutoSize = True
+        Me.Chk_PreventSleep_system.Location = New System.Drawing.Point(110, 79)
+        Me.Chk_PreventSleep_system.Name = "Chk_PreventSleep_system"
+        Me.Chk_PreventSleep_system.Size = New System.Drawing.Size(111, 21)
+        Me.Chk_PreventSleep_system.TabIndex = 51
+        Me.Chk_PreventSleep_system.Text = "阻止计算机休眠"
+        Me.Chk_PreventSleep_system.UseVisualStyleBackColor = True
+        '
         'Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
@@ -1065,9 +1089,11 @@ Partial Class Settings
     Friend WithEvents chkAutoFullScreen As CheckBox
     Friend WithEvents TabPage_others As TabPage
     Friend WithEvents pnl_sleep As Panel
-    Friend WithEvents Chk_PreventSleepPlaying As CheckBox
-    Friend WithEvents Chk_PreventSleepAlarm As CheckBox
-    Friend WithEvents Chk_PreventSleepAllTime As CheckBox
-    Friend WithEvents Chk_PreventOpen As CheckBox
+    Friend WithEvents Chk_PreventSleep_Playing As CheckBox
+    Friend WithEvents Chk_PreventSleep_Alarm As CheckBox
+    Friend WithEvents Chk_PreventSleep_AllTime As CheckBox
+    Friend WithEvents Chk_PreventSleep_Open As CheckBox
     Friend WithEvents btn_others As Button
+    Friend WithEvents Chk_PreventSleep_system As CheckBox
+    Friend WithEvents Chk_PreventSleep_Display As CheckBox
 End Class
