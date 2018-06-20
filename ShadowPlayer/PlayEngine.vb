@@ -238,7 +238,7 @@ Public Class PlayEngine
         'next music
         If Modren_UI.Player.currentMedia.duration - 0.3 <= Modren_UI.Player.Ctlcontrols.currentPosition Then
             Select Case Modren_UI.playMode
-                Case Cplaynum.ListOnce
+                Case CplayMode.ListOnce
                     If Modren_UI.nowPlay < Modren_UI.MusicList.Count - 1 Then
                         ChangeMusic()
                     Else
@@ -249,14 +249,14 @@ Public Class PlayEngine
                         Modren_UI.lastPlay = 0
                         RaiseEvent PlayEnd()
                     End If
-                Case Cplaynum.ListCycle
+                Case CplayMode.ListCycle
                     ChangeMusic()
-                Case Cplaynum.OneOnce
+                Case CplayMode.OneOnce
                     Me.Stop()
                     RaiseEvent PlayEnd()
-                Case Cplaynum.OneCycle
+                Case CplayMode.OneCycle
                     Modren_UI.Player.Ctlcontrols.currentPosition = 0
-                Case Cplaynum.Random
+                Case CplayMode.Random
                     Dim rnd As New Random
                     ChangeMusic(rnd.Next(0, Modren_UI.MusicList.Count))
             End Select

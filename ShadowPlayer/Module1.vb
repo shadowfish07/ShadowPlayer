@@ -34,7 +34,7 @@
         Ready = 10
         Connecting = 9
     End Enum
-    Public Enum Cplaynum
+    Public Enum CplayMode
         ListOnce = 1
         ListCycle
         OneOnce

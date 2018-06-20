@@ -13,7 +13,7 @@ Public Class Modren_UI
     Dim log As New LogWriter("ShadowPlayer_RunTime.log")
     Dim loaded As Boolean = False
 
-    Friend playMode As Cplaynum = Cplaynum.ListOnce
+    Friend playMode As CplayMode = CplayMode.ListOnce
     Public nowPlay As Integer, lastPlay As Integer, chooseItem As Integer = -1
 
     Public mainOption As New OptionClass
@@ -170,7 +170,7 @@ Public Class Modren_UI
                 End If
                 '结束后播放操作
                 If mainOption.AfterClose_next.Value = True Then
-                    If playMode = Cplaynum.Random Then
+                    If playMode = CplayMode.Random Then
                         Dim rnd As New Random
                         Engine.ChangeMusic(rnd.Next(0, MusicList.Count), False)
                     Else '暂时不考虑播放模式为单曲循环的情况
@@ -457,7 +457,41 @@ Public Class Modren_UI
         chooseItem += 1
     End Sub
 
-
+    ''' <summary>
+    ''' 切换播放模式
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub lblPlayMode_MouseDown(sender As Object, e As EventArgs) Handles lblPlayMode.MouseDown
+        Static modeIndex = 0
+        Select Case modeIndex
+            Case 0
+                '当前为单次列表
+                lblPlayMode.Text = "列表循环"
+                playMode = CplayMode.ListCycle
+                modeIndex += 1
+            Case 1
+                '当前为列表循环
+                lblPlayMode.Text = "单次列表"
+                playMode = CplayMode.OneOnce
+                modeIndex += 1
+            Case 2
+                '当前为单次列表
+                lblPlayMode.Text = "单次播放"
+                playMode = CplayMode.OneOnce
+                modeIndex += 1
+            Case 3
+                '当前为单次播放
+                lblPlayMode.Text = "循环单首"
+                playMode = CplayMode.OneCycle
+                modeIndex += 1
+            Case 4
+                '当前为循环单首
+                lblPlayMode.Text = "随机播放"
+                playMode = CplayMode.Random
+                modeIndex = 0
+        End Select
+    End Sub
 
     Private Sub Btn_Remove_Click(sender As Object, e As EventArgs) Handles Btn_Remove.Click
         Try
