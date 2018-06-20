@@ -89,7 +89,7 @@
                 tempX -= Math.Abs(Math.Floor(tempX))
             Else
                 _target.Location = New Point(_target.Location.X - Math.Abs(Math.Ceiling(tempX)), _target.Location.Y)
-                changeX = Math.Abs(Math.Ceiling(tempX))
+                changeX = -Math.Abs(Math.Ceiling(tempX))
                 tempX += Math.Abs(Math.Ceiling(tempX))
             End If
         End If
@@ -100,7 +100,7 @@
                 tempY -= Math.Abs(Math.Floor(tempY))
             Else
                 _target.Location = New Point(_target.Location.X, _target.Location.Y - Math.Abs(Math.Ceiling(tempY)))
-                changeY = Math.Abs(Math.Ceiling(tempY))
+                changeY = -Math.Abs(Math.Ceiling(tempY))
                 tempY += Math.Abs(Math.Ceiling(tempY))
             End If
         End If

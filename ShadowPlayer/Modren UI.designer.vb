@@ -59,6 +59,11 @@ Partial Class Modren_UI
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel_top = New System.Windows.Forms.Panel()
         Me.Panel_hideList = New System.Windows.Forms.Panel()
+        Me.Btn_Add = New System.Windows.Forms.Button()
+        Me.Btn_Remove = New System.Windows.Forms.Button()
+        Me.Btn_MoveToUp = New System.Windows.Forms.Button()
+        Me.Btn_MoveToDown = New System.Windows.Forms.Button()
+        Me.Timer_List = New System.Windows.Forms.Timer(Me.components)
         Me.ContextMenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.Player, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -444,7 +449,78 @@ Partial Class Modren_UI
         Me.Panel_hideList.Name = "Panel_hideList"
         Me.Panel_hideList.Size = New System.Drawing.Size(180, 241)
         Me.Panel_hideList.TabIndex = 42
-        Me.Panel_hideList.Visible = False
+        '
+        'Btn_Add
+        '
+        Me.Btn_Add.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.新增
+        Me.Btn_Add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Btn_Add.FlatAppearance.BorderSize = 0
+        Me.Btn_Add.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.Btn_Add.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.Btn_Add.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_Add.ForeColor = System.Drawing.Color.White
+        Me.Btn_Add.Location = New System.Drawing.Point(686, 85)
+        Me.Btn_Add.Name = "Btn_Add"
+        Me.Btn_Add.Size = New System.Drawing.Size(32, 32)
+        Me.Btn_Add.TabIndex = 43
+        Me.Btn_Add.TabStop = False
+        Me.Btn_Add.UseVisualStyleBackColor = False
+        Me.Btn_Add.Visible = False
+        '
+        'Btn_Remove
+        '
+        Me.Btn_Remove.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.移除
+        Me.Btn_Remove.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Btn_Remove.FlatAppearance.BorderSize = 0
+        Me.Btn_Remove.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.Btn_Remove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.Btn_Remove.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_Remove.ForeColor = System.Drawing.Color.White
+        Me.Btn_Remove.Location = New System.Drawing.Point(651, 85)
+        Me.Btn_Remove.Name = "Btn_Remove"
+        Me.Btn_Remove.Size = New System.Drawing.Size(32, 32)
+        Me.Btn_Remove.TabIndex = 44
+        Me.Btn_Remove.TabStop = False
+        Me.Btn_Remove.UseVisualStyleBackColor = False
+        Me.Btn_Remove.Visible = False
+        '
+        'Btn_MoveToUp
+        '
+        Me.Btn_MoveToUp.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.上移
+        Me.Btn_MoveToUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Btn_MoveToUp.FlatAppearance.BorderSize = 0
+        Me.Btn_MoveToUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.Btn_MoveToUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.Btn_MoveToUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_MoveToUp.ForeColor = System.Drawing.Color.White
+        Me.Btn_MoveToUp.Location = New System.Drawing.Point(618, 85)
+        Me.Btn_MoveToUp.Name = "Btn_MoveToUp"
+        Me.Btn_MoveToUp.Size = New System.Drawing.Size(32, 32)
+        Me.Btn_MoveToUp.TabIndex = 45
+        Me.Btn_MoveToUp.TabStop = False
+        Me.Btn_MoveToUp.UseVisualStyleBackColor = False
+        Me.Btn_MoveToUp.Visible = False
+        '
+        'Btn_MoveToDown
+        '
+        Me.Btn_MoveToDown.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.下移
+        Me.Btn_MoveToDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Btn_MoveToDown.FlatAppearance.BorderSize = 0
+        Me.Btn_MoveToDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
+        Me.Btn_MoveToDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.Btn_MoveToDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_MoveToDown.ForeColor = System.Drawing.Color.White
+        Me.Btn_MoveToDown.Location = New System.Drawing.Point(585, 85)
+        Me.Btn_MoveToDown.Name = "Btn_MoveToDown"
+        Me.Btn_MoveToDown.Size = New System.Drawing.Size(32, 32)
+        Me.Btn_MoveToDown.TabIndex = 46
+        Me.Btn_MoveToDown.TabStop = False
+        Me.Btn_MoveToDown.UseVisualStyleBackColor = False
+        Me.Btn_MoveToDown.Visible = False
+        '
+        'Timer_List
+        '
+        Me.Timer_List.Interval = 1000
         '
         'Modren_UI
         '
@@ -453,6 +529,8 @@ Partial Class Modren_UI
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(83, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(719, 521)
+        Me.Controls.Add(Me.Btn_MoveToDown)
+        Me.Controls.Add(Me.Btn_MoveToUp)
         Me.Controls.Add(Me.Panel_hideList)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Btn_Alarm)
@@ -474,6 +552,8 @@ Partial Class Modren_UI
         Me.Controls.Add(Me.btn_Mainmax)
         Me.Controls.Add(Me.btn_Mainexit)
         Me.Controls.Add(Me.Panel_top)
+        Me.Controls.Add(Me.Btn_Remove)
+        Me.Controls.Add(Me.Btn_Add)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ForeColor = System.Drawing.Color.White
@@ -528,4 +608,9 @@ Partial Class Modren_UI
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel_top As Panel
     Friend WithEvents Panel_hideList As Panel
+    Friend WithEvents Btn_Add As Button
+    Friend WithEvents Btn_Remove As Button
+    Friend WithEvents Btn_MoveToUp As Button
+    Friend WithEvents Btn_MoveToDown As Button
+    Friend WithEvents Timer_List As Timer
 End Class

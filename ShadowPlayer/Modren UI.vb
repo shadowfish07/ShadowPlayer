@@ -17,6 +17,9 @@ Public Class Modren_UI
 
     Public mainOption As New OptionClass
 
+    Private isListOpen As Boolean = False
+    Private ListRemainTime As Integer = 0
+
     Private Sub btn_Mainexit_Click(sender As Object, e As EventArgs) Handles btn_Mainexit.Click
         Application.Exit()
     End Sub
@@ -267,6 +270,17 @@ Public Class Modren_UI
 
     End Sub
 
+    Private Sub Timer_List_Tick(sender As Object, e As EventArgs) Handles Timer_List.Tick
+        If ListRemainTime = 5 Then
+            Dim a As New HideListAction(Panel_hideList, New PointF(Panel_hideList.Location.X, Panel_hideList.Location.Y - 300), 300, 10)
+            a.Start()
+            ListRemainTime = 0
+            Timer_List.Stop()
+        End If
+        ListRemainTime += 1
+
+    End Sub
+
     Private Sub 暂停ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 暂停ToolStripMenuItem.Click
         Try
             Engine.Pause()
@@ -276,8 +290,11 @@ Public Class Modren_UI
     End Sub
 
     Private Sub Btn_List_MouseEnter(sender As Object, e As EventArgs) Handles Btn_List.MouseEnter
-        Dim a As New HideListAction(Panel_hideList, New PointF(Panel_hideList.Location.X, Panel_hideList.Location.Y + 300), 500, 10)
-        a.Start()
+        If isListOpen = False Then
+            Dim a As New HideListAction(Panel_hideList, New PointF(Panel_hideList.Location.X, Panel_hideList.Location.Y + 300), 300, 10)
+            a.Start()
+            Timer_List.Start()
+        End If
     End Sub
 End Class
 
