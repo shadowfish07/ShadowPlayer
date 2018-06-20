@@ -101,7 +101,7 @@
     Public Shared Function IsFileRight(path As String) As Boolean
         Dim support_extension() As String
         support_extension = ALL_FILTERS.Split(";")
-        Return support_extension.Contains(System.IO.Path.GetExtension(path))
+        Return support_extension.Contains(System.IO.Path.GetExtension(path).ToLower)
     End Function
 
     Public Shared Function IsFileVideo(path As String) As Boolean
