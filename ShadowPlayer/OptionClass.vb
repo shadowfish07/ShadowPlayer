@@ -9,7 +9,109 @@
     Private _LyricScreenOpen As New Myboolean(True)
     Private _LoudTime As String = "13:30:22"
     Private _EndTime As String = "13:34:40"
+    Public Property Lyric_SingleLine_ForeColor As Color = Color.Moccasin
+    Public Property Lyric_CN_ForeColor As Color = Color.Moccasin
+    Public Property Lyric_English_ForeColor As Color = Color.Gold
 
+    Public Property CloseOpen As Myboolean
+        Get
+            Return _CloseOpen
+        End Get
+        Set
+            _CloseOpen = Value
+        End Set
+    End Property
+
+    Public Property CloseEndOpen As Myboolean
+        Get
+            Return _CloseEndOpen
+        End Get
+        Set
+            _CloseEndOpen = Value
+        End Set
+    End Property
+
+    Public Property CloseMiniOpen As Myboolean
+        Get
+            Return _CloseMiniOpen
+        End Get
+        Set
+            _CloseMiniOpen = Value
+        End Set
+    End Property
+
+    Public Property AfterClose_puase As Myboolean
+        Get
+            Return _AfterClose_puase
+        End Get
+        Set
+            _AfterClose_puase = Value
+        End Set
+    End Property
+
+    Public Property AfterClose_stop As Myboolean
+        Get
+            Return _AfterClose_stop
+        End Get
+        Set
+            _AfterClose_stop = Value
+        End Set
+    End Property
+
+    Public Property AfterClose_next As Myboolean
+        Get
+            Return _AfterClose_next
+        End Get
+        Set
+            _AfterClose_next = Value
+        End Set
+    End Property
+
+    Public Property LyricScreenOpen As Myboolean
+        Get
+            Return _LyricScreenOpen
+        End Get
+        Set
+            _LyricScreenOpen = Value
+        End Set
+    End Property
+
+    Public Property LoudOpen As Myboolean
+        Get
+            Return _LoudOpen
+        End Get
+        Set
+            _LoudOpen = Value
+        End Set
+    End Property
+
+    Public Property EndTime As String
+        Get
+            If _CloseOpen.Value Then
+                Return _EndTime
+            Else
+                Return "未设置"
+            End If
+
+        End Get
+        Set(value As String)
+            _EndTime = value
+        End Set
+    End Property
+
+    Public Property LoudTime As String
+        Get
+            If _LoudOpen.Value Then
+                Return _LoudTime
+            Else
+                Return "未设置"
+            End If
+
+        End Get
+        Set(value As String)
+            _LoudTime = value
+        End Set
+    End Property
     Public Class Myboolean
         Private _Value As Boolean
         Private _OnlyOneTrue() As Myboolean
@@ -154,103 +256,4 @@
     End Enum
 
 
-    Public Property CloseOpen As Myboolean
-        Get
-            Return _CloseOpen
-        End Get
-        Set
-            _CloseOpen = Value
-        End Set
-    End Property
-
-    Public Property CloseEndOpen As Myboolean
-        Get
-            Return _CloseEndOpen
-        End Get
-        Set
-            _CloseEndOpen = Value
-        End Set
-    End Property
-
-    Public Property CloseMiniOpen As Myboolean
-        Get
-            Return _CloseMiniOpen
-        End Get
-        Set
-            _CloseMiniOpen = Value
-        End Set
-    End Property
-
-    Public Property AfterClose_puase As Myboolean
-        Get
-            Return _AfterClose_puase
-        End Get
-        Set
-            _AfterClose_puase = Value
-        End Set
-    End Property
-
-    Public Property AfterClose_stop As Myboolean
-        Get
-            Return _AfterClose_stop
-        End Get
-        Set
-            _AfterClose_stop = Value
-        End Set
-    End Property
-
-    Public Property AfterClose_next As Myboolean
-        Get
-            Return _AfterClose_next
-        End Get
-        Set
-            _AfterClose_next = Value
-        End Set
-    End Property
-
-    Public Property LyricScreenOpen As Myboolean
-        Get
-            Return _LyricScreenOpen
-        End Get
-        Set
-            _LyricScreenOpen = Value
-        End Set
-    End Property
-
-    Public Property LoudOpen As Myboolean
-        Get
-            Return _LoudOpen
-        End Get
-        Set
-            _LoudOpen = Value
-        End Set
-    End Property
-
-    Public Property EndTime As String
-        Get
-            If _CloseOpen.Value Then
-                Return _EndTime
-            Else
-                Return "未设置"
-            End If
-
-        End Get
-        Set(value As String)
-            _EndTime = value
-        End Set
-    End Property
-
-    Public Property LoudTime As String
-        Get
-            If _LoudOpen.Value Then
-                Return _LoudTime
-            Else
-                Return "未设置"
-            End If
-
-        End Get
-        Set(value As String)
-            _LoudTime = value
-        End Set
-    End Property
 End Class

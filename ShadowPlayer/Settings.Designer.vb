@@ -672,14 +672,13 @@ Partial Class Settings
         Me.lbl_CheckUpdates.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_CheckUpdates.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline
         Me.lbl_CheckUpdates.LinkColor = System.Drawing.SystemColors.MenuHighlight
-        Me.lbl_CheckUpdates.Location = New System.Drawing.Point(218, 30)
+        Me.lbl_CheckUpdates.Location = New System.Drawing.Point(215, 29)
         Me.lbl_CheckUpdates.Margin = New System.Windows.Forms.Padding(3, 5, 3, 0)
         Me.lbl_CheckUpdates.Name = "lbl_CheckUpdates"
         Me.lbl_CheckUpdates.Size = New System.Drawing.Size(55, 13)
         Me.lbl_CheckUpdates.TabIndex = 27
         Me.lbl_CheckUpdates.TabStop = True
         Me.lbl_CheckUpdates.Text = "检查更新"
-        Me.lbl_CheckUpdates.Visible = False
         '
         'lbl_buidLevel
         '
@@ -817,6 +816,7 @@ Partial Class Settings
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "Settings"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Settings"
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage_time.ResumeLayout(False)

@@ -70,7 +70,9 @@ Public Class Modren_UI
         FormLoaded.Interval = 30
         AddHandler FormLoaded.Tick, AddressOf FormLoad
         FormLoaded.Enabled = True
-        '
+        '设置字幕颜色
+        Lbl_LryicUp.ForeColor = mainOption.Lyric_CN_ForeColor
+        Lbl_LryicDown.ForeColor = mainOption.Lyric_English_ForeColor
 
         log.Write("程序启动成功")
     End Sub

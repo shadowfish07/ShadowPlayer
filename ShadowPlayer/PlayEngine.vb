@@ -36,6 +36,8 @@
             If result = -1 Then Exit Sub
             If Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.GetHaveLanguages Then
                 '双语字幕
+                lbl_up.ForeColor = Modren_UI.mainOption.Lyric_CN_ForeColor
+                lbl_down.ForeColor = Modren_UI.mainOption.Lyric_English_ForeColor
                 lbl_down.Visible = True
                 If Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result) <> "" Then
                     'If StrLength(Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result)) > 46 Then
@@ -50,6 +52,7 @@
                 End If
             Else
                 '中文字幕
+                lbl_up.ForeColor = Modren_UI.mainOption.Lyric_SingleLine_ForeColor
                 lbl_down.Visible = False
                 If Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result) <> "" Then
                     'If StrLength(Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result)) > 26 Then
