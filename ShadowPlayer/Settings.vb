@@ -1,15 +1,17 @@
 ﻿Imports libVisualAction.Shadowfish.VisualAction
 
 Public Class Settings
-    Private Sub PageCommand_Click(sender As Object, e As EventArgs) Handles btn_time.Click, btn_Lyric.Click
+    Private Sub PageCommand_Click(sender As Object, e As EventArgs) Handles btn_time.Click, btn_Lyric.Click, btn_others.Click
         Select Case True
             Case sender Is btn_time
                 TabControl1.SelectedTab = TabPage_time
             Case sender Is btn_Lyric
                 TabControl1.SelectedTab = TabPage_lyric
+            Case sender Is btn_others
+                TabControl1.SelectedTab = TabPage_others
         End Select
 
-        For Each b As Button In Panel1.Controls
+        For Each b As Button In {btn_Lyric, btn_others, btn_time}
             If b IsNot sender Then
                 b.BackColor = Color.FromArgb(255, 43, 60, 75)
             ElseIf b Is sender Then
@@ -28,32 +30,33 @@ Public Class Settings
             RdoStop.Click, RdoPause.Click, RdoNext.Click,
             PicLyricColor.Click, PicCnLyricColor.Click, PicEnLyricColor.Click,
             LblShowLyricFont.Click, LblShowCnLyricFont.Click, LblShowEnLyricFont.Click,
-            chkAutoFullScreen.Click
+            chkAutoFullScreen.Click,
+            Chk_PreventSleepAlarm.Click, Chk_PreventSleepAllTime.Click, Chk_PreventSleepPlaying.Click, Chk_PreventOpen.Click
 
         Dim cancel As Boolean = False
 
         Select Case True
             Case sender Is ChkLyricOpen
                 PnlLryic.Enabled = ChkLyricOpen.Checked
-                Modren_UI.mainOption.LyricScreenOpen.Value = ChkLyricOpen.Checked
+                Modren_UI.mainOption.LyricScreen_Open.Value = ChkLyricOpen.Checked
             Case sender Is ChkSetCloseEnabled
                 PnlStop.Enabled = ChkSetCloseEnabled.Checked
-                Modren_UI.mainOption.CloseOpen.Value = ChkSetCloseEnabled.Checked
+                Modren_UI.mainOption.Alarm_CloseOpen.Value = ChkSetCloseEnabled.Checked
             Case sender Is ChkSetTimeEnabled
                 PnlOpen.Enabled = ChkSetTimeEnabled.Checked
-                Modren_UI.mainOption.LoudOpen.Value = ChkSetTimeEnabled.Checked
+                Modren_UI.mainOption.Alarm_LoudOpen.Value = ChkSetTimeEnabled.Checked
             Case sender Is btn_saveLoudTime
-                Modren_UI.mainOption.LoudTime = txtLoudTime.Text
+                Modren_UI.mainOption.Alarm_LoudTime = txtLoudTime.Text
                 btn_saveLoudTime.Visible = False
             Case sender Is btn_saveCloseTime
-                Modren_UI.mainOption.EndTime = txtEndTime.Text
+                Modren_UI.mainOption.Alarm_EndTime = txtEndTime.Text
                 btn_saveCloseTime.Visible = False
             Case sender Is RdoSetCloseNothing
-                Modren_UI.mainOption.CloseNothingOpen.Value = True
+                Modren_UI.mainOption.WhenClose_NothingOpen.Value = True
             Case sender Is RdoSetEndEnabled
-                Modren_UI.mainOption.CloseEndOpen.Value = True
+                Modren_UI.mainOption.WhenClose_EndOpen.Value = True
             Case sender Is RdoSetMiniEnabled
-                Modren_UI.mainOption.CloseMiniOpen.Value = True
+                Modren_UI.mainOption.WhenClose_MiniOpen.Value = True
             Case sender Is RdoNext
                 Modren_UI.mainOption.AfterClose_next.Value = True
             Case sender Is RdoPause
@@ -110,7 +113,19 @@ Public Class Settings
                 End If
             Case sender Is chkAutoFullScreen
                 Modren_UI.mainOption.Video_AutoFullScreen.Value = chkAutoFullScreen.Checked
+            Case sender Is Chk_PreventOpen
+                Modren_UI.mainOption.PreventSleep_Open.Value = Chk_PreventOpen.Checked
+            Case sender Is Chk_PreventSleepAlarm
+                Modren_UI.mainOption.PreventSleep_Alarm.Value = Chk_PreventSleepAlarm.Checked
+            Case sender Is Chk_PreventSleepAllTime
+                Chk_PreventSleepAlarm.Enabled = Chk_PreventSleepAllTime.Checked
+                Chk_PreventSleepPlaying.Enabled = Chk_PreventSleepAllTime.Checked
+                Modren_UI.mainOption.PreventSleep_Alltime.Value = Chk_PreventSleepAllTime.Checked
+            Case sender Is Chk_PreventSleepPlaying
+                Modren_UI.mainOption.PreventSleep_Playing.Value = Chk_PreventSleepPlaying.Checked
         End Select
+
+
         If cancel = False Then
             SetChangedInform.Show()
         End If
@@ -127,13 +142,13 @@ Public Class Settings
 
         '读入现有设置
         '定时
-        ChkSetCloseEnabled.Checked = Modren_UI.mainOption.CloseOpen.Value
-        ChkSetTimeEnabled.Checked = Modren_UI.mainOption.LoudOpen.Value
-        txtEndTime.Text = Modren_UI.mainOption.EndTime
-        txtLoudTime.Text = Modren_UI.mainOption.LoudTime
-        RdoSetEndEnabled.Checked = Modren_UI.mainOption.CloseEndOpen.Value
-        RdoSetCloseNothing.Checked = Modren_UI.mainOption.CloseNothingOpen.Value
-        RdoSetMiniEnabled.Checked = Modren_UI.mainOption.CloseMiniOpen.Value
+        ChkSetCloseEnabled.Checked = Modren_UI.mainOption.Alarm_CloseOpen.Value
+        ChkSetTimeEnabled.Checked = Modren_UI.mainOption.Alarm_LoudOpen.Value
+        txtEndTime.Text = Modren_UI.mainOption.Alarm_EndTime
+        txtLoudTime.Text = Modren_UI.mainOption.Alarm_LoudTime
+        RdoSetEndEnabled.Checked = Modren_UI.mainOption.WhenClose_EndOpen.Value
+        RdoSetCloseNothing.Checked = Modren_UI.mainOption.WhenClose_NothingOpen.Value
+        RdoSetMiniEnabled.Checked = Modren_UI.mainOption.WhenClose_MiniOpen.Value
         RdoStop.Checked = Modren_UI.mainOption.AfterClose_stop.Value
         RdoNext.Checked = Modren_UI.mainOption.AfterClose_next.Value
         RdoPause.Checked = Modren_UI.mainOption.AfterClose_puase.Value
@@ -145,6 +160,16 @@ Public Class Settings
         LblShowLyricFont.Font = New Font(Modren_UI.mainOption.Lyric_SingleLine_Font.FontFamily, 9)
         LblShowCnLyricFont.Font = New Font(Modren_UI.mainOption.Lyric_CN_Font.FontFamily, 9)
         LblShowEnLyricFont.Font = New Font(Modren_UI.mainOption.Lyric_English_Font.FontFamily, 9)
+        '杂项
+        Chk_PreventOpen.Checked = Modren_UI.mainOption.PreventSleep_Open.Value
+        Chk_PreventSleepAlarm.Checked = Modren_UI.mainOption.PreventSleep_Alarm.Value
+        Chk_PreventSleepAllTime.Checked = Modren_UI.mainOption.PreventSleep_Alltime.Value
+        Chk_PreventSleepPlaying.Checked = Modren_UI.mainOption.PreventSleep_Playing.Value
+        Chk_PreventSleepAlarm.Enabled = Chk_PreventSleepAllTime.Checked
+        Chk_PreventSleepPlaying.Enabled = Chk_PreventSleepAllTime.Checked
+        Chk_PreventSleepAllTime.Enabled = Chk_PreventOpen.Checked
+        Chk_PreventSleepAlarm.Enabled = Chk_PreventOpen.Checked
+        Chk_PreventSleepPlaying.Enabled = Chk_PreventOpen.Checked
     End Sub
     Private Sub lbl_CheckUpdates_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lbl_CheckUpdates.LinkClicked
         Process.Start("https://github.com/shadowfish07/ShadowPlayer/releases")
@@ -153,13 +178,13 @@ Public Class Settings
     Private Sub txtLoud_End_Time_txtChanged(sender As Object, e As EventArgs) Handles txtLoudTime.TextChanged, txtEndTime.TextChanged
         Select Case True
             Case sender Is txtLoudTime
-                If txtLoudTime.Text = Modren_UI.mainOption.LoudTime Then
+                If txtLoudTime.Text = Modren_UI.mainOption.Alarm_LoudTime Then
                     btn_saveLoudTime.Visible = False
                 Else
                     btn_saveLoudTime.Visible = True
                 End If
             Case sender Is txtEndTime
-                If txtEndTime.Text = Modren_UI.mainOption.EndTime Then
+                If txtEndTime.Text = Modren_UI.mainOption.Alarm_EndTime Then
                     btn_saveCloseTime.Visible = False
                 Else
                     btn_saveCloseTime.Visible = True
@@ -189,6 +214,10 @@ Public Class Settings
 
     Private Sub FormDrag(sender As Object, e As MouseEventArgs) Handles Panel_top.MouseDown
         If e.Button = Windows.Forms.MouseButtons.Left Then MoveForm()
+    End Sub
+
+    Private Sub Options_Changed(sender As Object, e As MouseEventArgs)
+
     End Sub
 
 

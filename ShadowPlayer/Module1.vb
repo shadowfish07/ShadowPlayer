@@ -89,4 +89,13 @@
         End If
     End Sub
 
+    <System.Runtime.InteropServices.DllImport("kernel32.dll")>
+    Public Function SetThreadExecutionState(esFlags As UInteger) As UInteger
+
+    End Function
+
+    Public Const ES_SYSTEM_REQUIRED = &H1
+    Public Const ES_DISPLAY_REQUIRED = &H2
+    Public Const ES_CONTINUOUS = &H0
+
 End Module

@@ -76,6 +76,12 @@ Partial Class Settings
         Me.PicLyricColor = New System.Windows.Forms.PictureBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.ChkLyricOpen = New System.Windows.Forms.CheckBox()
+        Me.TabPage_others = New System.Windows.Forms.TabPage()
+        Me.pnl_sleep = New System.Windows.Forms.Panel()
+        Me.Chk_PreventSleepPlaying = New System.Windows.Forms.CheckBox()
+        Me.Chk_PreventSleepAlarm = New System.Windows.Forms.CheckBox()
+        Me.Chk_PreventSleepAllTime = New System.Windows.Forms.CheckBox()
+        Me.Chk_PreventOpen = New System.Windows.Forms.CheckBox()
         Me.Panel_top = New System.Windows.Forms.Panel()
         Me.lbl_CheckUpdates = New System.Windows.Forms.LinkLabel()
         Me.lbl_buidLevel = New System.Windows.Forms.Label()
@@ -83,6 +89,7 @@ Partial Class Settings
         Me.btn_Mainexit = New System.Windows.Forms.Button()
         Me.Lbl_title = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btn_others = New System.Windows.Forms.Button()
         Me.btn_Lyric = New System.Windows.Forms.Button()
         Me.btn_time = New System.Windows.Forms.Button()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
@@ -101,6 +108,8 @@ Partial Class Settings
         CType(Me.PicCnLyricColor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PicEnLyricColor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PicLyricColor, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage_others.SuspendLayout()
+        Me.pnl_sleep.SuspendLayout()
         Me.Panel_top.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
@@ -109,6 +118,7 @@ Partial Class Settings
         '
         Me.TabControl1.Controls.Add(Me.TabPage_time)
         Me.TabControl1.Controls.Add(Me.TabPage_lyric)
+        Me.TabControl1.Controls.Add(Me.TabPage_others)
         Me.TabControl1.Location = New System.Drawing.Point(85, 19)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
@@ -702,6 +712,71 @@ Partial Class Settings
         Me.ChkLyricOpen.Text = "开启字幕"
         Me.ChkLyricOpen.UseVisualStyleBackColor = True
         '
+        'TabPage_others
+        '
+        Me.TabPage_others.Controls.Add(Me.pnl_sleep)
+        Me.TabPage_others.Controls.Add(Me.Chk_PreventOpen)
+        Me.TabPage_others.Location = New System.Drawing.Point(4, 26)
+        Me.TabPage_others.Name = "TabPage_others"
+        Me.TabPage_others.Size = New System.Drawing.Size(466, 379)
+        Me.TabPage_others.TabIndex = 2
+        Me.TabPage_others.Text = "TabPage_others"
+        Me.TabPage_others.UseVisualStyleBackColor = True
+        '
+        'pnl_sleep
+        '
+        Me.pnl_sleep.Controls.Add(Me.Chk_PreventSleepPlaying)
+        Me.pnl_sleep.Controls.Add(Me.Chk_PreventSleepAlarm)
+        Me.pnl_sleep.Controls.Add(Me.Chk_PreventSleepAllTime)
+        Me.pnl_sleep.Location = New System.Drawing.Point(42, 57)
+        Me.pnl_sleep.Name = "pnl_sleep"
+        Me.pnl_sleep.Size = New System.Drawing.Size(190, 89)
+        Me.pnl_sleep.TabIndex = 8
+        '
+        'Chk_PreventSleepPlaying
+        '
+        Me.Chk_PreventSleepPlaying.AutoSize = True
+        Me.Chk_PreventSleepPlaying.Location = New System.Drawing.Point(3, 52)
+        Me.Chk_PreventSleepPlaying.Name = "Chk_PreventSleepPlaying"
+        Me.Chk_PreventSleepPlaying.Size = New System.Drawing.Size(171, 21)
+        Me.Chk_PreventSleepPlaying.TabIndex = 49
+        Me.Chk_PreventSleepPlaying.Text = "歌曲播放时阻止计算机休眠"
+        Me.Chk_PreventSleepPlaying.UseVisualStyleBackColor = True
+        '
+        'Chk_PreventSleepAlarm
+        '
+        Me.Chk_PreventSleepAlarm.AutoSize = True
+        Me.Chk_PreventSleepAlarm.Location = New System.Drawing.Point(3, 31)
+        Me.Chk_PreventSleepAlarm.Name = "Chk_PreventSleepAlarm"
+        Me.Chk_PreventSleepAlarm.Size = New System.Drawing.Size(171, 21)
+        Me.Chk_PreventSleepAlarm.TabIndex = 48
+        Me.Chk_PreventSleepAlarm.Text = "设置闹钟时阻止计算机休眠"
+        Me.Chk_PreventSleepAlarm.UseVisualStyleBackColor = True
+        '
+        'Chk_PreventSleepAllTime
+        '
+        Me.Chk_PreventSleepAllTime.AutoSize = True
+        Me.Chk_PreventSleepAllTime.Location = New System.Drawing.Point(3, 10)
+        Me.Chk_PreventSleepAllTime.Name = "Chk_PreventSleepAllTime"
+        Me.Chk_PreventSleepAllTime.Size = New System.Drawing.Size(171, 21)
+        Me.Chk_PreventSleepAllTime.TabIndex = 47
+        Me.Chk_PreventSleepAllTime.Text = "程序运行时阻止计算机休眠"
+        Me.Chk_PreventSleepAllTime.UseVisualStyleBackColor = True
+        '
+        'Chk_PreventOpen
+        '
+        Me.Chk_PreventOpen.AutoSize = True
+        Me.Chk_PreventOpen.Checked = True
+        Me.Chk_PreventOpen.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.Chk_PreventOpen.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Chk_PreventOpen.Font = New System.Drawing.Font("微软雅黑", 11.0!)
+        Me.Chk_PreventOpen.Location = New System.Drawing.Point(23, 33)
+        Me.Chk_PreventOpen.Name = "Chk_PreventOpen"
+        Me.Chk_PreventOpen.Size = New System.Drawing.Size(133, 24)
+        Me.Chk_PreventOpen.TabIndex = 7
+        Me.Chk_PreventOpen.Text = "阻止计算机休眠"
+        Me.Chk_PreventOpen.UseVisualStyleBackColor = True
+        '
         'Panel_top
         '
         Me.Panel_top.Controls.Add(Me.lbl_CheckUpdates)
@@ -783,12 +858,35 @@ Partial Class Settings
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.btn_others)
         Me.Panel1.Controls.Add(Me.btn_Lyric)
         Me.Panel1.Controls.Add(Me.btn_time)
         Me.Panel1.Location = New System.Drawing.Point(-1, 66)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(95, 354)
         Me.Panel1.TabIndex = 43
+        '
+        'btn_others
+        '
+        Me.btn_others.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_others.BackColor = System.Drawing.Color.FromArgb(CType(CType(43, Byte), Integer), CType(CType(60, Byte), Integer), CType(CType(75, Byte), Integer))
+        Me.btn_others.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.btn_others.FlatAppearance.BorderSize = 0
+        Me.btn_others.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(CType(CType(102, Byte), Integer), CType(CType(121, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.btn_others.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(102, Byte), Integer), CType(CType(121, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.btn_others.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_others.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.btn_others.ForeColor = System.Drawing.Color.White
+        Me.btn_others.Location = New System.Drawing.Point(0, 72)
+        Me.btn_others.Margin = New System.Windows.Forms.Padding(30, 3, 3, 3)
+        Me.btn_others.Name = "btn_others"
+        Me.btn_others.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.btn_others.Size = New System.Drawing.Size(94, 36)
+        Me.btn_others.TabIndex = 29
+        Me.btn_others.Text = "杂项"
+        Me.btn_others.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btn_others.UseVisualStyleBackColor = False
         '
         'btn_Lyric
         '
@@ -889,6 +987,10 @@ Partial Class Settings
         CType(Me.PicCnLyricColor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PicEnLyricColor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PicLyricColor, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage_others.ResumeLayout(False)
+        Me.TabPage_others.PerformLayout()
+        Me.pnl_sleep.ResumeLayout(False)
+        Me.pnl_sleep.PerformLayout()
         Me.Panel_top.ResumeLayout(False)
         Me.Panel_top.PerformLayout()
         Me.Panel1.ResumeLayout(False)
@@ -961,4 +1063,11 @@ Partial Class Settings
     Friend WithEvents ColorDialog1 As ColorDialog
     Friend WithEvents FontDialog1 As FontDialog
     Friend WithEvents chkAutoFullScreen As CheckBox
+    Friend WithEvents TabPage_others As TabPage
+    Friend WithEvents pnl_sleep As Panel
+    Friend WithEvents Chk_PreventSleepPlaying As CheckBox
+    Friend WithEvents Chk_PreventSleepAlarm As CheckBox
+    Friend WithEvents Chk_PreventSleepAllTime As CheckBox
+    Friend WithEvents Chk_PreventOpen As CheckBox
+    Friend WithEvents btn_others As Button
 End Class

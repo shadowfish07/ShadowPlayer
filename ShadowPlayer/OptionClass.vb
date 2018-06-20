@@ -1,17 +1,22 @@
 ﻿Imports ShadowPlayer
 
 Public Class OptionClass
-    Private _LoudOpen As New Myboolean(True)
-    Private _CloseOpen As New Myboolean(True)
-    Private _CloseEndOpen As New Myboolean(False)
-    Private _CloseMiniOpen As New Myboolean(True)
-    Private _CloseNothingOpen As New Myboolean(False)
-    Private _AfterClose_puase As New Myboolean(False)
-    Private _AfterClose_stop As New Myboolean(False)
-    Private _AfterClose_next As New Myboolean(True)
-    Private _LyricScreenOpen As New Myboolean(True)
-    Private _LoudTime As String = "13:29:50"
-    Private _EndTime As String = "13:34:20"
+    Private _alarm_LoudOpen As New Myboolean(True)
+    Private _alarm_CloseOpen As New Myboolean(True)
+    Private _whenClose_EndOpen As New Myboolean(False)
+    Private _whenClose_MiniOpen As New Myboolean(True)
+    Private _whenClose_NothingOpen As New Myboolean(False)
+    Private _afterClose_puase As New Myboolean(False)
+    Private _afterClose_stop As New Myboolean(False)
+    Private _afterClose_next As New Myboolean(True)
+    Private _lyricScreen_Open As New Myboolean(True)
+    Private _preventSleep_Alltime As New Myboolean(False)
+    Private _preventSleep_Alarm As New Myboolean(True)
+    Private _preventSleep_Playing As New Myboolean(True)
+    Private _preventSleep_Open As New Myboolean(True)
+
+    Private _alarm_LoudTime As String = "13:29:50"
+    Private _alarm_EndTime As String = "13:34:20"
 
     Public Property Lyric_SingleLine_ForeColor As Color = Color.Gold
     Public Property Lyric_CN_ForeColor As Color = Color.Gold
@@ -24,8 +29,8 @@ Public Class OptionClass
     Public Property Video_AutoFullScreen As New Myboolean(True)
 
     Public Sub New()
-        SetOnlyOneTrue({_CloseEndOpen, _CloseMiniOpen, _CloseNothingOpen})
-        SetOnlyOneTrue({_AfterClose_next, _AfterClose_puase, _AfterClose_stop})
+        SetOnlyOneTrue({_whenClose_EndOpen, _whenClose_MiniOpen, _whenClose_NothingOpen})
+        SetOnlyOneTrue({_afterClose_next, _afterClose_puase, _afterClose_stop})
     End Sub
 
     Private Sub SetOnlyOneTrue(group() As Myboolean)
@@ -75,112 +80,148 @@ Public Class OptionClass
         End If
     End Sub
 
-    Public Property CloseOpen As Myboolean
+    Public Property Alarm_CloseOpen As Myboolean
         Get
-            Return _CloseOpen
+            Return _alarm_CloseOpen
         End Get
         Set
-            _CloseOpen = Value
+            _alarm_CloseOpen = Value
         End Set
     End Property
 
-    Public Property CloseEndOpen As Myboolean
+    Public Property WhenClose_EndOpen As Myboolean
         Get
-            Return _CloseEndOpen
+            Return _whenClose_EndOpen
         End Get
         Set
-            _CloseEndOpen = Value
+            _whenClose_EndOpen = Value
         End Set
     End Property
 
-    Public Property CloseMiniOpen As Myboolean
+    Public Property WhenClose_MiniOpen As Myboolean
         Get
-            Return _CloseMiniOpen
+            Return _whenClose_MiniOpen
         End Get
         Set
-            _CloseMiniOpen = Value
+            _whenClose_MiniOpen = Value
         End Set
     End Property
 
     Public Property AfterClose_puase As Myboolean
         Get
-            Return _AfterClose_puase
+            Return _afterClose_puase
         End Get
         Set
-            _AfterClose_puase = Value
+            _afterClose_puase = Value
         End Set
     End Property
 
     Public Property AfterClose_stop As Myboolean
         Get
-            Return _AfterClose_stop
+            Return _afterClose_stop
         End Get
         Set
-            _AfterClose_stop = Value
+            _afterClose_stop = Value
         End Set
     End Property
 
     Public Property AfterClose_next As Myboolean
         Get
-            Return _AfterClose_next
+            Return _afterClose_next
         End Get
         Set
-            _AfterClose_next = Value
+            _afterClose_next = Value
         End Set
     End Property
 
-    Public Property LyricScreenOpen As Myboolean
+    Public Property LyricScreen_Open As Myboolean
         Get
-            Return _LyricScreenOpen
+            Return _lyricScreen_Open
         End Get
         Set
-            _LyricScreenOpen = Value
+            _lyricScreen_Open = Value
         End Set
     End Property
 
-    Public Property LoudOpen As Myboolean
+    Public Property Alarm_LoudOpen As Myboolean
         Get
-            Return _LoudOpen
+            Return _alarm_LoudOpen
         End Get
         Set
-            _LoudOpen = Value
+            _alarm_LoudOpen = Value
         End Set
     End Property
 
-    Public Property EndTime As String
+    Public Property Alarm_EndTime As String
         Get
-            If _CloseOpen.Value Then
-                Return _EndTime
+            If _alarm_CloseOpen.Value Then
+                Return _alarm_EndTime
             Else
                 Return "未设置"
             End If
 
         End Get
         Set(value As String)
-            _EndTime = value
+            _alarm_EndTime = value
         End Set
     End Property
 
-    Public Property LoudTime As String
+    Public Property Alarm_LoudTime As String
         Get
-            If _LoudOpen.Value Then
-                Return _LoudTime
+            If _alarm_LoudOpen.Value Then
+                Return _alarm_LoudTime
             Else
                 Return "未设置"
             End If
 
         End Get
         Set(value As String)
-            _LoudTime = value
+            _alarm_LoudTime = value
         End Set
     End Property
 
-    Public Property CloseNothingOpen As Myboolean
+    Public Property WhenClose_NothingOpen As Myboolean
         Get
-            Return _CloseNothingOpen
+            Return _whenClose_NothingOpen
         End Get
         Set(value As Myboolean)
-            _CloseNothingOpen = value
+            _whenClose_NothingOpen = value
+        End Set
+    End Property
+
+    Public Property PreventSleep_Alltime As Myboolean
+        Get
+            Return _preventSleep_Alltime
+        End Get
+        Set(value As Myboolean)
+            _preventSleep_Alltime = value
+        End Set
+    End Property
+
+    Public Property PreventSleep_Playing As Myboolean
+        Get
+            Return _preventSleep_Playing
+        End Get
+        Set(value As Myboolean)
+            _preventSleep_Playing = value
+        End Set
+    End Property
+
+    Public Property PreventSleep_Alarm As Myboolean
+        Get
+            Return _preventSleep_Alarm
+        End Get
+        Set(value As Myboolean)
+            _preventSleep_Alarm = value
+        End Set
+    End Property
+
+    Public Property PreventSleep_Open As Myboolean
+        Get
+            Return _preventSleep_Open
+        End Get
+        Set(value As Myboolean)
+            _preventSleep_Open = value
         End Set
     End Property
 
@@ -285,18 +326,18 @@ Public Class OptionClass
 
 
     Public Sub SetToAdmin()
-        _LoudOpen = New Myboolean(True)
-        _CloseOpen = New Myboolean(True)
-        _CloseEndOpen = New Myboolean(False)
-        _CloseMiniOpen = New Myboolean(True)
-        _AfterClose_puase = New Myboolean(False)
-        _AfterClose_stop = New Myboolean(False)
-        _AfterClose_next = New Myboolean(True)
-        _LyricScreenOpen = New Myboolean(True)
-        SetOnlyOneTrue({_CloseEndOpen, _CloseMiniOpen, _CloseNothingOpen})
+        _alarm_LoudOpen = New Myboolean(True)
+        _alarm_CloseOpen = New Myboolean(True)
+        _whenClose_EndOpen = New Myboolean(False)
+        _whenClose_MiniOpen = New Myboolean(True)
+        _afterClose_puase = New Myboolean(False)
+        _afterClose_stop = New Myboolean(False)
+        _afterClose_next = New Myboolean(True)
+        _lyricScreen_Open = New Myboolean(True)
+        SetOnlyOneTrue({_whenClose_EndOpen, _whenClose_MiniOpen, _whenClose_NothingOpen})
         SetOnlyOneTrue({_AfterClose_next, _AfterClose_puase, _AfterClose_stop})
-        _LoudTime = "13:50:35"
-        _EndTime = "13:54:20"
+        _alarm_LoudTime = "13:50:35"
+        _alarm_EndTime = "13:54:20"
     End Sub
 
 

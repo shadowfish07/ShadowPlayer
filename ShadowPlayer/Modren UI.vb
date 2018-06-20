@@ -63,8 +63,8 @@ Public Class Modren_UI
 
         Lbl_Vision.Text = "Version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString + SPECIALVISION
 
-        If mainOption.LoudOpen.Value Then
-            ToolTip1.SetToolTip(Btn_Alarm, "闹钟已开启" + vbCrLf + "开启时间： " + mainOption.LoudTime + vbCrLf + "关闭时间： " + mainOption.EndTime)
+        If mainOption.Alarm_LoudOpen.Value Then
+            ToolTip1.SetToolTip(Btn_Alarm, "闹钟已开启" + vbCrLf + "开启时间： " + mainOption.Alarm_LoudTime + vbCrLf + "关闭时间： " + mainOption.Alarm_EndTime)
         End If
 
         '调用载入后PlayProgress绘制
@@ -117,7 +117,7 @@ Public Class Modren_UI
             播放ToolStripMenuItem.DropDownItems.Item(PUASE).Enabled = False
         End If
 
-        If Player.playState = CPlayState.Ready And mainOption.LyricScreenOpen.Value Then
+        If Player.playState = CPlayState.Ready And mainOption.LyricScreen_Open.Value Then
             If MusicList(nowPlay).lyric.GetHaveLyrics Then
                 Engine.ShowLyric()
                 ' Zimu.Show()
@@ -141,12 +141,26 @@ Public Class Modren_UI
     End Sub
 
     Private Sub EverySecond(sender As Object, e As EventArgs) Handles Timer1.Tick
+        '检测是否需要阻止系统睡眠
+        Dim preventSleep
+        If mainOption.PreventSleep_Open.Value = True Then
+            If mainOption.PreventSleep_Alltime.Value = True Then
+                preventSleep = SetThreadExecutionState(ES_DISPLAY_REQUIRED Or ES_SYSTEM_REQUIRED)
+            Else
+                If mainOption.PreventSleep_Playing.Value And Player.playState = WMPPlayState.wmppsPlaying Then
+                    preventSleep = SetThreadExecutionState(ES_DISPLAY_REQUIRED Or ES_SYSTEM_REQUIRED)
+                ElseIf mainOption.PreventSleep_Alarm.Value And (mainOption.Alarm_LoudOpen.Value Or mainOption.Alarm_CloseOpen.Value) Then
+                    preventSleep = SetThreadExecutionState(ES_DISPLAY_REQUIRED Or ES_SYSTEM_REQUIRED)
+                End If
+            End If
+        End If
+
         If Player.playState = WMPLib.WMPPlayState.wmppsPlaying Then
             '更新播放显示
             Lbl_NowTime.Text = Player.Ctlcontrols.currentPositionString
             playProgres.Flush(Player.Ctlcontrols.currentPosition / Player.currentMedia.duration)
         End If
-        If Format(Now, "HH:mm:ss") = mainOption.LoudTime And mainOption.LoudOpen.Value = True Then
+        If Format(Now, "HH:mm:ss") = mainOption.Alarm_LoudTime And mainOption.Alarm_LoudOpen.Value = True Then
             '自动开始播放
             Try
                 Engine.Play()
@@ -158,14 +172,14 @@ Public Class Modren_UI
             Catch ex As Exception
 
             End Try
-        ElseIf Format(Now, "HH:mm:ss") = mainOption.EndTime And mainOption.CloseOpen.Value = True Then
+        ElseIf Format(Now, "HH:mm:ss") = mainOption.Alarm_EndTime And mainOption.Alarm_CloseOpen.Value = True Then
             log.Write("自动停止——闹钟")
             '自动结束播放
             Try
                 '结束后程序操作
-                If mainOption.CloseEndOpen.Value = True Then
+                If mainOption.WhenClose_EndOpen.Value = True Then
                     End
-                ElseIf mainOption.CloseMiniOpen.Value = True Then
+                ElseIf mainOption.WhenClose_MiniOpen.Value = True Then
                     Btn_PlayPause.BackgroundImage = My.Resources.Play
                     HideForm()
                     Zimu.Timer1.Enabled = False
@@ -551,6 +565,7 @@ Public Class Modren_UI
     Private Sub Lbl_title_DoubleClick(sender As Object, e As EventArgs) Handles Lbl_title.DoubleClick
         HideForm()
     End Sub
+
 
 
 End Class
