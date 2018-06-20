@@ -58,6 +58,7 @@ Partial Class Modren_UI
         Me.Lbl_Vision = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel_top = New System.Windows.Forms.Panel()
+        Me.Panel_hideList = New System.Windows.Forms.Panel()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.Player, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -437,6 +438,13 @@ Partial Class Modren_UI
         Me.Panel_top.Size = New System.Drawing.Size(725, 68)
         Me.Panel_top.TabIndex = 41
         '
+        'Panel_hideList
+        '
+        Me.Panel_hideList.Location = New System.Drawing.Point(537, 123)
+        Me.Panel_hideList.Name = "Panel_hideList"
+        Me.Panel_hideList.Size = New System.Drawing.Size(180, 241)
+        Me.Panel_hideList.TabIndex = 42
+        '
         'Modren_UI
         '
         Me.AllowDrop = True
@@ -444,6 +452,7 @@ Partial Class Modren_UI
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(83, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(719, 521)
+        Me.Controls.Add(Me.Panel_hideList)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Btn_Alarm)
         Me.Controls.Add(Me.Btn_FullScreen)
@@ -517,4 +526,5 @@ Partial Class Modren_UI
     Friend WithEvents Lbl_Vision As Label
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel_top As Panel
+    Friend WithEvents Panel_hideList As Panel
 End Class

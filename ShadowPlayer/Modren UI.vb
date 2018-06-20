@@ -38,6 +38,7 @@ Public Class Modren_UI
 
         Lbl_Vision.Text = "Version " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString + SPECIALVISION
 
+
         '调用载入后PlayProgress绘制
         Dim FormLoaded As New Timer
         FormLoaded.Interval = 30
@@ -207,6 +208,10 @@ Public Class Modren_UI
         End If
     End Sub
 
+    Private Sub Btn_List_MouseEnter(sender As Object, e As EventArgs) Handles Btn_List.MouseEnter
+
+    End Sub
+
 #Region "窗体拖动移动"
 
     <System.Runtime.InteropServices.DllImport("user32.dll")>
@@ -216,6 +221,7 @@ Public Class Modren_UI
     <System.Runtime.InteropServices.DllImport("user32.dll")>
     Shared Function SendMessage(ByVal hWnd As IntPtr, ByVal Msg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
     End Function
+
 
     Private Sub MoveForm()
         ReleaseCapture()
