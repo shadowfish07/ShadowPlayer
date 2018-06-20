@@ -4,6 +4,7 @@
     Dim _totalLength As Single
     Dim _stepX As Single, _stepY As Single
     Dim _target As Control， _targetLocation As PointF
+    Dim _isHeightMove As Boolean = False, _isWeightMove As Boolean = False
 
     Event OncePace(isLastPace As Boolean)
 
@@ -12,6 +13,12 @@
         Me.TargetLocation = targetLocation
         _timer.Interval = interval
         Call GetStep(total_time)
+        If Me.Target.Location.X = targetLocation.X Then
+            _isheightmove = True
+        ElseIf Me.Target.Location.y = targetLocation.y Then
+            _isweightmove = True
+        End If
+
     End Sub
 
     Private Sub GetStep(total_time As Single)
@@ -88,7 +95,7 @@
             End If
         End If
 
-        If _target.Location.X = TargetLocation.X Or _target.Location.Y = TargetLocation.Y Then
+        If (_target.Location.X = TargetLocation.X And _isheightmove = False) Or (_target.Location.Y = TargetLocation.Y And _isweightmove = False) Then
             _target.Location = Point.Round(TargetLocation)
             _timer.Stop()
             tempLocation = Nothing
@@ -98,6 +105,7 @@
         Else
             RaiseEvent OncePace(False)
         End If
+        Debug.Print(_target.Location.ToString)
     End Sub
 
     Private Function IsLastPace() As Boolean

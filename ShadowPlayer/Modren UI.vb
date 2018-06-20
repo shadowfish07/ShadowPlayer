@@ -274,8 +274,6 @@ Public Class Modren_UI
 
         End Try
     End Sub
-
-
 End Class
 
 
