@@ -290,6 +290,59 @@ Public Class OptionClass
             ReDim _Children(ubound)
         End Sub
 
+#Region "=、<>、And、Or、Not重载"
+        Shared Operator =(p1 As Myboolean, p2 As Myboolean)
+            Return p1.Value = p2.Value
+        End Operator
+
+        Shared Operator =(p1 As Myboolean, p2 As Boolean)
+            Return p1.Value = p2
+        End Operator
+
+        Shared Operator =(p1 As Boolean, p2 As Myboolean)
+            Return p1 = p2.Value
+        End Operator
+
+        Shared Operator <>(p1 As Myboolean, p2 As Boolean)
+            Return p1.Value <> p2
+        End Operator
+
+        Shared Operator <>(p1 As Boolean, p2 As Myboolean)
+            Return p1 <> p2.Value
+        End Operator
+
+        Shared Operator <>(p1 As Myboolean, p2 As Myboolean)
+            Return p1.Value <> p2.Value
+        End Operator
+
+        Shared Operator And(p1 As Myboolean, p2 As Myboolean)
+            Return p1.Value And p2.Value
+        End Operator
+
+        Shared Operator And(p1 As Boolean, p2 As Myboolean)
+            Return p1 And p2.Value
+        End Operator
+
+        Shared Operator And(p1 As Myboolean, p2 As Boolean)
+            Return p1.Value And p2
+        End Operator
+
+        Shared Operator Or(p1 As Myboolean, p2 As Myboolean)
+            Return p1.Value Or p2.Value
+        End Operator
+
+        Shared Operator Or(p1 As Boolean, p2 As Myboolean)
+            Return p1 Or p2.Value
+        End Operator
+
+        Shared Operator Or(p1 As Myboolean, p2 As Boolean)
+            Return p1.Value Or p2
+        End Operator
+
+        Shared Operator Not(p1 As Myboolean)
+            Return Not p1.Value
+        End Operator
+#End Region
 
         Public Sub New(Value As Boolean)
             _Value = Value
@@ -359,7 +412,7 @@ Public Class OptionClass
         _afterClose_next = New Myboolean(True)
         _lyricScreen_Open = New Myboolean(True)
         SetOnlyOneTrue({_whenClose_EndOpen, _whenClose_MiniOpen, _whenClose_NothingOpen})
-        SetOnlyOneTrue({_AfterClose_next, _AfterClose_puase, _AfterClose_stop})
+        SetOnlyOneTrue({_afterClose_next, _afterClose_puase, _afterClose_stop})
         _alarm_LoudTime = "13:50:35"
         _alarm_EndTime = "13:54:20"
     End Sub

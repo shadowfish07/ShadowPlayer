@@ -30,8 +30,8 @@ Public Class Settings
             RdoStop.Click, RdoPause.Click, RdoNext.Click,
             PicLyricColor.Click, PicCnLyricColor.Click, PicEnLyricColor.Click,
             LblShowLyricFont.Click, LblShowCnLyricFont.Click, LblShowEnLyricFont.Click,
-            chkAutoFullScreen.Click,
-            Chk_PreventSleep_Alarm.Click, Chk_PreventSleep_AllTime.Click, Chk_PreventSleep_Playing.Click, Chk_PreventSleep_Open.Click, Chk_PreventSleep_Display.Click, Chk_PreventSleep_system.Click
+            Chk_PreventSleep_Alarm.Click, Chk_PreventSleep_AllTime.Click, Chk_PreventSleep_Playing.Click, Chk_PreventSleep_Open.Click, Chk_PreventSleep_Display.Click, Chk_PreventSleep_system.Click,
+            chkAutoFullScreen.Click
 
         Dim cancel As Boolean = False
 
@@ -114,26 +114,17 @@ Public Class Settings
             Case sender Is chkAutoFullScreen
                 Modren_UI.mainOption.Video_AutoFullScreen.Value = chkAutoFullScreen.Checked
             Case sender Is Chk_PreventSleep_Open
-                Modren_UI.mainOption.PreventSleep_Open.Value = Chk_PreventSleep_Open.Checked
-                pnl_sleep.Enabled = Chk_PreventSleep_Open.Checked
+                SetPreventSleep_Open(Chk_PreventSleep_Open.Checked)
                 If Not (Chk_PreventSleep_system.Checked Or Chk_PreventSleep_Display.Checked) Then
-                    Chk_PreventSleep_system.Checked = True
-                    Chk_PreventSleep_Display.Checked = True
-                    Modren_UI.mainOption.PreventSleep_Display.Value = True
-                    Modren_UI.mainOption.PreventSleep_System.Value = True
+                    ResetPreventSleep_SystemAndDisplay()
                 End If
                 If Not (Chk_PreventSleep_Alarm.Checked Or Chk_PreventSleep_Playing.Checked) And Chk_PreventSleep_AllTime.Checked = False Then
-                    Chk_PreventSleep_AllTime.Checked = True
-                    Modren_UI.mainOption.PreventSleep_Alltime.Value = True
-                    Chk_PreventSleep_Alarm.Enabled = Not (Chk_PreventSleep_AllTime.Checked)
-                    Chk_PreventSleep_Playing.Enabled = Not (Chk_PreventSleep_AllTime.Checked)
+                    ResetPreventSleep_When()
                 End If
             Case sender Is Chk_PreventSleep_Alarm
                 Modren_UI.mainOption.PreventSleep_Alarm.Value = Chk_PreventSleep_Alarm.Checked
                 If Chk_PreventSleep_Alarm.Checked = False And Chk_PreventSleep_Playing.Checked = False Then
-                    Chk_PreventSleep_Open.Checked = False
-                    Modren_UI.mainOption.PreventSleep_Open.Value = False
-                    pnl_sleep.Enabled = False
+                    SetPreventSleep_Open(False)
                 End If
             Case sender Is Chk_PreventSleep_AllTime
                 Chk_PreventSleep_Alarm.Enabled = Not (Chk_PreventSleep_AllTime.Checked)
@@ -141,27 +132,27 @@ Public Class Settings
                 Modren_UI.mainOption.PreventSleep_Alltime.Value = Chk_PreventSleep_AllTime.Checked
                 If Not (Chk_PreventSleep_Alarm.Checked Or Chk_PreventSleep_Playing.Checked) Then
                     Chk_PreventSleep_Alarm.Checked = True
+                    Modren_UI.mainOption.PreventSleep_Alarm.Value = True
                     Chk_PreventSleep_Playing.Checked = True
+                    Modren_UI.mainOption.PreventSleep_Playing.Value = True
                 End If
                 If Chk_PreventSleep_Alarm.Checked = False And Chk_PreventSleep_AllTime.Checked = False And Chk_PreventSleep_Playing.Checked = False Then
-                    Chk_PreventSleep_Open.Checked = False
-                    Modren_UI.mainOption.PreventSleep_Open.Value = False
-                    pnl_sleep.Enabled = False
+                    SetPreventSleep_Open(False)
                 End If
             Case sender Is Chk_PreventSleep_Playing
                 Modren_UI.mainOption.PreventSleep_Playing.Value = Chk_PreventSleep_Playing.Checked
                 If Chk_PreventSleep_Alarm.Checked = False And Chk_PreventSleep_Playing.Checked = False Then
-                    Chk_PreventSleep_Open.Checked = False
-                    Modren_UI.mainOption.PreventSleep_Open.Value = False
-                    pnl_sleep.Enabled = False
+                    SetPreventSleep_Open(False)
                 End If
             Case sender Is Chk_PreventSleep_Display
-                If Not (Chk_PreventSleep_system.Checked Or Chk_PreventSleep_Display.Checked) Then Chk_PreventSleep_Open.Checked = False
-                pnl_sleep.Enabled = Chk_PreventSleep_Open.Checked
+                If Not (Chk_PreventSleep_system.Checked Or Chk_PreventSleep_Display.Checked) Then
+                    SetPreventSleep_Open(False)
+                End If
                 Modren_UI.mainOption.PreventSleep_Display.Value = Chk_PreventSleep_Display.Checked
             Case sender Is Chk_PreventSleep_system
-                If Not (Chk_PreventSleep_system.Checked Or Chk_PreventSleep_Display.Checked) Then Chk_PreventSleep_Open.Checked = False
-                pnl_sleep.Enabled = Chk_PreventSleep_Open.Checked
+                If Not (Chk_PreventSleep_system.Checked Or Chk_PreventSleep_Display.Checked) Then
+                    SetPreventSleep_Open(False)
+                End If
                 Modren_UI.mainOption.PreventSleep_System.Value = Chk_PreventSleep_system.Checked
         End Select
 
@@ -169,6 +160,26 @@ Public Class Settings
         If cancel = False Then
             SetChangedInform.Show()
         End If
+    End Sub
+
+    Private Sub ResetPreventSleep_When()
+        Chk_PreventSleep_AllTime.Checked = True
+        Modren_UI.mainOption.PreventSleep_Alltime.Value = True
+        Chk_PreventSleep_Alarm.Enabled = Not (Chk_PreventSleep_AllTime.Checked)
+        Chk_PreventSleep_Playing.Enabled = Not (Chk_PreventSleep_AllTime.Checked)
+    End Sub
+
+    Private Sub SetPreventSleep_Open(value As Boolean)
+        Chk_PreventSleep_Open.Checked = value
+        Modren_UI.mainOption.PreventSleep_Open.Value = value
+        pnl_sleep.Enabled = value
+    End Sub
+
+    Private Sub ResetPreventSleep_SystemAndDisplay()
+        Chk_PreventSleep_system.Checked = True
+        Chk_PreventSleep_Display.Checked = True
+        Modren_UI.mainOption.PreventSleep_Display.Value = True
+        Modren_UI.mainOption.PreventSleep_System.Value = True
     End Sub
 
     Private Sub Settings_Load(sender As Object, e As EventArgs) Handles Me.Load

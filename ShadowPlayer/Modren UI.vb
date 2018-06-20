@@ -51,6 +51,9 @@ Public Class Modren_UI
     End Sub
 
     Private Sub Modren_UI_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim a As New OptionClass.Myboolean(True)
+        Dim b As New OptionClass.Myboolean(False)
+        If a <> b Then Debug.Print("1")
         log.Write("正在启动程序")
         log.PrintMyVision()
         Player.uiMode = "none"
@@ -143,14 +146,14 @@ Public Class Modren_UI
     Private Sub EverySecond(sender As Object, e As EventArgs) Handles Timer1.Tick
         '检测是否需要阻止系统睡眠
         Dim preventSleep
-        If mainOption.PreventSleep_Open.Value = True Then
-            If mainOption.PreventSleep_Alltime.Value = True Then
-                preventSleep = SetThreadExecutionState(PREVENTSLEEP_DISPLAY Or PREVENTSLEEP_SYSTEM)
+        If mainOption.PreventSleep_Open = True Then
+            If mainOption.PreventSleep_Alltime = True Then
+                preventSleep = SetThreadExecutionState(ES_DISPLAY_REQUIRED Or ES_SYSTEM_REQUIRED)
             Else
-                If mainOption.PreventSleep_Playing.Value And Player.playState = WMPPlayState.wmppsPlaying Then
-                    preventSleep = SetThreadExecutionState(PREVENTSLEEP_DISPLAY Or PREVENTSLEEP_SYSTEM)
-                ElseIf mainOption.PreventSleep_Alarm.Value And (mainOption.Alarm_LoudOpen.Value Or mainOption.Alarm_CloseOpen.Value) Then
-                    preventSleep = SetThreadExecutionState(PREVENTSLEEP_DISPLAY Or PREVENTSLEEP_SYSTEM)
+                If mainOption.PreventSleep_Playing And Player.playState = WMPPlayState.wmppsPlaying Then
+                    preventSleep = SetThreadExecutionState(ES_DISPLAY_REQUIRED Or ES_SYSTEM_REQUIRED)
+                ElseIf mainOption.PreventSleep_Alarm And (mainOption.Alarm_LoudOpen Or mainOption.Alarm_CloseOpen) Then
+                    preventSleep = SetThreadExecutionState(ES_DISPLAY_REQUIRED Or ES_SYSTEM_REQUIRED)
                 End If
             End If
         End If
@@ -160,41 +163,38 @@ Public Class Modren_UI
             Lbl_NowTime.Text = Player.Ctlcontrols.currentPositionString
             playProgres.Flush(Player.Ctlcontrols.currentPosition / Player.currentMedia.duration)
         End If
-        If Format(Now, "HH:mm:ss") = mainOption.Alarm_LoudTime And mainOption.Alarm_LoudOpen.Value = True Then
+        If Format(Now, "HH:mm:ss") = mainOption.Alarm_LoudTime And mainOption.Alarm_LoudOpen = True Then
             '自动开始播放
             Try
                 Engine.Play()
                 Btn_PlayPause.BackgroundImage = My.Resources.Pause
                 log.Write("自动播放——闹钟")
-                If PlayEngine.IsFileVideo(MusicList(nowPlay).tag) Then
-                    Player.fullScreen = True
-                End If
             Catch ex As Exception
 
             End Try
-        ElseIf Format(Now, "HH:mm:ss") = mainOption.Alarm_EndTime And mainOption.Alarm_CloseOpen.Value = True Then
+        ElseIf Format(Now, "HH:mm:ss") = mainOption.Alarm_EndTime And mainOption.Alarm_CloseOpen = True Then
             log.Write("自动停止——闹钟")
             '自动结束播放
             Try
                 '结束后程序操作
-                If mainOption.WhenClose_EndOpen.Value = True Then
+                If mainOption.WhenClose_EndOpen = True Then
                     End
-                ElseIf mainOption.WhenClose_MiniOpen.Value = True Then
+                ElseIf mainOption.WhenClose_MiniOpen = True Then
                     Btn_PlayPause.BackgroundImage = My.Resources.Play
                     HideForm()
                     Zimu.Timer1.Enabled = False
                 End If
                 '结束后播放操作
-                If mainOption.AfterClose_next.Value = True Then
+                If mainOption.AfterClose_next = True Then
                     If playMode = CplayMode.Random Then
                         Dim rnd As New Random
                         Engine.ChangeMusic(rnd.Next(0, MusicList.Count), False)
                     Else '暂时不考虑播放模式为单曲循环的情况
                         Engine.ChangeMusic(, False)
                     End If
-                ElseIf mainOption.AfterClose_puase.Value = True Then
+                ElseIf mainOption.AfterClose_puase = True Then
                     Engine.Pause()
-                ElseIf mainOption.AfterClose_stop.Value = True Then
+                ElseIf mainOption.AfterClose_stop = True Then
                     Engine.Stop()
                 End If
             Catch ex As Exception
@@ -270,6 +270,17 @@ Public Class Modren_UI
         Player.URL = MusicList.Item(nowPlay).tag
         Lbl_MusicName.Text = MusicList(nowPlay).text
         Btn_Stop_Click(Nothing, Nothing)
+    End Sub
+
+    ''' <summary>
+    ''' 实现Engine类调用Play时主界面的修改
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub Engine_played(sender As Object, e As EventArgs) Handles Engine.Played
+        If PlayEngine.IsFileVideo(MusicList(nowPlay).tag) And mainOption.Video_AutoFullScreen Then
+            Player.fullScreen = True
+        End If
     End Sub
 
     Private Sub UpdateMusicNameText(musicname As String)
@@ -507,16 +518,16 @@ Public Class Modren_UI
         Select Case modeIndex
             Case 0
                 '当前为随机播放
-                Lbl_PlayMode.Text = "列表循环"
-                playMode = CplayMode.ListCycle
-                modeIndex += 1
-            Case 1
-                '当前为列表循环
                 Lbl_PlayMode.Text = "单次列表"
                 playMode = CplayMode.ListOnce
                 modeIndex += 1
-            Case 2
+            Case 1
                 '当前为单次列表
+                Lbl_PlayMode.Text = "列表循环"
+                playMode = CplayMode.ListCycle
+                modeIndex += 1
+            Case 2
+                '当前为列表循环
                 Lbl_PlayMode.Text = "单次播放"
                 playMode = CplayMode.OneOnce
                 modeIndex += 1

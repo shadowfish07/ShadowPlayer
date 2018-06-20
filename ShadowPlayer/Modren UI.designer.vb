@@ -551,7 +551,7 @@ Partial Class Modren_UI
         Me.Lbl_PlayMode.Name = "Lbl_PlayMode"
         Me.Lbl_PlayMode.Size = New System.Drawing.Size(65, 20)
         Me.Lbl_PlayMode.TabIndex = 48
-        Me.Lbl_PlayMode.Text = "列表循环"
+        Me.Lbl_PlayMode.Text = "单次列表"
         Me.Lbl_PlayMode.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'Timer_PlayMode

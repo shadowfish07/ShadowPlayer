@@ -26,7 +26,6 @@ Partial Class Settings
         Me.TabPage_time = New System.Windows.Forms.TabPage()
         Me.btn_saveLoudTime = New System.Windows.Forms.Button()
         Me.PnlOpen = New System.Windows.Forms.Panel()
-        Me.chkAutoFullScreen = New System.Windows.Forms.CheckBox()
         Me.txtLoudTime = New System.Windows.Forms.MaskedTextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PnlStop = New System.Windows.Forms.Panel()
@@ -78,6 +77,8 @@ Partial Class Settings
         Me.ChkLyricOpen = New System.Windows.Forms.CheckBox()
         Me.TabPage_others = New System.Windows.Forms.TabPage()
         Me.pnl_sleep = New System.Windows.Forms.Panel()
+        Me.Chk_PreventSleep_system = New System.Windows.Forms.CheckBox()
+        Me.Chk_PreventSleep_Display = New System.Windows.Forms.CheckBox()
         Me.Chk_PreventSleep_Playing = New System.Windows.Forms.CheckBox()
         Me.Chk_PreventSleep_Alarm = New System.Windows.Forms.CheckBox()
         Me.Chk_PreventSleep_AllTime = New System.Windows.Forms.CheckBox()
@@ -95,8 +96,7 @@ Partial Class Settings
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         Me.FontDialog1 = New System.Windows.Forms.FontDialog()
-        Me.Chk_PreventSleep_Display = New System.Windows.Forms.CheckBox()
-        Me.Chk_PreventSleep_system = New System.Windows.Forms.CheckBox()
+        Me.chkAutoFullScreen = New System.Windows.Forms.CheckBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage_time.SuspendLayout()
         Me.PnlOpen.SuspendLayout()
@@ -159,24 +159,13 @@ Partial Class Settings
         '
         'PnlOpen
         '
-        Me.PnlOpen.Controls.Add(Me.chkAutoFullScreen)
         Me.PnlOpen.Controls.Add(Me.txtLoudTime)
         Me.PnlOpen.Controls.Add(Me.Label1)
         Me.PnlOpen.ForeColor = System.Drawing.Color.Black
         Me.PnlOpen.Location = New System.Drawing.Point(15, 57)
         Me.PnlOpen.Name = "PnlOpen"
-        Me.PnlOpen.Size = New System.Drawing.Size(160, 63)
+        Me.PnlOpen.Size = New System.Drawing.Size(160, 36)
         Me.PnlOpen.TabIndex = 43
-        '
-        'chkAutoFullScreen
-        '
-        Me.chkAutoFullScreen.AutoSize = True
-        Me.chkAutoFullScreen.Location = New System.Drawing.Point(10, 32)
-        Me.chkAutoFullScreen.Name = "chkAutoFullScreen"
-        Me.chkAutoFullScreen.Size = New System.Drawing.Size(147, 21)
-        Me.chkAutoFullScreen.TabIndex = 46
-        Me.chkAutoFullScreen.Text = "若为视频自动全屏播放"
-        Me.chkAutoFullScreen.UseVisualStyleBackColor = True
         '
         'txtLoudTime
         '
@@ -716,6 +705,7 @@ Partial Class Settings
         '
         'TabPage_others
         '
+        Me.TabPage_others.Controls.Add(Me.chkAutoFullScreen)
         Me.TabPage_others.Controls.Add(Me.pnl_sleep)
         Me.TabPage_others.Controls.Add(Me.Chk_PreventSleep_Open)
         Me.TabPage_others.Location = New System.Drawing.Point(4, 26)
@@ -736,6 +726,26 @@ Partial Class Settings
         Me.pnl_sleep.Name = "pnl_sleep"
         Me.pnl_sleep.Size = New System.Drawing.Size(224, 111)
         Me.pnl_sleep.TabIndex = 8
+        '
+        'Chk_PreventSleep_system
+        '
+        Me.Chk_PreventSleep_system.AutoSize = True
+        Me.Chk_PreventSleep_system.Location = New System.Drawing.Point(110, 79)
+        Me.Chk_PreventSleep_system.Name = "Chk_PreventSleep_system"
+        Me.Chk_PreventSleep_system.Size = New System.Drawing.Size(111, 21)
+        Me.Chk_PreventSleep_system.TabIndex = 51
+        Me.Chk_PreventSleep_system.Text = "阻止计算机休眠"
+        Me.Chk_PreventSleep_system.UseVisualStyleBackColor = True
+        '
+        'Chk_PreventSleep_Display
+        '
+        Me.Chk_PreventSleep_Display.AutoSize = True
+        Me.Chk_PreventSleep_Display.Location = New System.Drawing.Point(2, 79)
+        Me.Chk_PreventSleep_Display.Name = "Chk_PreventSleep_Display"
+        Me.Chk_PreventSleep_Display.Size = New System.Drawing.Size(111, 21)
+        Me.Chk_PreventSleep_Display.TabIndex = 50
+        Me.Chk_PreventSleep_Display.Text = "阻止显示器休眠"
+        Me.Chk_PreventSleep_Display.UseVisualStyleBackColor = True
         '
         'Chk_PreventSleep_Playing
         '
@@ -953,25 +963,16 @@ Partial Class Settings
         Me.LinkLabel1.Text = "检查更新"
         Me.LinkLabel1.Visible = False
         '
-        'Chk_PreventSleep_Display
+        'chkAutoFullScreen
         '
-        Me.Chk_PreventSleep_Display.AutoSize = True
-        Me.Chk_PreventSleep_Display.Location = New System.Drawing.Point(2, 79)
-        Me.Chk_PreventSleep_Display.Name = "Chk_PreventSleep_Display"
-        Me.Chk_PreventSleep_Display.Size = New System.Drawing.Size(111, 21)
-        Me.Chk_PreventSleep_Display.TabIndex = 50
-        Me.Chk_PreventSleep_Display.Text = "阻止显示器休眠"
-        Me.Chk_PreventSleep_Display.UseVisualStyleBackColor = True
-        '
-        'Chk_PreventSleep_system
-        '
-        Me.Chk_PreventSleep_system.AutoSize = True
-        Me.Chk_PreventSleep_system.Location = New System.Drawing.Point(110, 79)
-        Me.Chk_PreventSleep_system.Name = "Chk_PreventSleep_system"
-        Me.Chk_PreventSleep_system.Size = New System.Drawing.Size(111, 21)
-        Me.Chk_PreventSleep_system.TabIndex = 51
-        Me.Chk_PreventSleep_system.Text = "阻止计算机休眠"
-        Me.Chk_PreventSleep_system.UseVisualStyleBackColor = True
+        Me.chkAutoFullScreen.AutoSize = True
+        Me.chkAutoFullScreen.Font = New System.Drawing.Font("微软雅黑", 11.0!)
+        Me.chkAutoFullScreen.Location = New System.Drawing.Point(23, 174)
+        Me.chkAutoFullScreen.Name = "chkAutoFullScreen"
+        Me.chkAutoFullScreen.Size = New System.Drawing.Size(148, 24)
+        Me.chkAutoFullScreen.TabIndex = 47
+        Me.chkAutoFullScreen.Text = "视频自动全屏播放"
+        Me.chkAutoFullScreen.UseVisualStyleBackColor = True
         '
         'Settings
         '
@@ -1086,7 +1087,6 @@ Partial Class Settings
     Friend WithEvents btn_saveCloseTime As Button
     Friend WithEvents ColorDialog1 As ColorDialog
     Friend WithEvents FontDialog1 As FontDialog
-    Friend WithEvents chkAutoFullScreen As CheckBox
     Friend WithEvents TabPage_others As TabPage
     Friend WithEvents pnl_sleep As Panel
     Friend WithEvents Chk_PreventSleep_Playing As CheckBox
@@ -1096,4 +1096,5 @@ Partial Class Settings
     Friend WithEvents btn_others As Button
     Friend WithEvents Chk_PreventSleep_system As CheckBox
     Friend WithEvents Chk_PreventSleep_Display As CheckBox
+    Friend WithEvents chkAutoFullScreen As CheckBox
 End Class
