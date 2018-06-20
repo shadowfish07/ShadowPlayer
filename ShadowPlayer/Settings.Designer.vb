@@ -26,6 +26,7 @@ Partial Class Settings
         Me.TabPage_time = New System.Windows.Forms.TabPage()
         Me.btn_saveLoudTime = New System.Windows.Forms.Button()
         Me.PnlOpen = New System.Windows.Forms.Panel()
+        Me.chkAutoFullScreen = New System.Windows.Forms.CheckBox()
         Me.txtLoudTime = New System.Windows.Forms.MaskedTextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PnlStop = New System.Windows.Forms.Panel()
@@ -87,7 +88,6 @@ Partial Class Settings
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         Me.FontDialog1 = New System.Windows.Forms.FontDialog()
-        Me.chkAutoFullScreen = New System.Windows.Forms.CheckBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage_time.SuspendLayout()
         Me.PnlOpen.SuspendLayout()
@@ -155,6 +155,16 @@ Partial Class Settings
         Me.PnlOpen.Name = "PnlOpen"
         Me.PnlOpen.Size = New System.Drawing.Size(160, 63)
         Me.PnlOpen.TabIndex = 43
+        '
+        'chkAutoFullScreen
+        '
+        Me.chkAutoFullScreen.AutoSize = True
+        Me.chkAutoFullScreen.Location = New System.Drawing.Point(10, 32)
+        Me.chkAutoFullScreen.Name = "chkAutoFullScreen"
+        Me.chkAutoFullScreen.Size = New System.Drawing.Size(147, 21)
+        Me.chkAutoFullScreen.TabIndex = 46
+        Me.chkAutoFullScreen.Text = "若为视频自动全屏播放"
+        Me.chkAutoFullScreen.UseVisualStyleBackColor = True
         '
         'txtLoudTime
         '
@@ -300,7 +310,7 @@ Partial Class Settings
         Me.RdoSetMiniEnabled.Size = New System.Drawing.Size(122, 21)
         Me.RdoSetMiniEnabled.TabIndex = 38
         Me.RdoSetMiniEnabled.TabStop = True
-        Me.RdoSetMiniEnabled.Text = "停止时最小化程序"
+        Me.RdoSetMiniEnabled.Text = "停止时隐藏至托盘"
         Me.RdoSetMiniEnabled.UseVisualStyleBackColor = True
         '
         'RdoSetCloseNothing
@@ -840,16 +850,6 @@ Partial Class Settings
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "检查更新"
         Me.LinkLabel1.Visible = False
-        '
-        'chkAutoFullScreen
-        '
-        Me.chkAutoFullScreen.AutoSize = True
-        Me.chkAutoFullScreen.Location = New System.Drawing.Point(10, 32)
-        Me.chkAutoFullScreen.Name = "chkAutoFullScreen"
-        Me.chkAutoFullScreen.Size = New System.Drawing.Size(147, 21)
-        Me.chkAutoFullScreen.TabIndex = 46
-        Me.chkAutoFullScreen.Text = "若为视频自动全屏播放"
-        Me.chkAutoFullScreen.UseVisualStyleBackColor = True
         '
         'Settings
         '
