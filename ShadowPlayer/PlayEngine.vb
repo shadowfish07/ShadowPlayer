@@ -87,7 +87,7 @@
         Dim s As String
         Dim sr As System.IO.StreamReader
         For Each s In filePaths
-            Dim lab As New LabelWithIndex()
+            Dim lab As New MusicListLabel()
             targetList.Controls.Add(lab)
             Modren_UI.MusicList.Add(lab)
             lab.Index = Modren_UI.MusicList.Count - 1

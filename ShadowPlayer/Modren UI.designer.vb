@@ -314,7 +314,7 @@ Partial Class Modren_UI
         Me.Btn_List.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.Btn_List.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_List.ForeColor = System.Drawing.Color.White
-        Me.Btn_List.Location = New System.Drawing.Point(686, 91)
+        Me.Btn_List.Location = New System.Drawing.Point(686, 85)
         Me.Btn_List.Name = "Btn_List"
         Me.Btn_List.Size = New System.Drawing.Size(32, 32)
         Me.Btn_List.TabIndex = 35
@@ -394,7 +394,7 @@ Partial Class Modren_UI
         Me.Btn_Alarm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.Btn_Alarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_Alarm.ForeColor = System.Drawing.Color.White
-        Me.Btn_Alarm.Location = New System.Drawing.Point(655, 91)
+        Me.Btn_Alarm.Location = New System.Drawing.Point(651, 85)
         Me.Btn_Alarm.Name = "Btn_Alarm"
         Me.Btn_Alarm.Size = New System.Drawing.Size(32, 32)
         Me.Btn_Alarm.TabIndex = 38

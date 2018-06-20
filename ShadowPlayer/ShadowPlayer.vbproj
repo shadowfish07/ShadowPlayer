@@ -96,7 +96,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="LabelWithIndex.vb">
+    <Compile Include="MusicListLabel.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="OptionClass.vb" />
@@ -120,8 +120,8 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="LabelWithIndex.resx">
-      <DependentUpon>LabelWithIndex.vb</DependentUpon>
+    <EmbeddedResource Include="MusicListLabel.resx">
+      <DependentUpon>MusicListLabel.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="zimu.resx">
       <DependentUpon>zimu.vb</DependentUpon>

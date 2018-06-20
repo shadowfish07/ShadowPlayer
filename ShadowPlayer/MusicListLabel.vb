@@ -1,4 +1,4 @@
-﻿Public Class LabelWithIndex
+﻿Public Class MusicListLabel
     Inherits System.Windows.Forms.Label
 
     Public Property Index As Integer
