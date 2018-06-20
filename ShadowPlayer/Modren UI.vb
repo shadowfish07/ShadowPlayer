@@ -294,6 +294,8 @@ Public Class Modren_UI
             Dim a As New HideListAction(Panel_hideList, New PointF(Panel_hideList.Location.X, Panel_hideList.Location.Y + 300), 300, 10)
             a.Start()
             Timer_List.Start()
+            Btn_List.Visible = False
+            Btn_Add.Visible = True
         End If
     End Sub
 End Class

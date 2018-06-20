@@ -459,7 +459,7 @@ Partial Class Modren_UI
         Me.Btn_Add.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.Btn_Add.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_Add.ForeColor = System.Drawing.Color.White
-        Me.Btn_Add.Location = New System.Drawing.Point(686, 85)
+        Me.Btn_Add.Location = New System.Drawing.Point(684, 85)
         Me.Btn_Add.Name = "Btn_Add"
         Me.Btn_Add.Size = New System.Drawing.Size(32, 32)
         Me.Btn_Add.TabIndex = 43
@@ -476,7 +476,7 @@ Partial Class Modren_UI
         Me.Btn_Remove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.Btn_Remove.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_Remove.ForeColor = System.Drawing.Color.White
-        Me.Btn_Remove.Location = New System.Drawing.Point(651, 85)
+        Me.Btn_Remove.Location = New System.Drawing.Point(649, 85)
         Me.Btn_Remove.Name = "Btn_Remove"
         Me.Btn_Remove.Size = New System.Drawing.Size(32, 32)
         Me.Btn_Remove.TabIndex = 44
@@ -493,7 +493,7 @@ Partial Class Modren_UI
         Me.Btn_MoveToUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.Btn_MoveToUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_MoveToUp.ForeColor = System.Drawing.Color.White
-        Me.Btn_MoveToUp.Location = New System.Drawing.Point(618, 85)
+        Me.Btn_MoveToUp.Location = New System.Drawing.Point(616, 85)
         Me.Btn_MoveToUp.Name = "Btn_MoveToUp"
         Me.Btn_MoveToUp.Size = New System.Drawing.Size(32, 32)
         Me.Btn_MoveToUp.TabIndex = 45
@@ -510,7 +510,7 @@ Partial Class Modren_UI
         Me.Btn_MoveToDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
         Me.Btn_MoveToDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Btn_MoveToDown.ForeColor = System.Drawing.Color.White
-        Me.Btn_MoveToDown.Location = New System.Drawing.Point(585, 85)
+        Me.Btn_MoveToDown.Location = New System.Drawing.Point(583, 85)
         Me.Btn_MoveToDown.Name = "Btn_MoveToDown"
         Me.Btn_MoveToDown.Size = New System.Drawing.Size(32, 32)
         Me.Btn_MoveToDown.TabIndex = 46
@@ -533,11 +533,9 @@ Partial Class Modren_UI
         Me.Controls.Add(Me.Btn_MoveToUp)
         Me.Controls.Add(Me.Panel_hideList)
         Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.Btn_Alarm)
         Me.Controls.Add(Me.Btn_FullScreen)
         Me.Controls.Add(Me.Player)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.Btn_List)
         Me.Controls.Add(Me.FlowLayoutPanel1)
         Me.Controls.Add(Me.Lbl_LryicDown)
         Me.Controls.Add(Me.Lbl_LryicUp)
@@ -552,8 +550,10 @@ Partial Class Modren_UI
         Me.Controls.Add(Me.btn_Mainmax)
         Me.Controls.Add(Me.btn_Mainexit)
         Me.Controls.Add(Me.Panel_top)
-        Me.Controls.Add(Me.Btn_Remove)
+        Me.Controls.Add(Me.Btn_List)
+        Me.Controls.Add(Me.Btn_Alarm)
         Me.Controls.Add(Me.Btn_Add)
+        Me.Controls.Add(Me.Btn_Remove)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ForeColor = System.Drawing.Color.White
