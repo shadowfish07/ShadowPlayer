@@ -29,7 +29,6 @@ Partial Class Modren_UI
         Me.btn_Mainexit = New System.Windows.Forms.Button()
         Me.Lbl_title = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.TmrMusicEnd = New System.Windows.Forms.Timer(Me.components)
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -132,10 +131,6 @@ Partial Class Modren_UI
         '
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 1000
-        '
-        'TmrMusicEnd
-        '
-        Me.TmrMusicEnd.Interval = 200
         '
         'NotifyIcon1
         '
@@ -265,6 +260,7 @@ Partial Class Modren_UI
         Me.FlowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(181, 235)
         Me.FlowLayoutPanel1.TabIndex = 34
+        Me.FlowLayoutPanel1.Visible = False
         Me.FlowLayoutPanel1.WrapContents = False
         '
         'Player
@@ -435,7 +431,6 @@ Partial Class Modren_UI
     Friend WithEvents btn_Mainexit As Button
     Friend WithEvents Lbl_title As Label
     Friend WithEvents Timer1 As Timer
-    Friend WithEvents TmrMusicEnd As Timer
     Friend WithEvents NotifyIcon1 As NotifyIcon
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem

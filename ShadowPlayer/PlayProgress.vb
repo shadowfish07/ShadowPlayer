@@ -14,6 +14,7 @@ Public Class PlayProgress
 
     Public Sub New(target As Panel, width As Integer, backcolor As Color, frontcolor As Color)
         gr = target.CreateGraphics
+        gr.SmoothingMode = SmoothingMode.AntiAlias
         Me.width = width
         Me.backcolor = backcolor
         Me.frontcolor = frontcolor

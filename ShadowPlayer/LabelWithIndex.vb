@@ -3,8 +3,8 @@
 
     Public Property Index As Integer
     Public Property MouseMoveImage As Object
-    Public Lyric As Lyrics = New Lyrics(Me)
-    Private LyrImage As PictureBox
+    Public Lyric As Lyrics = New Lyrics
+    ' Private LyrImage As PictureBox
 
     Sub New()
         'MouseMoveImage = My.Resources.labelback1
@@ -19,35 +19,35 @@
         End If
     End Sub
 
-    Public Sub CreatLyrImage()
-        LyrImage = New PictureBox
-        Modren_UI.Controls.Add(LyrImage)
-        With LyrImage
-            .Visible = False
-            .Size = New Size(16, 16)
-            .Location = New Point(245, Me.Location.Y + Me.Size.Height / 2 - .Size.Height / 2 + 147)
-            '.Image = My.Resources.attachment_1_16
-            .BackColor = Color.FromArgb(87, 135, 195)
-            .BringToFront()
-        End With
-        'AddHandler LyrImage.MouseMove, AddressOf Modren_UI.LyrImage_MouseMove
-        'AddHandler LyrImage.MouseLeave, AddressOf Modren_UI.LyrImage_MouseLeave
-        'AddHandler LyrImage.MouseUp, AddressOf Modren_UI.LyrImage_MouseUp
-    End Sub
+    ' Public Sub CreatLyrImage()
+    '     LyrImage = New PictureBox
+    '     Modren_UI.Controls.Add(LyrImage)
+    ' With LyrImage
+    ' .Visible = False
+    ' .Size = New Size(16, 16)
+    ' .Location = New Point(245, Me.Location.Y + Me.Size.Height / 2 - .Size.Height / 2 + 147)
+    ''.Image = My.Resources.attachment_1_16
+    '.BackColor = Color.FromArgb(87, 135, 195)
+    '.BringToFront()
+    'End With
+    ''AddHandler LyrImage.MouseMove, AddressOf Modren_UI.LyrImage_MouseMove
+    ''AddHandler LyrImage.MouseLeave, AddressOf Modren_UI.LyrImage_MouseLeave
+    ''AddHandler LyrImage.MouseUp, AddressOf Modren_UI.LyrImage_MouseUp
+    'End Sub
 
 
-    Public Function GetObLyrImage() As PictureBox
-        Return LyrImage
-    End Function
+    'Public Function GetObLyrImage() As PictureBox
+    'Return LyrImage
+    'End Function
 
-    Shared Sub ObLyrImageExchange(ob1 As LabelWithIndex, ob2 As LabelWithIndex)
-        Dim temp As Point = New Point(245, ob1.LyrImage.Location.Y)
-        ob1.LyrImage.Location = New Point(245, ob2.LyrImage.Location.Y)
-        ob2.LyrImage.Location = temp
-        Dim temp2 As PictureBox = ob1.LyrImage
-        ob1.LyrImage = ob2.LyrImage
-        ob2.LyrImage = temp2
-    End Sub
+    'Shared Sub ObLyrImageExchange(ob1 As LabelWithIndex, ob2 As LabelWithIndex)
+    ''Dim temp As Point = New Point(245, ob1.LyrImage.Location.Y)
+    '    ob1.LyrImage.Location = New Point(245, ob2.LyrImage.Location.Y)
+    '    ob2.LyrImage.Location = temp
+    'Dim temp2 As PictureBox = ob1.LyrImage
+    '    ob1.LyrImage = ob2.LyrImage
+    '    ob2.LyrImage = temp2
+    'End Sub
 
     Public Class Lyrics
         Private _Lyrics As Hashtable = New Hashtable
@@ -55,11 +55,11 @@
         Protected HaveLyrics As Boolean = False
         Protected HaveLanguages As Boolean = False
         Private _Lyrics2 As Hashtable = New Hashtable
-        Private parent As LabelWithIndex
+        'Private parent As LabelWithIndex
 
-        Public Sub New(obj As LabelWithIndex)
-            parent = obj
-        End Sub
+        'Public Sub New(obj As LabelWithIndex)
+        '    parent = obj
+        'End Sub
 
 
         Public Function GetHaveLyrics() As Boolean
@@ -78,7 +78,7 @@
                 MsgBox("导入歌词时发生错误" + ex.Message)
             End Try
             HaveLyrics = True
-            parent.GetObLyrImage.Visible = True
+            'parent.GetObLyrImage.Visible = True
         End Sub
 
         Private Function ChangetoD(str As String) As Double

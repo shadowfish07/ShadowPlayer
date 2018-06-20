@@ -1,7 +1,87 @@
 ﻿Public Class PlayEngine
     Event AddedAMusic(musicName As String)
 
+    Dim lyr As Lyric
     Dim WithEvents _timer As New Timer With {.Interval = 200, .Enabled = False}
+
+    Public Sub New(up As Label, down As Label)
+        lyr = New Lyric(up, down)
+    End Sub
+
+    Public Sub ShowLyric()
+        lyr.Timer.Start()
+        lyr.lbl_up.Text = ""
+        lyr.lbl_up.Visible = True
+    End Sub
+
+    Public Sub HideLyric()
+        lyr.Timer.Stop()
+        lyr.lbl_up.Visible = False
+        lyr.lbl_down.Visible = False
+    End Sub
+
+    Private Class Lyric
+
+        Public WithEvents Timer As New Timer With {.Interval = 100}
+        Public lbl_up As Label, lbl_down As Label
+
+        Public Sub New(up As Label, down As Label)
+            lbl_up = up
+            lbl_down = down
+        End Sub
+
+        Public Sub ChangeLyric(sender As Object, e As EventArgs) Handles Timer.Tick
+            Dim result As Double = Showlryic()
+            If result = -1 Then Exit Sub
+            If Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.GetHaveLanguages Then
+                '双语字幕
+                lbl_down.Visible = True
+                If Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result) <> "" Then
+                    'If StrLength(Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result)) > 46 Then
+                    'Label2.Font = New Font(Label1.Font.FontFamily, 24)
+                    'Label2.Top = 40
+                    'Else
+                    'Label2.Font = New Font(Label1.Font.FontFamily, 29)
+                    'Label2.Top = 29
+                    'End If
+                    lbl_up.Text = Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result)
+                    lbl_down.Text = Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics2.Item(result)
+                End If
+            Else
+                '中文字幕
+                lbl_down.Visible = False
+                If Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result) <> "" Then
+                    'If StrLength(Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result)) > 26 Then
+                    'Label1.Font = New Font(Label1.Font.FontFamily, 40)
+                    'Else
+                    'Label1.Font = New Font(Label1.Font.FontFamily, 48)
+                    'End If
+                    lbl_up.Text = Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.Item(result)
+                End If
+            End If
+
+        End Sub
+
+        Private Function Showlryic() As Double
+            Dim exNum As Double = 0.1 'Timer1.Interval / 2000
+            Dim maximum As Double = Modren_UI.Player.Ctlcontrols.currentPosition + exNum
+            Dim minimum As Double = Modren_UI.Player.Ctlcontrols.currentPosition - exNum
+            Dim d As Double
+            Try
+                For Each d In Modren_UI.MusicList(Modren_UI.nowPlay).Lyric.Lyrics.keys
+                    If d >= minimum And d <= maximum Then
+                        Return d
+                        Exit Function
+                    End If
+                Next
+            Catch ex As Exception
+
+            End Try
+
+            Return -1
+        End Function
+    End Class
+
 
     Public Sub Add(filePaths() As String, targetList As FlowLayoutPanel, tooltip As ToolTip)
         Dim s As String
@@ -16,7 +96,7 @@
             Modren_UI.MusicList.Item(Modren_UI.MusicList.Count - 1).tag = s
             Modren_UI.MusicList.Item(Modren_UI.MusicList.Count - 1).width = 170
             Modren_UI.MusicList.Item(Modren_UI.MusicList.Count - 1).image = My.Resources.labelback1
-            lab.CreatLyrImage()
+            ' lab.CreatLyrImage()
             '导入歌词文件
             If Dir(System.IO.Path.ChangeExtension(s, "lrc")) <> "" Then
                 sr = New System.IO.StreamReader(System.IO.Path.ChangeExtension(s, "lrc"), System.Text.Encoding.UTF8)
@@ -57,12 +137,12 @@
 
     Private Sub Listmousemove(ByVal sender As System.Object, ByVal e As System.EventArgs)
         sender.image = My.Resources.labelback2
-        sender.GetObLyrImage.BackColor = Color.FromArgb(58, 83, 163)
+        'sender.GetObLyrImage.BackColor = Color.FromArgb(58, 83, 163)
     End Sub
 
     Private Sub Listmouseleave(ByVal sender As System.Object, ByVal e As System.EventArgs)
         sender.image = sender.MouseMoveImage
-        sender.GetObLyrImage.BackColor = Color.FromArgb(87, 135, 195)
+        'sender.GetObLyrImage.BackColor = Color.FromArgb(87, 135, 195)
     End Sub
 
     Private Sub ListDoubleclick(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -124,11 +204,13 @@
                         Modren_UI.Player.URL = Modren_UI.MusicList.Item(0).tag
                         Modren_UI.nowPlay = 0
                         Modren_UI.lastPlay = 0
+                        '播放按钮变成重放图标！！
                     End If
                 Case Cplaynum.ListCycle
                     ChangeMusic()
                 Case Cplaynum.OneOnce
                     Me.Stop()
+                    '播放按钮变成重放图标！！
                 Case Cplaynum.OneCycle
                     Modren_UI.Player.Ctlcontrols.currentPosition = 0
                 Case Cplaynum.Random

@@ -6,7 +6,7 @@
     End Sub
 
     Public Sub Write(message As String)
-        Trace.WriteLine("[" + Now.ToString + " " + Now.Millisecond + "]" + " " + message)
+        Trace.WriteLine("[" + Now.ToString + " " + Now.Millisecond.ToString + "]" + " " + message)
         sw.Flush()
     End Sub
 
@@ -16,5 +16,14 @@
 
     Public Sub Unindent()
         Trace.Unindent()
+    End Sub
+
+    Public Sub EndWrite(Optional message As String = "")
+        Me.Write("程序退出")
+        Trace.Indent()
+        Trace.WriteLine("附加信息：" + message)
+        Trace.Unindent()
+        Trace.WriteLine("=========================================")
+        sw.Flush()
     End Sub
 End Class
