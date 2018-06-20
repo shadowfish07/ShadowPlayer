@@ -73,8 +73,8 @@ Public Class Modren_UI
         '设置字幕颜色
         Lbl_LryicUp.ForeColor = mainOption.Lyric_English_ForeColor
         Lbl_LryicDown.ForeColor = mainOption.Lyric_CN_ForeColor
-        Lbl_LryicUp.Font = mainOption.Lyric_english_font
-        Lbl_LryicDown.Font = mainOption.Lyric_CN_font
+        Lbl_LryicUp.Font = mainOption.Lyric_English_Font
+        Lbl_LryicDown.Font = mainOption.Lyric_CN_Font
 
         log.Write("程序启动成功")
     End Sub
@@ -85,11 +85,11 @@ Public Class Modren_UI
         loaded = True
     End Sub
 
-    Private Sub Modren_UI_DragDrop(sender As Object, e As DragEventArgs) Handles MyBase.DragDrop, FlowLayoutPanel1.DragDrop, Panel1.DragDrop, Lbl_MusicName.DragDrop
+    Private Sub Modren_UI_DragDrop(sender As Object, e As DragEventArgs) Handles MyBase.DragDrop, FlowLayoutPanel1.DragDrop, Pnl_Circle.DragDrop, Lbl_MusicName.DragDrop
         Engine.Add(e.Data.GetData(DataFormats.FileDrop), FlowLayoutPanel1, ToolTip1)
     End Sub
 
-    Private Sub Modren_UI_DragOver(sender As Object, e As DragEventArgs) Handles MyBase.DragOver, FlowLayoutPanel1.DragOver, Panel1.DragOver, Lbl_MusicName.DragOver
+    Private Sub Modren_UI_DragOver(sender As Object, e As DragEventArgs) Handles MyBase.DragOver, FlowLayoutPanel1.DragOver, Pnl_Circle.DragOver, Lbl_MusicName.DragOver
         e.Effect = e.Effect.All
     End Sub
 
