@@ -445,7 +445,7 @@ Partial Class Modren_UI
         'Panel_hideList
         '
         Me.Panel_hideList.Cursor = System.Windows.Forms.Cursors.Default
-        Me.Panel_hideList.Location = New System.Drawing.Point(537, 123)
+        Me.Panel_hideList.Location = New System.Drawing.Point(537, 121)
         Me.Panel_hideList.Name = "Panel_hideList"
         Me.Panel_hideList.Size = New System.Drawing.Size(180, 241)
         Me.Panel_hideList.TabIndex = 42
@@ -505,6 +505,8 @@ Partial Class Modren_UI
         '
         Me.Btn_MoveToDown.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.下移
         Me.Btn_MoveToDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Btn_MoveToDown.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Btn_MoveToDown.FlatAppearance.BorderColor = System.Drawing.Color.White
         Me.Btn_MoveToDown.FlatAppearance.BorderSize = 0
         Me.Btn_MoveToDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
         Me.Btn_MoveToDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent

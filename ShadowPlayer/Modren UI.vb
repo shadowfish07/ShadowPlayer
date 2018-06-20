@@ -305,6 +305,15 @@ Public Class Modren_UI
     Private Sub Btn_Remove_MouseEnter(sender As Object, e As EventArgs) Handles Btn_Remove.MouseEnter
         ListRemainTime = 0
     End Sub
+
+    Private Sub Btn_NextMusic_Click(sender As Object, e As EventArgs) Handles Btn_NextMusic.Click
+        Engine.ChangeMusic()
+    End Sub
+
+    Private Sub Btn_PrevMusic_Click(sender As Object, e As EventArgs) Handles Btn_PrevMusic.Click
+        Engine.ChangeMusic(nowPlay - 1)
+    End Sub
+
 #End Region
     Private Sub 播放ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles 播放ToolStripMenuItem1.Click
         Try
@@ -318,6 +327,52 @@ Public Class Modren_UI
     Private Sub 暂停ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 暂停ToolStripMenuItem.Click
         Try
             Engine.Pause()
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Private Sub Btn_Add_Click(sender As Object, e As EventArgs) Handles Btn_Add.Click
+        Call AddMusic(sender, e)
+    End Sub
+
+    Private Sub Btn_MoveToUp_Click(sender As Object, e As EventArgs) Handles Btn_MoveToUp.Click
+        If chooseItem = -1 Or chooseItem = 0 Then Exit Sub
+        Dim temp As MusicListLabel = New MusicListLabel
+        temp.Text = MusicList(chooseItem).Text : MusicList(chooseItem).Text = MusicList(chooseItem - 1).Text : MusicList(chooseItem - 1).Text = temp.Text
+        temp.Tag = MusicList(chooseItem).tag : MusicList(chooseItem).tag = MusicList(chooseItem - 1).tag : MusicList(chooseItem - 1).tag = temp.Tag
+        temp.Font = MusicList(chooseItem).font : MusicList(chooseItem).font = MusicList(chooseItem - 1).font : MusicList(chooseItem - 1).font = temp.Font
+        MusicList(chooseItem - 1).MouseLeaveImage = My.Resources.ListChosenImage
+        MusicList(chooseItem).MouseLeaveImage = Nothing
+        MusicList(chooseItem - 1).Image = My.Resources.ListChosenImage
+        MusicList(chooseItem).Image = Nothing
+        nowPlay -= 1
+        chooseItem -= 1
+    End Sub
+
+    Private Sub Btn_MoveToDown_Click(sender As Object, e As EventArgs) Handles Btn_MoveToDown.Click
+        If chooseItem = -1 Or chooseItem = MusicList.Count - 1 Then Exit Sub
+        Dim temp As MusicListLabel = New MusicListLabel
+        temp.Text = MusicList(chooseItem).Text : MusicList(chooseItem).Text = MusicList(chooseItem + 1).Text : MusicList(chooseItem + 1).Text = temp.Text
+        temp.Tag = MusicList(chooseItem).tag : MusicList(chooseItem).tag = MusicList(chooseItem + 1).tag : MusicList(chooseItem + 1).tag = temp.Tag
+        temp.Font = MusicList(chooseItem).font : MusicList(chooseItem).font = MusicList(chooseItem + 1).font : MusicList(chooseItem + 1).font = temp.Font
+        MusicList(chooseItem + 1).MouseLeaveImage = My.Resources.ListChosenImage
+        MusicList(chooseItem).MouseLeaveImage = Nothing
+        MusicList(chooseItem + 1).Image = My.Resources.ListChosenImage
+        MusicList(chooseItem).Image = Nothing
+        nowPlay += 1
+        chooseItem += 1
+    End Sub
+
+    Private Sub Btn_Remove_Click(sender As Object, e As EventArgs) Handles Btn_Remove.Click
+        Try
+            Call Engine.Stop()
+            Call ArrayListRemoveItem(MusicList, chooseItem)
+            Call FlowLayoutPanelRemoveItem(FlowLayoutPanel1, chooseItem)
+            Player.URL = ""
+            Lbl_MusicName.Text = ""
+            Lbl_NowTime.Text = "00:00"
+            Lbl_TotalTime.Text = "00:00"
         Catch ex As Exception
 
         End Try

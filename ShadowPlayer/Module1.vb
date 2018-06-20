@@ -73,4 +73,16 @@
             arr.RemoveAt(arr.Count - 1)
         End If
     End Sub
+
+    Public Sub FlowLayoutPanelRemoveItem(ByVal list As FlowLayoutPanel, ByVal index As Integer)
+        list.Controls.RemoveAt(index)
+        If index >= Modren_UI.MusicList.Count - 1 Then
+            Modren_UI.chooseItem = Modren_UI.MusicList.Count - 1
+        End If
+        If Modren_UI.chooseItem <> -1 Then
+            Modren_UI.MusicList(Modren_UI.chooseItem).MouseLeaveImage = My.Resources.ListChosenImage
+            Modren_UI.MusicList(Modren_UI.chooseItem).Image = My.Resources.ListChosenImage
+        End If
+    End Sub
+
 End Module
