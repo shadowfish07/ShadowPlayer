@@ -146,13 +146,13 @@ Public Class Modren_UI
     Private Sub EverySecond(sender As Object, e As EventArgs) Handles Timer1.Tick
         '检测是否需要阻止系统睡眠
         Dim preventSleep
-        If mainOption.PreventSleep_Open.Value = True Then
-            If mainOption.PreventSleep_Alltime.Value = True Then
+        If mainOption.PreventSleep_Open = True Then
+            If mainOption.PreventSleep_Alltime = True Then
                 preventSleep = SetThreadExecutionState(ES_DISPLAY_REQUIRED Or ES_SYSTEM_REQUIRED)
             Else
-                If mainOption.PreventSleep_Playing.Value And Player.playState = WMPPlayState.wmppsPlaying Then
+                If mainOption.PreventSleep_Playing And Player.playState = WMPPlayState.wmppsPlaying Then
                     preventSleep = SetThreadExecutionState(ES_DISPLAY_REQUIRED Or ES_SYSTEM_REQUIRED)
-                ElseIf mainOption.PreventSleep_Alarm.Value And (mainOption.Alarm_LoudOpen.Value Or mainOption.Alarm_CloseOpen.Value) Then
+                ElseIf mainOption.PreventSleep_Alarm And (mainOption.Alarm_LoudOpen Or mainOption.Alarm_CloseOpen) Then
                     preventSleep = SetThreadExecutionState(ES_DISPLAY_REQUIRED Or ES_SYSTEM_REQUIRED)
                 End If
             End If
@@ -163,7 +163,7 @@ Public Class Modren_UI
             Lbl_NowTime.Text = Player.Ctlcontrols.currentPositionString
             playProgres.Flush(Player.Ctlcontrols.currentPosition / Player.currentMedia.duration)
         End If
-        If Format(Now, "HH:mm:ss") = mainOption.Alarm_LoudTime And mainOption.Alarm_LoudOpen.Value = True Then
+        If Format(Now, "HH:mm:ss") = mainOption.Alarm_LoudTime And mainOption.Alarm_LoudOpen = True Then
             '自动开始播放
             Try
                 Engine.Play()
@@ -172,29 +172,29 @@ Public Class Modren_UI
             Catch ex As Exception
 
             End Try
-        ElseIf Format(Now, "HH:mm:ss") = mainOption.Alarm_EndTime And mainOption.Alarm_CloseOpen.Value = True Then
+        ElseIf Format(Now, "HH:mm:ss") = mainOption.Alarm_EndTime And mainOption.Alarm_CloseOpen = True Then
             log.Write("自动停止——闹钟")
             '自动结束播放
             Try
                 '结束后程序操作
-                If mainOption.WhenClose_EndOpen.Value = True Then
+                If mainOption.WhenClose_EndOpen = True Then
                     End
-                ElseIf mainOption.WhenClose_MiniOpen.Value = True Then
+                ElseIf mainOption.WhenClose_MiniOpen = True Then
                     Btn_PlayPause.BackgroundImage = My.Resources.Play
                     HideForm()
                     Zimu.Timer1.Enabled = False
                 End If
                 '结束后播放操作
-                If mainOption.AfterClose_next.Value = True Then
+                If mainOption.AfterClose_next = True Then
                     If playMode = CplayMode.Random Then
                         Dim rnd As New Random
                         Engine.ChangeMusic(rnd.Next(0, MusicList.Count), False)
                     Else '暂时不考虑播放模式为单曲循环的情况
                         Engine.ChangeMusic(, False)
                     End If
-                ElseIf mainOption.AfterClose_puase.Value = True Then
+                ElseIf mainOption.AfterClose_puase = True Then
                     Engine.Pause()
-                ElseIf mainOption.AfterClose_stop.Value = True Then
+                ElseIf mainOption.AfterClose_stop = True Then
                     Engine.Stop()
                 End If
             Catch ex As Exception
