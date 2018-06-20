@@ -75,6 +75,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HideListAction.vb" />
     <Compile Include="LogWriter.vb" />
     <Compile Include="Modren UI.designer.vb">
       <DependentUpon>Modren UI.vb</DependentUpon>
@@ -106,6 +107,7 @@
     <Compile Include="PlayEngine.vb" />
     <Compile Include="PlayProgress.vb" />
     <Compile Include="VisualAction.vb" />
+    <Compile Include="VisualActionEventArg.vb" />
     <Compile Include="zimu.designer.vb">
       <DependentUpon>zimu.vb</DependentUpon>
     </Compile>

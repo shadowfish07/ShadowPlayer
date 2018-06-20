@@ -2,11 +2,12 @@
     '视觉动作基类
     Dim WithEvents _timer As New Timer
     Dim _totalLength As Single
-    Dim _stepX As Single, _stepY As Single
-    Dim _target As Control， _targetLocation As PointF
+    Protected _stepX As Single, _stepY As Single
+    Protected _target As Control
+    Dim _targetLocation As PointF
     Dim _isHeightMove As Boolean = False, _isWeightMove As Boolean = False
 
-    Event OncePace(isLastPace As Boolean)
+    Event OncePace(sender As Object, e As VisualActionEventArg)
 
     Public Sub New(target As Control， targetLocation As PointF, total_time As Single, interval As Integer)
         Me.Target = target
@@ -74,41 +75,52 @@
         Static tempLocation As PointF = New PointF(_target.Location.X, _target.Location.Y)
         Static tempX As Single = 0
         Static tempY As Single = 0
+        '用于事件输出
+        Dim changeX As Integer
+        Dim changeY As Integer
+
         tempX += _stepX
         tempY += _stepY
+
         If Math.Abs(tempX) > 1 Then
             If tempX > 0 Then
                 _target.Location = New Point(_target.Location.X + Math.Abs(Math.Floor(tempX)), _target.Location.Y)
+                changeX = Math.Abs(Math.Floor(tempX))
                 tempX -= Math.Abs(Math.Floor(tempX))
             Else
                 _target.Location = New Point(_target.Location.X - Math.Abs(Math.Ceiling(tempX)), _target.Location.Y)
+                changeX = Math.Abs(Math.Ceiling(tempX))
                 tempX += Math.Abs(Math.Ceiling(tempX))
             End If
         End If
         If Math.Abs(tempY) > 1 Then
             If tempY > 0 Then
                 _target.Location = New Point(_target.Location.X, _target.Location.Y + Math.Abs(Math.Floor(tempY)))
+                changeY = Math.Abs(Math.Floor(tempY))
                 tempY -= Math.Abs(Math.Floor(tempY))
             Else
                 _target.Location = New Point(_target.Location.X, _target.Location.Y - Math.Abs(Math.Ceiling(tempY)))
+                changeY = Math.Abs(Math.Ceiling(tempY))
                 tempY += Math.Abs(Math.Ceiling(tempY))
             End If
         End If
 
         If (_target.Location.X = TargetLocation.X And _isheightmove = False) Or (_target.Location.Y = TargetLocation.Y And _isweightmove = False) Then
+            changeX = TargetLocation.X - _target.Location.X
+            changeY = TargetLocation.Y - _target.Location.Y
+
             _target.Location = Point.Round(TargetLocation)
             _timer.Stop()
             tempLocation = Nothing
             tempX = 0
             tempY = 0
-            RaiseEvent OncePace(True)
+            RaiseEvent OncePace(Me, New VisualActionEventArg(True, changeX, changeY))
         Else
-            RaiseEvent OncePace(False)
+            RaiseEvent OncePace(Me, New VisualActionEventArg(False, changeX, changeY))
         End If
-        Debug.Print(_target.Location.ToString)
     End Sub
 
-    Private Function IsLastPace() As Boolean
+    Protected Function IsLastPace() As Boolean
         If _stepX > 0 Then
             If _target.Location.X + _stepX > _targetLocation.X Then
                 Return True

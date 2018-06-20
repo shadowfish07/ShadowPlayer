@@ -274,6 +274,11 @@ Public Class Modren_UI
 
         End Try
     End Sub
+
+    Private Sub Btn_List_MouseEnter(sender As Object, e As EventArgs) Handles Btn_List.MouseEnter
+        Dim a As New HideListAction(Panel_hideList, New PointF(Panel_hideList.Location.X, Panel_hideList.Location.Y + 300), 500, 10)
+        a.Start()
+    End Sub
 End Class
 
 

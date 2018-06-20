@@ -7,7 +7,7 @@
     ' Private LyrImage As PictureBox
 
     Sub New()
-        'MouseMoveImage = My.Resources.labelback1
+        MouseMoveImage = Nothing
 
     End Sub
 

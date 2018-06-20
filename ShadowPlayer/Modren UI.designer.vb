@@ -266,7 +266,6 @@ Partial Class Modren_UI
         Me.FlowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(181, 235)
         Me.FlowLayoutPanel1.TabIndex = 34
-        Me.FlowLayoutPanel1.Visible = False
         Me.FlowLayoutPanel1.WrapContents = False
         '
         'Player
@@ -440,10 +439,12 @@ Partial Class Modren_UI
         '
         'Panel_hideList
         '
+        Me.Panel_hideList.Cursor = System.Windows.Forms.Cursors.Default
         Me.Panel_hideList.Location = New System.Drawing.Point(537, 123)
         Me.Panel_hideList.Name = "Panel_hideList"
         Me.Panel_hideList.Size = New System.Drawing.Size(180, 241)
         Me.Panel_hideList.TabIndex = 42
+        Me.Panel_hideList.Visible = False
         '
         'Modren_UI
         '

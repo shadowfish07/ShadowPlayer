@@ -94,8 +94,8 @@
             Modren_UI.MusicList.Item(Modren_UI.MusicList.Count - 1).AutoEllipsis = True
             Modren_UI.MusicList.Item(Modren_UI.MusicList.Count - 1).text = Dir(s)
             Modren_UI.MusicList.Item(Modren_UI.MusicList.Count - 1).tag = s
-            Modren_UI.MusicList.Item(Modren_UI.MusicList.Count - 1).width = 170
-            Modren_UI.MusicList.Item(Modren_UI.MusicList.Count - 1).image = My.Resources.labelback1
+            Modren_UI.MusicList.Item(Modren_UI.MusicList.Count - 1).width = 155
+            Modren_UI.MusicList.Item(Modren_UI.MusicList.Count - 1).image = Nothing
             ' lab.CreatLyrImage()
             '导入歌词文件
             If Dir(System.IO.Path.ChangeExtension(s, "lrc")) <> "" Then
