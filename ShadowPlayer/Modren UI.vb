@@ -271,10 +271,6 @@ Public Class Modren_UI
 
         End Try
     End Sub
-
-    Private Sub Modren_UI_Activated(sender As Object, e As EventArgs) Handles Me.Activated
-        ReFlush()
-    End Sub
 End Class
 
 
