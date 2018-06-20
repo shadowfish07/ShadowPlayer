@@ -260,6 +260,11 @@ Public Class Modren_UI
         SendMessage(Me.Handle, &HA1, 2, 0)
     End Sub
 
+    Private Sub Btn_NextMusic_Click(sender As Object, e As EventArgs) Handles Btn_NextMusic.Click
+        Dim a As New VisualAction(btn_Mainmin, New PointF(100, 100), 1000, 20)
+        a.Start()
+    End Sub
+
     Private Sub FormDrag(sender As Object, e As MouseEventArgs) Handles Panel_top.MouseDown
         If e.Button = Windows.Forms.MouseButtons.Left Then MoveForm()
     End Sub
