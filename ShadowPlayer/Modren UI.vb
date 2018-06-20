@@ -166,6 +166,7 @@ Public Class Modren_UI
                 ElseIf mainOption.CloseMiniOpen.Value = True Then
                     Btn_PlayPause.BackgroundImage = My.Resources.Play
                     Me.Hide()
+                    Settings.Hide()
                     Zimu.Hide()
                     Zimu.Timer1.Enabled = False
                 End If
@@ -233,6 +234,7 @@ Public Class Modren_UI
 
     Private Sub NotifyIcon1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles NotifyIcon1.MouseDoubleClick
         Me.Show()
+        Me.WindowState = FormWindowState.Normal
     End Sub
 
     Private Sub OpenFileDialog1_FileOk(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles OpenFileDialog1.FileOk
