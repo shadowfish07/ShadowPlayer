@@ -32,7 +32,13 @@ Public Class Modren_UI
     End Sub
 
     Private Sub Modren_UI_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim sw As New IO.StreamWriter("ShadowPlayer_RunTime.log", True)
+        Trace.Listeners.Add(New TextWriterTraceListener(sw))
+        Trace.WriteLine("[" + Now.ToString + "]" + "正在启动程序")
         Player.uiMode = "none"
         Player.settings.autoStart = False
+        Lbl_MusicName.Text = ""
+        Trace.WriteLine("[" + Now.ToString + "]" + "程序启动成功")
+        sw.Close()
     End Sub
 End Class
