@@ -7,6 +7,7 @@
     Dim WithEvents _timer As New Timer With {.Interval = 100, .Enabled = False}
 
     Const ALL_FILTERS = ".mp4;.wma;.wax;.cda;.mp3;.m3u;.wav;.mid:.midi;.rmi;.aif;.aifc;aiff;.au;,snd;.wmv;.wvx;.asf;.asx;.wpl;.wm;.wmx;.wmd;.wmz;.vob;.dvr;.avi;.mpeg:.mpg;.mlv;.mpv2;.mpa;.mp2"
+    Const VIDEO_FILTERS = ".mp4;.wmv;.wvx;.asf;.asx;.wpl;.wm;.wmx;.wmd;.wmz;.vob;.dvr;.avi;.mpeg:.mpg;.mlv;.mpv2;.mpa;.mp2"
 
     Public Sub New(up As Label, down As Label)
         lyr = New Lyric(up, down)
@@ -97,14 +98,19 @@
         End Function
     End Class
 
-    Private Function IsFileRight(path As String) As Boolean
+    Public Shared Function IsFileRight(path As String) As Boolean
         Dim support_extension() As String
         support_extension = ALL_FILTERS.Split(";")
         Return support_extension.Contains(System.IO.Path.GetExtension(path))
     End Function
 
+    Public Shared Function IsFileVideo(path As String) As Boolean
+        Dim support_extension() As String
+        support_extension = VIDEO_FILTERS.Split(";")
+        Return support_extension.Contains(System.IO.Path.GetExtension(path).ToLower)
+    End Function
+
     Public Sub Add(filePaths() As String, targetList As FlowLayoutPanel, tooltip As ToolTip)
-        '!!有效性验证
         Dim s As String
         Dim sr As System.IO.StreamReader
         For Each s In filePaths

@@ -150,6 +150,9 @@ Public Class Modren_UI
                 Engine.Play()
                 Btn_PlayPause.BackgroundImage = My.Resources.Pause
                 log.Write("自动播放——闹钟")
+                If PlayEngine.IsFileVideo(MusicList(nowPlay).tag) Then
+                    Player.fullScreen = True
+                End If
             Catch ex As Exception
 
             End Try

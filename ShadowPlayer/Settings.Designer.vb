@@ -87,6 +87,7 @@ Partial Class Settings
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         Me.FontDialog1 = New System.Windows.Forms.FontDialog()
+        Me.chkAutoFullScreen = New System.Windows.Forms.CheckBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage_time.SuspendLayout()
         Me.PnlOpen.SuspendLayout()
@@ -146,12 +147,13 @@ Partial Class Settings
         '
         'PnlOpen
         '
+        Me.PnlOpen.Controls.Add(Me.chkAutoFullScreen)
         Me.PnlOpen.Controls.Add(Me.txtLoudTime)
         Me.PnlOpen.Controls.Add(Me.Label1)
         Me.PnlOpen.ForeColor = System.Drawing.Color.Black
         Me.PnlOpen.Location = New System.Drawing.Point(15, 57)
         Me.PnlOpen.Name = "PnlOpen"
-        Me.PnlOpen.Size = New System.Drawing.Size(160, 26)
+        Me.PnlOpen.Size = New System.Drawing.Size(160, 63)
         Me.PnlOpen.TabIndex = 43
         '
         'txtLoudTime
@@ -185,7 +187,7 @@ Partial Class Settings
         Me.PnlStop.Controls.Add(Me.txtEndTime)
         Me.PnlStop.Controls.Add(Me.Label2)
         Me.PnlStop.ForeColor = System.Drawing.Color.Black
-        Me.PnlStop.Location = New System.Drawing.Point(15, 136)
+        Me.PnlStop.Location = New System.Drawing.Point(15, 156)
         Me.PnlStop.Name = "PnlStop"
         Me.PnlStop.Size = New System.Drawing.Size(305, 178)
         Me.PnlStop.TabIndex = 44
@@ -358,7 +360,7 @@ Partial Class Settings
         Me.ChkSetCloseEnabled.CheckState = System.Windows.Forms.CheckState.Checked
         Me.ChkSetCloseEnabled.Font = New System.Drawing.Font("微软雅黑", 11.0!)
         Me.ChkSetCloseEnabled.ForeColor = System.Drawing.Color.Black
-        Me.ChkSetCloseEnabled.Location = New System.Drawing.Point(11, 106)
+        Me.ChkSetCloseEnabled.Location = New System.Drawing.Point(11, 126)
         Me.ChkSetCloseEnabled.Name = "ChkSetCloseEnabled"
         Me.ChkSetCloseEnabled.Size = New System.Drawing.Size(118, 24)
         Me.ChkSetCloseEnabled.TabIndex = 42
@@ -839,6 +841,16 @@ Partial Class Settings
         Me.LinkLabel1.Text = "检查更新"
         Me.LinkLabel1.Visible = False
         '
+        'chkAutoFullScreen
+        '
+        Me.chkAutoFullScreen.AutoSize = True
+        Me.chkAutoFullScreen.Location = New System.Drawing.Point(10, 32)
+        Me.chkAutoFullScreen.Name = "chkAutoFullScreen"
+        Me.chkAutoFullScreen.Size = New System.Drawing.Size(147, 21)
+        Me.chkAutoFullScreen.TabIndex = 46
+        Me.chkAutoFullScreen.Text = "若为视频自动全屏播放"
+        Me.chkAutoFullScreen.UseVisualStyleBackColor = True
+        '
         'Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
@@ -948,4 +960,5 @@ Partial Class Settings
     Friend WithEvents btn_saveCloseTime As Button
     Friend WithEvents ColorDialog1 As ColorDialog
     Friend WithEvents FontDialog1 As FontDialog
+    Friend WithEvents chkAutoFullScreen As CheckBox
 End Class

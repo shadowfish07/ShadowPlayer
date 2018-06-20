@@ -27,7 +27,8 @@ Public Class Settings
             RdoSetCloseNothing.Click, RdoSetEndEnabled.Click, RdoSetMiniEnabled.Click,
             RdoStop.Click, RdoPause.Click, RdoNext.Click,
             PicLyricColor.Click, PicCnLyricColor.Click, PicEnLyricColor.Click,
-            LblShowLyricFont.Click, LblShowCnLyricFont.Click, LblShowEnLyricFont.Click
+            LblShowLyricFont.Click, LblShowCnLyricFont.Click, LblShowEnLyricFont.Click,
+            chkAutoFullScreen.Click
 
         Dim cancel As Boolean = False
 
@@ -107,6 +108,8 @@ Public Class Settings
                 Else
                     cancel = True
                 End If
+            Case sender Is chkAutoFullScreen
+                Modren_UI.mainOption.Video_AutoFullScreen.Value = chkAutoFullScreen.Checked
         End Select
         If cancel = False Then
             SetChangedInform.Show()
@@ -134,6 +137,7 @@ Public Class Settings
         RdoStop.Checked = Modren_UI.mainOption.AfterClose_stop.Value
         RdoNext.Checked = Modren_UI.mainOption.AfterClose_next.Value
         RdoPause.Checked = Modren_UI.mainOption.AfterClose_puase.Value
+        chkAutoFullScreen.Checked = Modren_UI.mainOption.Video_AutoFullScreen.Value
         '字幕
         PicLyricColor.BackColor = Modren_UI.mainOption.Lyric_SingleLine_ForeColor
         PicCnLyricColor.BackColor = Modren_UI.mainOption.Lyric_CN_ForeColor

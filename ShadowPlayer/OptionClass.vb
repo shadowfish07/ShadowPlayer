@@ -10,8 +10,9 @@ Public Class OptionClass
     Private _AfterClose_stop As New Myboolean(False)
     Private _AfterClose_next As New Myboolean(True)
     Private _LyricScreenOpen As New Myboolean(True)
-    Private _LoudTime As String = "13:30:22"
+    Private _LoudTime As String = "13:30:02"
     Private _EndTime As String = "13:34:40"
+
     Public Property Lyric_SingleLine_ForeColor As Color = Color.Gold
     Public Property Lyric_CN_ForeColor As Color = Color.Gold
     Public Property Lyric_English_ForeColor As Color = Color.Moccasin
@@ -19,6 +20,8 @@ Public Class OptionClass
     Public Property Lyric_CN_Font As Font = New Font("微软雅黑", 20)
     Public Property Lyric_English_Font As Font = New Font("微软雅黑", 20)
     'Public Property Lyric_Load_
+
+    Public Property Video_AutoFullScreen As New Myboolean(True)
 
     Public Sub New()
         SetOnlyOneTrue({_CloseEndOpen, _CloseMiniOpen, _CloseNothingOpen})
