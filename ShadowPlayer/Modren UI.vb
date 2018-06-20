@@ -1,6 +1,8 @@
 ﻿Imports AxWMPLib
 Imports WMPLib
 Public Class Modren_UI
+    Const SPECIALVISION As String = " Alpha"
+
     Const FILTERS = "音频文件|*.wma;*.wax;*.cda;*.mp3;*.m3u;*.wav;*.mid:*.midi;*.rmi;*.aif;*.aifc;*aiff;*.au;*,snd|
 视频文件|*.mp4;*.wmv;*.wvx;*.asf;*.asx;*.wpl;*.wm;*.wmx;*.wmd;*.wmz;*.vob;*.dvr;*.avi;*.mpeg:*.mpg;*.mlv;*.mpv2;*.mpa;*.mp2|
 所有支持格式|*.mp4;*.wma;*.wax;*.cda;*.mp3;*.m3u;*.wav;*.mid:*.midi;*.rmi;*.aif;*.aifc;*aiff;*.au;*,snd;*.wmv;*.wvx;*.asf;*.asx;*.wpl;*.wm;*.wmx;*.wmd;*.wmz;*.vob;*.dvr;*.avi;*.mpeg:*.mpg;*.mlv;*.mpv2;*.mpa;*.mp2"
@@ -30,7 +32,9 @@ Public Class Modren_UI
         Lbl_title.Text = "ShadowPlayer"
         NotifyIcon1.Icon = My.Resources.LOGO_Play
 
-        engine = New PlayEngine(Lbl_LryicUp, Lbl_LryicDown)
+        Engine = New PlayEngine(Lbl_LryicUp, Lbl_LryicDown)
+
+        Lbl_Vision.Text = "Vision " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString + SPECIALVISION
 
         '调用载入后PlayProgress绘制
         Dim FormLoaded As New Timer
@@ -68,13 +72,13 @@ Public Class Modren_UI
 
         If Player.playState = CPlayState.Ready And mainOption.LyricScreenOpen.Value Then
             If MusicList(nowPlay).lyric.GetHaveLyrics Then
-                engine.ShowLyric
+                Engine.ShowLyric()
                 ' Zimu.Show()
                 'Zimu.WindowState = FormWindowState.Normal
                 'Zimu.Timer1.Enabled = True
             End If
         ElseIf Player.playState = CPlayState.Stoping Then
-            engine.hidelyric
+            Engine.HideLyric()
         End If
         If Player.playState = CPlayState.Stoping Then
             'Zimu.Label1.Text = MusicList(nowPlay).text
@@ -90,7 +94,7 @@ Public Class Modren_UI
         If Format(Now, "HH:mm:ss") = mainOption.LoudTime And mainOption.LoudOpen.Value = True Then
             '自动开始播放
             Try
-                engine.Play()
+                Engine.Play()
                 Btn_PlayPause.Image = My.Resources.Pause
             Catch ex As Exception
 
@@ -111,14 +115,14 @@ Public Class Modren_UI
                 If mainOption.AfterClose_next.Value = True Then
                     If playMode = Cplaynum.Random Then
                         Dim rnd As New Random
-                        engine.ChangeMusic(rnd.Next(0, MusicList.Count), False)
+                        Engine.ChangeMusic(rnd.Next(0, MusicList.Count), False)
                     Else '暂时不考虑播放模式为单曲循环的情况
-                        engine.ChangeMusic(, False)
+                        Engine.ChangeMusic(, False)
                     End If
                 ElseIf mainOption.AfterClose_puase.Value = True Then
-                    engine.Pause()
+                    Engine.Pause()
                 ElseIf mainOption.AfterClose_stop.Value = True Then
-                    engine.Stop()
+                    Engine.Stop()
                 End If
             Catch ex As Exception
 
@@ -134,24 +138,24 @@ Public Class Modren_UI
     Private Sub Btn_PlayPause_Click(sender As Object, e As EventArgs) Handles Btn_PlayPause.Click
         If Player.playState = CPlayState.Pausing Or Player.playState = CPlayState.Stoping Or Player.playState = CPlayState.Ready Then
             If MusicList.Count = 0 Then Exit Sub '后面可提示错误
-            engine.Play()
+            Engine.Play()
             Lbl_MusicName.Text = ListTidy(Dir(MusicList.Item(nowPlay).tag), 32)
             Btn_PlayPause.BackgroundImage = My.Resources.Pause
         ElseIf Player.playState = WMPPlayState.wmppsPlaying Then
-            engine.Pause()
+            Engine.Pause()
             Btn_PlayPause.BackgroundImage = My.Resources.Play
         End If
 
     End Sub
 
     Private Sub Btn_Stop_Click(sender As Object, e As EventArgs) Handles Btn_Stop.Click
-        engine.Stop()
+        Engine.Stop()
         Btn_PlayPause.BackgroundImage = My.Resources.Play
         Lbl_NowTime.Text = "00.00"
         playProgres.Flush(0)
     End Sub
 
-    Private Sub UpdateMusicNameText(musicname As String) Handles engine.AddedAMusic
+    Private Sub UpdateMusicNameText(musicname As String) Handles Engine.AddedAMusic
         Lbl_MusicName.Text = ListTidy(Dir(musicname), 32)
     End Sub
 

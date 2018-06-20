@@ -55,9 +55,12 @@ Partial Class Modren_UI
         Me.Btn_PlayPause = New System.Windows.Forms.Button()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.Btn_Alarm = New System.Windows.Forms.Button()
+        Me.Lbl_Vision = New System.Windows.Forms.Label()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.Player, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'btn_Mainmin
@@ -401,6 +404,24 @@ Partial Class Modren_UI
         Me.Btn_Alarm.UseVisualStyleBackColor = False
         Me.Btn_Alarm.Visible = False
         '
+        'Lbl_Vision
+        '
+        Me.Lbl_Vision.AutoSize = True
+        Me.Lbl_Vision.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Lbl_Vision.Location = New System.Drawing.Point(194, 0)
+        Me.Lbl_Vision.Name = "Lbl_Vision"
+        Me.Lbl_Vision.Size = New System.Drawing.Size(65, 17)
+        Me.Lbl_Vision.TabIndex = 39
+        Me.Lbl_Vision.Text = "Lbl_Vision"
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.Lbl_Vision)
+        Me.Panel2.Location = New System.Drawing.Point(462, 505)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(259, 15)
+        Me.Panel2.TabIndex = 40
+        '
         'Modren_UI
         '
         Me.AllowDrop = True
@@ -408,6 +429,7 @@ Partial Class Modren_UI
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(47, Byte), Integer), CType(CType(66, Byte), Integer), CType(CType(83, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(719, 521)
+        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Btn_Alarm)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Player)
@@ -438,6 +460,8 @@ Partial Class Modren_UI
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.Player, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -474,4 +498,6 @@ Partial Class Modren_UI
     Friend WithEvents Button2 As Button
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents Btn_Alarm As Button
+    Friend WithEvents Lbl_Vision As Label
+    Friend WithEvents Panel2 As Panel
 End Class
