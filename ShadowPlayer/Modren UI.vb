@@ -288,7 +288,12 @@ Public Class Modren_UI
         Try
             playProgres.Flush(Player.Ctlcontrols.currentPosition / Player.currentMedia.duration)
         Catch ex As Exception
-            playProgres.Flush(0)
+            If Btn_PlayPause.BackgroundImage Is My.Resources.刷新 Then
+                playProgres.Flush(1)
+            Else
+                playProgres.Flush(0)
+            End If
+
         End Try
     End Sub
 
