@@ -145,15 +145,18 @@ Public Class Modren_UI
 
     Private Sub EverySecond(sender As Object, e As EventArgs) Handles Timer1.Tick
         '检测是否需要阻止系统睡眠
-        Dim preventSleep
         If mainOption.PreventSleep_Open = True Then
+            Dim preventSleep As UInteger
+            Dim para As UInteger
+            If mainOption.PreventSleep_Display.Value Then para = para Or PREVENTSLEEP_DISPLAY
+            If mainOption.PreventSleep_System.Value Then para = para Or PREVENTSLEEP_SYSTEM
             If mainOption.PreventSleep_Alltime = True Then
-                preventSleep = SetThreadExecutionState(ES_DISPLAY_REQUIRED Or ES_SYSTEM_REQUIRED)
+                preventSleep = SetThreadExecutionState(para)
             Else
                 If mainOption.PreventSleep_Playing And Player.playState = WMPPlayState.wmppsPlaying Then
-                    preventSleep = SetThreadExecutionState(ES_DISPLAY_REQUIRED Or ES_SYSTEM_REQUIRED)
+                    preventSleep = SetThreadExecutionState(para)
                 ElseIf mainOption.PreventSleep_Alarm And (mainOption.Alarm_LoudOpen Or mainOption.Alarm_CloseOpen) Then
-                    preventSleep = SetThreadExecutionState(ES_DISPLAY_REQUIRED Or ES_SYSTEM_REQUIRED)
+                    preventSleep = SetThreadExecutionState(para)
                 End If
             End If
         End If
