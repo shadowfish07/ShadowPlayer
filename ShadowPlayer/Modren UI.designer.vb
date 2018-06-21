@@ -446,7 +446,7 @@ Partial Class Modren_UI
         'Btn_Add
         '
         Me.Btn_Add.BackgroundImage = Global.ShadowPlayer.My.Resources.Resources.新增
-        Me.Btn_Add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Btn_Add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.Btn_Add.FlatAppearance.BorderSize = 0
         Me.Btn_Add.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent
         Me.Btn_Add.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
@@ -454,7 +454,7 @@ Partial Class Modren_UI
         Me.Btn_Add.ForeColor = System.Drawing.Color.White
         Me.Btn_Add.Location = New System.Drawing.Point(684, 85)
         Me.Btn_Add.Name = "Btn_Add"
-        Me.Btn_Add.Size = New System.Drawing.Size(32, 32)
+        Me.Btn_Add.Size = New System.Drawing.Size(34, 34)
         Me.Btn_Add.TabIndex = 43
         Me.Btn_Add.TabStop = False
         Me.Btn_Add.UseVisualStyleBackColor = False

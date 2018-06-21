@@ -441,6 +441,18 @@ Public Class Modren_UI
 
         End Try
     End Sub
+
+    ''' <summary>
+    ''' 防止按钮失去焦点出现白色边框
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    Private Sub Btn_Add_Paint(sender As Object, e As PaintEventArgs) Handles Btn_Add.Paint, btn_Mainmin.Paint,
+            Btn_PlayPause.Paint, Btn_Stop.Paint, Btn_FullScreen.Paint, Btn_NextMusic.Paint,
+            Btn_PrevMusic.Paint, Btn_NextMusic.Paint, Btn_MoveToUp.Paint, Btn_MoveToDown.Paint
+        Dim ctl As Button = sender
+        ctl.FlatAppearance.BorderColor = ctl.Parent.BackColor
+    End Sub
 End Class
 
 
