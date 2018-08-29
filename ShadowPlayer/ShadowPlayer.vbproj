@@ -11,7 +11,8 @@
     <AssemblyName>ShadowPlayer</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -69,13 +70,14 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.vb">
+    <Compile Include="Modren UI.designer.vb">
+      <DependentUpon>Modren UI.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Modren UI.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
+    <None Include="app.config" />
+    <None Include="Module1.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -91,13 +93,32 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="MyLabel.vb">
+      <SubType>Component</SubType>
+    </None>
+    <None Include="OptionClass.vb" />
+    <Compile Include="zimu.designer.vb">
+      <DependentUpon>zimu.vb</DependentUpon>
+    </Compile>
+    <None Include="zimu.vb">
+      <SubType>Form</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Modren UI.resx">
+      <DependentUpon>Modren UI.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyLabel.resx">
+      <DependentUpon>MyLabel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="zimu.resx">
+      <DependentUpon>zimu.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +131,40 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\25上一首.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\26下一首.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\播放.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\停止.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\暂停.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
