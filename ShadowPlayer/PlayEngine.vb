@@ -211,9 +211,12 @@ Public Class PlayEngine
         End If
     End Sub
 
-    Public Sub Play()
-        Modren_UI.Player.Ctlcontrols.play()
-        RaiseEvent Played(Me, Nothing)
+    Public Sub Play(Optional isLoad As Boolean = False)
+        If isLoad = False Then
+            Modren_UI.Player.Ctlcontrols.play()
+            RaiseEvent Played(Me, Nothing)
+        End If
+
     End Sub
 
     Public Sub Pause()

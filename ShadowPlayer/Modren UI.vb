@@ -22,6 +22,7 @@ Public Class Modren_UI
 
     '分别为列表、播放模式的动画重置时间
     Public ListRemainTime As Integer = 0, PlayModeReminTime As Integer = 0
+    Dim listAction As ShowOneByOneAction
 
     Delegate Sub PlayStateChangeEvent()
 
@@ -51,9 +52,6 @@ Public Class Modren_UI
     End Sub
 
     Private Sub Modren_UI_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim a As New OptionClass.Myboolean(True)
-        Dim b As New OptionClass.Myboolean(False)
-        If a <> b Then Debug.Print("1")
         log.Write("正在启动程序")
         log.PrintMyVision()
         Player.uiMode = "none"
@@ -88,6 +86,7 @@ Public Class Modren_UI
         playProgres = New PlayProgress(Pnl_Circle, 30, Color.FromArgb(180, 198, 214), Color.FromArgb(80, 173, 255))
         e.Dispose
         loaded = True
+        listAction = New ShowOneByOneAction(Btn_Alarm, New PointF(550, 85), 100, 5, {Btn_MoveToDown, Btn_MoveToUp, Btn_Remove}, True)
     End Sub
 
     Private Sub Modren_UI_DragDrop(sender As Object, e As DragEventArgs) Handles MyBase.DragDrop, FlowLayoutPanel1.DragDrop, Pnl_Circle.DragDrop, Lbl_MusicName.DragDrop
@@ -385,11 +384,12 @@ Public Class Modren_UI
 
 #Region "列表动画"
     Private Sub Btn_List_MouseEnter(sender As Object, e As EventArgs) Handles Btn_List.MouseEnter
+        Const ORINGIN_PANAL_LOCATION_X = 537, ORINGIN_PANAL_LOCATION_Y = 121
         If isListOpen = False Then
-            Dim a As New HideListAction(Panel_hideList, New PointF(Panel_hideList.Location.X, Panel_hideList.Location.Y + 300), 300, 5)
+            Dim a As New HideListAction(Panel_hideList, New PointF(ORINGIN_PANAL_LOCATION_X, ORINGIN_PANAL_LOCATION_Y + 300), 300, 5)
             a.Start()
-            Dim b As New ShowOneByOneAction(Btn_Alarm, New PointF(550, 85), 100, 5, {Btn_MoveToDown, Btn_MoveToUp, Btn_Remove}, True)
-            b.Start()
+
+            listAction.Start()
 
             Timer_List.Start()
             Btn_List.Visible = False
@@ -399,16 +399,18 @@ Public Class Modren_UI
     End Sub
 
     Private Sub Timer_List_Tick(sender As Object, e As EventArgs) Handles Timer_List.Tick
+        Const ORINGIN_PANAL_LOCATION_X = 537, ORINGIN_PANAL_LOCATION_Y = 121
         If ListRemainTime = 5 Then
-            Dim a As New HideListAction(Panel_hideList, New PointF(Panel_hideList.Location.X, Panel_hideList.Location.Y - 300), 300, 10)
+            Dim a As New HideListAction(Panel_hideList, New PointF(ORINGIN_PANAL_LOCATION_X, ORINGIN_PANAL_LOCATION_Y), 300, 10)
             a.Start()
             ListRemainTime = 0
             Timer_List.Stop()
             Btn_List.Visible = True
             Btn_Add.Visible = False
 
-            Dim b As New ShowOneByOneAction(Btn_Alarm, New PointF(651, 85), 300, 10, {Btn_MoveToDown, Btn_MoveToUp, Btn_Remove}, False)
-            b.Start()
+            'Static b As New ShowOneByOneAction(Btn_Alarm, New PointF(651, 85), 300, 10, {Btn_MoveToDown, Btn_MoveToUp, Btn_Remove}, False)
+            'b.Start()
+            listAction.Back(300, 10)
         End If
         ListRemainTime += 1
     End Sub

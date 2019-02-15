@@ -1,25 +1,39 @@
 ﻿Public Class VisualAction
     '视觉动作基类
     Dim WithEvents _timer As New Timer
-    Dim _totalLength As Single
-    Protected _stepX As Single, _stepY As Single
-    Protected _target As Control
+    Dim _totalLength As Single = 0
+    Protected _stepX As Single = 0, _stepY As Single = 0
+    Protected _target As Control = Nothing
     Dim _targetLocation As PointF
     Dim _isHeightMove As Boolean = False, _isWeightMove As Boolean = False
+    Public Property Finished As Boolean = True
 
     Event OncePace(sender As Object, e As VisualActionEventArg)
 
     Public Sub New(target As Control， targetLocation As PointF, total_time As Single, interval As Integer)
+        Initialize(target, targetLocation, total_time, interval)
+    End Sub
+
+    Public Sub Initialize(target As Control， targetLocation As PointF, total_time As Single, interval As Integer)
         Me.Target = target
         Me.TargetLocation = targetLocation
         _timer.Interval = interval
         Call GetStep(total_time)
         If Me.Target.Location.X = targetLocation.X Then
-            _isheightmove = True
-        ElseIf Me.Target.Location.y = targetLocation.y Then
-            _isweightmove = True
+            _isHeightMove = True
+        ElseIf Me.Target.Location.Y = targetLocation.Y Then
+            _isWeightMove = True
         End If
+    End Sub
 
+    Public Sub New()
+
+    End Sub
+
+    Protected Sub SetInterval(total_time As Single, interval As Integer, targetLocation As PointF)
+        Me.TargetLocation = targetLocation
+        _timer.Interval = interval
+        Call GetStep(total_time)
     End Sub
 
     Private Sub GetStep(total_time As Single)
@@ -107,7 +121,7 @@
                 tempY += Math.Abs(Math.Ceiling(tempY))
             End If
         End If
-
+        Finished = isLastPace
         If isLastPace = True Then
             changeX = TargetLocation.X - _target.Location.X
             changeY = TargetLocation.Y - _target.Location.Y
