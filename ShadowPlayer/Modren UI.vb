@@ -408,8 +408,6 @@ Public Class Modren_UI
             Btn_List.Visible = True
             Btn_Add.Visible = False
 
-            'Static b As New ShowOneByOneAction(Btn_Alarm, New PointF(651, 85), 300, 10, {Btn_MoveToDown, Btn_MoveToUp, Btn_Remove}, False)
-            'b.Start()
             listAction.Back(300, 10)
         End If
         ListRemainTime += 1
@@ -581,9 +579,6 @@ Public Class Modren_UI
     Private Sub Lbl_title_DoubleClick(sender As Object, e As EventArgs) Handles Lbl_title.DoubleClick
         HideForm()
     End Sub
-
-
-
 End Class
 
 
